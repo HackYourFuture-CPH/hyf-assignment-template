@@ -1,0 +1,79 @@
+/* 1280px and above: Large desktops. */
+/* For tablets and small desktops */
+/* 768px to 1279px: Tablets and small desktops. */
+/* 480px: Larger smartphones. */
+/* 320px: Small mobile devices. */
+@media (max-width: 1279px) {
+    body {
+        padding: 15px;
+    }
+    form {
+        padding: 15px;
+    }
+    .payment-option {
+        max-width: 45%;
+        margin: 15px;
+        padding: 15px;
+    }
+    .payment-option img {
+        width: 150px;
+        height: 40px;
+        margin: 10px;
+    }
+    #buy-now {
+        width: 30%;
+        padding: 12px;
+        font-size: 16px;
+    }
+}
+@media (max-width: 768px) {
+    .payment-option {
+        max-width: 70%;
+        margin: 10px;
+        padding: 10px;
+    }
+    .payment-option img {
+        width: 120px;
+        height: 30px;
+        margin: 8px;
+    }
+    #buy-now {
+        width: 40%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+@media (max-width: 480px) {
+    .payment-option {
+        max-width: 90%;
+        margin: 8px;
+        padding: 8px;
+    }
+    .payment-option img {
+        width: 100px;
+        height: 25px;
+        margin: 5px;
+    }
+    #buy-now {
+        width: 60%;
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+@media (max-width: 320px) {
+    .payment-option {
+        max-width: 100%;
+        margin: 5px;
+        padding: 5px;
+    }
+    .payment-option img {
+        width: 80px;
+        height: 20px;
+        margin: 3px;
+    }
+    #buy-now {
+        width: 80%;
+        padding: 6px;
+        font-size: 10px;
+    }
+}
