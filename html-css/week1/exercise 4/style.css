@@ -1,0 +1,63 @@
+* {
+	vertical-align: baseline;
+}
+
+body {
+  background-color: #fffbf1;
+  max-width: 700px;
+  margin: 0 auto;
+  font-family: Nunito;
+}
+
+header {
+  text-align: center;
+}
+
+.image {
+  text-align: center;
+}
+
+.blog__main {
+  text-align: center;
+}
+
+.blog__main__p {
+  text-align: justify;
+}
+
+.recent-post {
+  text-align: center;
+}
+
+.links {
+  display: block;
+  margin: 0 auto; 
+  margin-left: 25%;
+}
+
+.bio {
+  margin: 10px;
+}
+
+footer {
+  text-align: center;
+  color: Brown;
+}
+
+button {
+  text-align: right;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+button:hover {
+  background-color: #ec726c;
+  box-shadow: 0 6px 6px rgba(0, 0, 4, 0.8);
+}
+
+@media (max-width: 768px) {
+  body {
+    max-width: 100%;
+  }
