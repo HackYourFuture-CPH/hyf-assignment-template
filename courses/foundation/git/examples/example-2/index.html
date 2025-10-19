@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Example 2</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+    <h2>Contact Form</h2>
+    <form>
+        <label for="title">Title or Salutation:</label>
+        <select name="title" id="title">
+            <option value="select">select</option>
+            <option value="mr">Mr</option>
+            <option value="ms">Ms</option>
+            <option value="mrs">Mrs</option>
+            <option value="miss">Miss</option>
+            <option value="dr">Dr</option>
+            <option value="sir">Sir</option>
+        </select>
+        <!-- First Name -->
+        <label for="firstname">Enter First Name:</label>
+        <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
+        <!-- Last Name -->
+        <label for="lastname">Enter Last Name:</label>
+        <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+        <!-- Email -->
+        <label for="email">Enter your email:</label>
+        <input type="email" id="email" name="email">
+        <!-- Message -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="30"></textarea>
+        <input type="submit" class="submit-btn" value="Submit">
+        <input type="reset" class="reset-btn" value="Reset">
+    </form>
+</body>
+
+</html>

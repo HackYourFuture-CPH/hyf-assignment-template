@@ -1,0 +1,45 @@
+* {
+    background-color: bisque;
+    font-size: large;
+}
+
+header {
+    color: blueviolet;
+    text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    top: 10px;
+    position: relative;
+    margin-bottom: 0px;
+
+}
+
+.profession-info {
+    font-size: larger;
+    margin-top: 10px;
+    font-style: italic;
+    position: relative;
+}
+
+
+
+/* use position property with absolute, fixed, sticky */
+.about-me,
+.movie-info,
+#content-text,
+.books-info,
+.cat-image {
+    padding: 10px;
+    margin: 20px;
+}
+
+h3 {
+    color: brown;
+    font-size: x-large;
+}
+
+ul {
+    list-style-type: square;
+}
