@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+header {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    background: linear-gradient(92.74deg, #fd7b46 1.15%, #fe4e9b 98.48%);
+    ;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.order-summary {
+    padding: 20px;
+    color: #FFFFFF;
+}
+
+header h2 {
+    margin: 10px;
+    padding: 10px;
+}
+
+.items-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    margin: 10px;
+}
+
+.items-price p {
+    margin: 5px 0;
+    color: #FFFFFF;
+}
+
+.div-line {
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    margin: 5px 0;
+}
+
+form {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    padding-bottom: 10px;
+}
+
+.container {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.payment-method {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.payment-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    padding: 20px;
+    max-width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.payment-option:hover {
+    border-color: #888;
+    background-color: #f9f9f9;
+}
+
+.payment-option img {
+    width: 200px;
+    height: 50px;
+    margin: 15px;
+}
+
+#opt-card {
+    border: 2px solid #e5446c;
+}
+
+.label-main {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: gray;
+}
+
+.card-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+
+}
+
+.card-number,
+.card-expdate,
+.card-secode {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+    color: gray;
+
+}
+
+.card-number input,
+.card-expdate input,
+.card-secode input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-info {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#buy-now {
+    width: 25%;
+    padding: 15px;
+    background: linear-gradient(92.74deg, #fd7b46 1.15%, #fe4e9b 98.48%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.submit-info,
+p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #e77e7e;
+}
+
+#buy-now:hover {
+    background: #689741;
+    color: black
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .payment-method {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .payment-option {
+        max-width: 100%;
+    }
+
+    .card-info {
+        flex-direction: column;
+    }
+
+    #buy-now {
+        width: 100%;
+    }
+}
