@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>PAYMENT FORM</title>
+  </head>
+
+  <body>
+    <header class="header">
+      <div id="order-summary">
+        <h2>Order Summary</h2>
+        <div class="items-price">
+          <p class="total-text">Total</p>
+          <p class="month-price">$333/month</p>
+        </div>
+        <hr class="div-line" />
+        <div class="items-price">
+          <p class="total-bold">Total</p>
+          <p class="price">$100</p>
+        </div>
+      </div>
+    </header>
+    <form>
+      <div class="container">
+        <h2>Payment Method</h2>
+        <div class="payment-method">
+          <div class="payment-option" id="opt-card">
+            <!-- <input type="radio" id="payment-card" name="payment-method" value="card" />
+                    <label for="payment-card">
+                        <img src="./images/CardPayments.jpg" alt="Card Icon" />
+                        <p><span class="label-main">Credit / Debit Card</span></p>
+                    </label> -->
+            <img
+              src="https://i.postimg.cc/4ynb53GW/Card-Payments.png"
+              alt="Card Icon"
+            />
+            <p><span class="label-main">Credit / Debit Card</span></p>
+          </div>
+          <div class="payment-option" id="opt-paypal">
+            <!-- <input type="radio" id="payment-paypal" name="payment-method" value="paypal" />
+                    <label for="payment-paypal">
+                        <img src="./images/PayPal.jpg" alt="PayPal Icon" />
+                        <p><span class="label-main">PayPal</span></p>
+                    </label> -->
+            <img
+              src="https://i.postimg.cc/7hbMVL4s/Paypal.jpg"
+              alt="PayPal Icon"
+            />
+            <p><span class="label-main">PayPal</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <h2>Card Info</h2>
+        <div class="card-info">
+          <div class="card-number">
+            <label for="card-number">Card number</label><br />
+            <input
+              type="text"
+              id=""
+              placeholder="1234 1234 1234 1234"
+              name="card-number"
+              required
+            />
+          </div>
+
+          <div class="card-expdate">
+            <label for="exp-date">Expiry date</label><br />
+            <input
+              type="text"
+              id=""
+              placeholder="MM / YY"
+              name="exp-date"
+              required
+            />
+          </div>
+
+          <div class="card-secode">
+            <label for="sec-code">Security code</label><br />
+            <input
+              type="text"
+              id=""
+              placeholder="CVV"
+              name="sec-code"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <div class="submit-info">
+        <input type="submit" id="buy-now" value="Buy now" />
+        <p class="help-opt">Need Help?</p>
+      </div>
+    </form>
+  </body>
+  <script src="script.js"></script>
+</html>
