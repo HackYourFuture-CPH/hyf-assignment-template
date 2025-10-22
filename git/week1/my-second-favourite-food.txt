@@ -1,0 +1,8 @@
+Pasta
+Ingredients:
+- Pasta
+- Olive oil
+- Garlic
+Steps:
+1. Boil pasta.
+2. Mix with olive oil and garlic.
