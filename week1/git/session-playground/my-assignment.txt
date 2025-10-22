@@ -1,1 +1,2 @@
-"This is my assignment for exercise-3". This is the added text for this file.
+"This is my assignment for exercise-3". This is the added text for this file. 
+Added some more text to this file.
