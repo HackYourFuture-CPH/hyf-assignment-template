@@ -1,0 +1,6 @@
+Project: Simple Portfolio Page
+Description: A simple page portfolio 
+Note: Need to improve styling
+
+The purpose of this project is to demonstrate what I have learned.
+This assignment focuses on understanding key concepts and applying them.
