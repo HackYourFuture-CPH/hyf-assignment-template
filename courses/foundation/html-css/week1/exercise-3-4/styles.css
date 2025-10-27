@@ -1,0 +1,41 @@
+:root {
+  --background-color: #ffe4ec;
+  --accent-color: #ffb6c1;
+  --border-radius: 8px;
+  --padding-size: 20px;
+  --image-max-width: 320px;
+  --content-max-width: 900px;
+}
+body{
+  margin:0;
+  font-family: arial, sans-serif;
+  background: var(--background-color);
+  line-height:1.6;
+  padding: var(--padding-size);
+  
+}
+body > header,
+body > main,
+body > aside,
+body > footer {
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+a:hover { text-decoration: underline; 
+}
+img {
+  max-width: var(--image-max-width);
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  display: block;
+}
+footer {
+  text-align: center;
+  background: var(--accent-color);
+  color: grey;
+  padding: 12px;
+  margin-top: 24px;
+  border-radius: var(--border-radius);
+}
