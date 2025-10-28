@@ -1,0 +1,177 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+
+.container {
+	display: flex;
+	background-color: #696969FF;
+	padding: 1rem;
+	color: #FFFFFF;
+}
+
+.container-menu {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 2rem;
+	position: sticky;
+	top: 0;
+}
+
+.menu {
+	display: flex;
+	gap: 1rem;
+	margin-right: 1rem;
+}
+
+.menu-item {
+	padding: 0.5rem;
+	cursor: pointer;
+}
+
+.menu-item:hover {
+	color: #7FFF00FF;
+}
+
+.container-main, .title {
+	margin: 0 auto;
+}
+
+.container-main {
+	display: flex;
+	flex-direction: column;
+	flex: 1;
+	margin: 0 auto;
+	max-width: 75rem;
+	padding: 1rem;
+}
+
+.title {
+	font-size: 3rem;
+	margin-bottom: 2rem;
+	text-align: center;
+}
+
+.container-article {
+	display: grid;
+	gap: 1rem;
+}
+
+.article-title {
+	text-align: center;
+	font-size: 2rem;
+	margin-bottom: 1rem;
+}
+
+.article {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding: 1rem;
+	background-color: #FFFFFF;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+
+.article-content {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.article-main {
+	flex: 1 0 75%;
+	display: grid;
+	gap: 2rem;
+}
+
+.article-aside {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	gap: 1rem;
+	padding: 1rem;
+	border-left: 1px solid #ccc;
+}
+
+.posts {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.posts-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(12em, 1fr));
+	gap: 1rem;
+}
+
+.posts-list-item {
+	padding: 0.5rem;
+	cursor: pointer;
+	border-radius: 0.5rem;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+	text-align: center;
+}
+
+.posts-list-item:hover {
+	transform: translateY(-3px);
+	box-shadow: 0 4px 1.5rem rgba(0, 0, 0, 0.15);
+}
+
+.posts-link {
+	display: block;
+	padding: 0.5rem;
+}
+
+.posts-link:focus {
+	color: #aa00ff;
+}
+
+.footer {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	text-align: center;
+	margin: 1rem auto;
+}
+
+@media (max-width: 768px) {
+	* {
+		font-size: 1rem;
+	}
+
+	.article-content {
+		flex-direction: column;
+	}
+
+	.article-aside {
+		border-left: none;
+		border-top: 1px solid #ccc;
+	}
+
+	.aside-content {
+		margin-left: 2rem;
+	}
+}
