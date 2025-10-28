@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Available Products</title>
+  </head>
+  <body>
+    <table border="1" cellspacing="0" cellpadding="8">
+      <caption><b>Available Products</b></caption>
+      <thead>
+        <tr>
+          <th>Product name</th>
+          <th>Price</th>
+          <th>in Stock</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product 1</td>
+          <td>$12.99</td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>Product 2</td>
+          <td>$11.99</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>Product 3</td>
+          <td>$10.99</td>
+          <td>9</td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>Contact form</h2>
+    <form action="#" method="post">
+      <label for="name">First Name:</label><br/>
+      <input type="text" id="name" name="name" placeholder="Enter your name" required/>
+      <br/><br/>
+      <label for="last-name">Last name:</label><br/>
+      <input type="text" id="last-name" placeholder="Enter your last name" required>
+      <br/><br/>
+      <label for="title">Title:</label><br/>
+      <select name="title" id="title">
+        <option value="" disabled selected>Select an option</option>
+        <option value="1">Mr</option>
+        <option value="2">Ms</option>
+        <option value="3">Mrs</option>
+        <option value="4">Miss</option>
+        <option value="5">Dr</option>
+        <option value="6">Sir</option>
+      </select>
+      <br/><br/>
+      <label for="email">Email:</label><br/>
+      <input type="email" id="email" placeholder="email@gmaol.com" required>
+      <br/><br/>
+      <label for="message">Message:</label><br/>
+      <textarea name="message" id="message" cols="18" rows="4"
+                placeholder="Type your message..."></textarea>
+      <br/><br/>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
