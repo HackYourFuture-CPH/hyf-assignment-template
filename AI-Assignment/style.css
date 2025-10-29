@@ -1,68 +1,53 @@
-/* Custom font from Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+*{margin:0; padding:0;box-sizing: border-box;}
 
 body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+  padding: 20px;
   background-color: #f0f8ff;
   color: #333;
 }
+header{display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #34495e;
+  color: #f0f8ff;
+  padding: 20px;}
+  nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+}
 
-.container {background-color:honeydew;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 2rem;
+.hero {
+  background: #aaccee;
+  padding: 30px 15px;
   text-align: center;
 }
-p{text-align:justify; font-family:Verdana; position: relative;background-color:burlywood;}
 
-h1 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #2c3e50;
+.hero span {
+  color: #007acc;
 }
 
-ul {
-  list-style-type: none;
-  padding: 2rem;
-  text-align: left;
+section {
+  margin: 40px 0;
 }
 
-li {
-  margin: 0.5rem 0;
-  position-try: relative;
-  
+.project {
+  background: #fff;
+  padding: 10px;
+  border-left: 5px solid #007acc;
+  margin-bottom: 20px;
+}
+.skills ul {list-style-type: square;
+margin-left:0.5 rem;
+padding:0.5 rem;
 }
 
-button {
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  background-color: blue;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #2980b9;
-}
-
-/* Responsive Design */
-@media (min-width: 1024px) {
-  body {
-    font-size: 20px;
-    background-color:eggshell;
-  }
-}
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 16px;
-  }
-    .container {
-    padding: 1rem;
-  }
-}
+footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.9em;
+  color: #777;}
