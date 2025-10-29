@@ -10,6 +10,9 @@
     <header>
       <h1 class="title">Emebet Hunde</h1>
       <h2 class="subtitle">Web Development Trainee</h2>
+      <button id="colorButton" class="fun-button">
+        Change Background Color!
+      </button>
     </header>
     <section class="about-me">
       <img
@@ -54,5 +57,23 @@
     <footer>
       <p>©️ 2025 My Personal Portfolio</p>
     </footer>
+
+    <script>
+      document.getElementById("colorButton").onclick = function () {
+        const randomBg =
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0");
+        document.body.style.background = randomBg;
+
+        const randomText =
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0");
+        this.style.color = randomText;
+      };
+    </script>
   </body>
 </html>
