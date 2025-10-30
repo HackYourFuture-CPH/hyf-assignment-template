@@ -1,8 +1,0 @@
-Pizza
-Ingredients:
-- Dough
-- Tomato sauce
-- Cheese
-Steps:
-1. Preheat oven to 220°C.
-2. Bake for 10 minutes.
