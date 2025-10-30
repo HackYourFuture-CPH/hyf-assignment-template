@@ -1,17 +1,17 @@
-### 1. Three new things I learned from AI
-
-I learned how to use JavaScript to change the background color dynamically, how to make a simple responsive layout with media queries, and how to add smooth transitions in CSS. I also learned how to keep my code organized by linking separate CSS and JS files.
-
-### 2. Where I had to tweak or correct Copilot’s suggestions
-
-I adjusted some of Copilot’s suggested CSS values, like the font sizes and padding, to make the layout more visually balanced. I also refined the JavaScript color generator to use HSL values for softer colors.
-
-### 3. Difference between using Copilot to generate code vs. as a learning partner
-
-Using Copilot to generate code can save time, but using it as a learning partner helps you understand _why_ the code works. As a learning partner, AI can explain concepts and guide you to experiment rather than just providing answers.
-
-### 4. Three risks of relying too much on AI tools
-
-- You might not fully understand the code you’re writing.
-- Your problem-solving skills could weaken if you depend on AI suggestions too often.
-- It can be easy to miss errors or inefficient code if you trust AI outputs without reviewing them carefully.
+**1. Identify and share 3 new things you learned from AI in the above task.**
+I learned how to link separate CSS and JavaScript files to an HTML page.
+I discovered how to use JavaScript to generate random colors dynamically.
+I also learned how to use media queries to make a web page responsive.
+**2. Where did you have to tweak or correct Copilot’s suggestions to suit your needs?**
+I adjusted the layout and color scheme to better fit my personal style.
+I simplified the JavaScript code Copilot suggested to make it easier to understand.
+I also improved the responsive behavior so it looks good on both desktop and mobile.
+**3. How would you explain the difference between using Copilot to generate code for you vs. using it as an effective learning partner?**
+Using Copilot to generate code saves time but doesn’t help you understand the logic behind it.
+Using it as a learning partner means reviewing and modifying the code it suggests, which builds real skills.
+It’s about collaboration — letting Copilot assist while you stay in control of the learning.
+**4. Identify 3 risks of relying too much on AI tools when learning at HackYourFuture.**
+You might stop thinking critically about how the code works.
+It could make debugging and problem-solving harder in the long term.
+You might miss important learning moments by accepting AI-generated solutions too quickly.
+g
