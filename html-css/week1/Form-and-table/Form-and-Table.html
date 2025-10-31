@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Table and Form">
+  <title>Table and Form</title>
+  <link rel="stylesheet" href="styles.css"> 
+  </head>
+
+<body>
+ 
+  <table>
+    <caption>Available products</caption>
+  <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Price</th>
+        <th>In Stock</th>
+      </tr>
+ </thead>
+   <tbody>
+     <tr>
+         <td>JavaScript crash course</td>
+         <td>500</td>
+         <td>78</td>
+    </tr>
+    <tr>
+         <td>Python crash course</td>
+         <td>400</td>
+         <td>35</td>
+    </tr>
+    <tr>
+          <td>C++ crash course</td>
+          <td>300</td>
+          <td>27</td>
+    </tr>
+   </tbody>
+</table> 
+
+   <form action="submit" method="POST">
+  <label for="firstname">First name:</label>
+  <input id="firstname" name="firstname" type="text" required placeholder="eg. Tom" > 
+     <br><br>
+     <label for="lastname">Last name:</label>
+  <input id="lastname" name="lastname" type="text" required placeholder="eg. Thompson">
+      <br><br>
+   <label for="title">Title:</label>
+  <select name="tile" id="title">
+    <option disabled selected>Select title</option>
+    <option value="mr">Mr</option>
+    <option value="ms">Ms</option>
+    <option value="mrs">Mrs</option>
+    <option value="miss">Miss</option>
+    <option value="dr">Dr</option>
+    <option value="sir">Sir</option>
+    </select>
+  <br><br>
+   
+  <label for="email">Email:</label>
+  <input id="email" name="email" type="email" placeholder="example@example.com">
+
+     <br><br>
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>
