@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact form</title>
+  <link rel="stylesheet" href="styles.form.css">
+</head>
+
+<body>
+  <form>
+    <label for="first-name">First name</label><br>
+    <input type="text" id="first-name" name="first-name" placeholder="Enter your first name" required>
+    <br><br>
+
+    <label for="last-name">Last name</label><br>
+    <input type="text" id="last-name" name="last-name" placeholder="Enter your last name" required>
+    <br><br>
+
+    <label for="title">Title</label><br>
+    <select id="title" name="title">
+      <option value="Mr">Mr</option>
+      <option value="Ms">Ms</option>
+      <option value="Mrs">Mrs</option>
+      <option value="Miss">Miss</option>
+      <option value="Dr">Dr</option>
+      <option value="Sir">Sir</option>
+    </select>
+    <br><br>
+
+    <label for="email">Email</label><br>
+    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+    <br><br>
+
+    <label for="message">Message</label><br>
+    <textarea id="message" name="message" placeholder="Type your message"></textarea>
+    <br><br>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
