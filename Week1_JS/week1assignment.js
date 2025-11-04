@@ -22,3 +22,42 @@ if(shouldShowResultInDogYears)
 else{
     console.log("The dog will be " + dogYear + " human years old in " +dogYearFuture + " .");
 }
+
+
+//Housey pricey (A house price estimator)
+
+const peterWidth=8;
+const peterDepth=10;
+const peterHeight=10;
+const peterGardenSize=100;
+const peterEstimatedHouseCost=2500000;
+
+const juliaWidth=5;
+const juliaDepth=11;
+const juliaHeight=8;
+const juliaGardenSize=70;
+const juliaEstimatedHouseCost=1000000;
+
+const peterVolumeInMeters=peterWidth * peterDepth * peterHeight; //Calculating the value for Volume in meters.
+const peterPaidPrice=peterVolumeInMeters * 2.5 * 1000 + peterGardenSize * 300; //Applying this formula to find the actual housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
+
+const juliaVolumeInMeters=juliaWidth * juliaDepth * juliaHeight;//Calculating the value for Volume in meters.
+const juliaPaidPrice=juliaVolumeInMeters * 2.5 * 1000 + juliaGardenSize * 300;//Applying this formula to find the actual housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
+
+//Calculate Peter's Price
+if(peterEstimatedHouseCost < peterPaidPrice)
+{
+     console.log("Peter is paying too much for the house.");
+}
+else {
+  console.log("Peter is paying too little for the house.");
+}
+
+//Calculate Julia's Price
+if(juliaEstimatedHouseCost < juliaPaidPrice)
+{
+     console.log("Julia is paying too much for the house.");
+}
+else {
+  console.log("Julia is paying too little for the house.");
+}
