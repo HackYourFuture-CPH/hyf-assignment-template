@@ -50,3 +50,10 @@ const peterHousePrice = calculateEstimatedPrice(peter);
 const juliaHousePrice = calculateEstimatedPrice(julia);
 
 console.log("Is Peter's house price higher than Julia's? " + (peterHousePrice > juliaHousePrice));
+//startup name generator
+let firstWords=["easy","awesome","corporate", "innovative", "creative", "dynamic", "visionary", "motivated", "committed","interested","reliable","focused"];
+let secondWords=["solutions", "technologies", "concepts", "systems", "services", "platforms", "networks", "paradigms", "initiatives", "channels", "synergies"];
+let startUpName= firstWords[Math.floor(Math.random() * 10)]
+ + " " + secondWords[Math.floor(Math.random() * 10)];
+ console.log ("Your startup name is: " + startUpName);
+ console.log(" The number of characters is: " + startUpName.length)
