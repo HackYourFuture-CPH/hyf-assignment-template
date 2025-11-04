@@ -61,3 +61,30 @@ if(juliaEstimatedHouseCost < juliaPaidPrice)
 else {
   console.log("Julia is paying too little for the house.");
 }
+
+//Ez Namey (Startup name generator) 
+
+const firstWords = ["Easy", "Awesome", "Corporate", "Super", "Bright", "Next", "Creative", "Tech", "Smart", "Happy"];
+const secondWords = ["Solutions", "Corp", "Labs", "Studios", "Works", "Systems", "Innovations", "Ventures", "Hub", "Factory"];
+
+const randomIndex1 = Math.floor(Math.random() * firstWords.length); 
+const randomIndex2= Math.floor(Math.random() * secondWords.length); 
+
+/*console.log(Math.random()* firstWords.length);//gives value between 0 and 1
+console.log(Math.floor(Math.random() * firstWords.length));// Round off the value from 0 to */
+
+console.log("Random Index value from firstWordsArray: " + randomIndex1);
+console.log("Random Index value from secondWordsArray: " + randomIndex2);
+
+const startUpName=firstWords[randomIndex1] + " " + secondWords[randomIndex2];
+
+console.log("Startup Name :" + startUpName);
+
+const nameLength=startUpName.length;
+console.log(`The startup: "${startUpName}" contains ${nameLength} characters`); //Tried template literal to print the name and its length
+
+
+/*const arr1=["Hello","World"];
+console.log(Math.random());
+console.log(arr1.length);
+console.log(Math.floor(Math.random()*arr1.length));*/
