@@ -19,3 +19,34 @@ if(shouldShowResultInDogYears){
     dogYear=dogAge*7;
     console.log("Your dog will be " + dogYear + " dog years old in" + dogYearFuture);
 }
+//house price estimator
+//peter's house details
+const peter={
+    Width:8,
+    Depth:10,
+    Height:10,
+ gardenSizeInM2:100,
+ cost:2500000,};
+;
+ // julia's house details
+ const julia={Width:5,
+    Depth:11,
+    Height:8,
+ gardenSizeInM2:70,
+ cost:1000000,};
+  // Function to calculate volume
+function calculateVolume(house) {
+  return house.width * house.depth * house.height;
+}
+
+// Function to calculate estimated price
+function calculateEstimatedPrice(house) {
+  const volume = calculateVolume(house);
+  return volume * 2.5 * 1000 + house.gardenSizeInM2 * 300;
+}
+
+// Calculate prices
+const peterHousePrice = calculateEstimatedPrice(peter);
+const juliaHousePrice = calculateEstimatedPrice(julia);
+
+console.log("Is Peter's house price higher than Julia's? " + (peterHousePrice > juliaHousePrice));
