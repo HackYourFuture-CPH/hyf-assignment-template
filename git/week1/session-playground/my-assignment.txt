@@ -1,0 +1,6 @@
+Here are some basic command lines to control Git:
+pwd
+ls
+cd
+cd ..
+mkdir
