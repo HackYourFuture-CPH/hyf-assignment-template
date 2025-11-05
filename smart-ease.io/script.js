@@ -43,3 +43,20 @@ volumeInMeters = 11 * 8 * 5;
 housePrice = volumeInMeters * 2.5 * 1000 + 70 * 300;
 console.log(`Julia's housePrice is : ${housePrice}`) // 1121000
 //Julia is paying too little 
+
+
+const firstWords = [
+  "Easy", "Awesome", "Bright", "Swift", "Nova",
+  "Happy", "Control", "Pixel", "Blue", "Quantum"
+];
+
+const secondWords = [
+  "Corp", "Labs", "Works", "Hub", "Studio",
+  "Systems", "Networks", "Solutions", "Factory", "Collective"
+];
+
+const randomNumber = Math.floor(Math.random() * 10);
+const startupName = firstWords[randomNumber] + secondWords[randomNumber]
+console.log(startupName)
+const length = startupName.length;
+console.log(`The startup: ${startupName} contains ${length} characters`);
