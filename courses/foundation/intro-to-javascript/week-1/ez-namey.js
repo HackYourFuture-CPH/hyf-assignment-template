@@ -1,4 +1,4 @@
-let firstWords = [
+const firstWords = [
   "Easy",
   "Bright",
   "Quantum",
@@ -11,7 +11,7 @@ let firstWords = [
   "Magic",
 ];
 
-let secondWords = [
+const secondWords = [
   "Labs",
   "Solutions",
   "Dynamics",
@@ -24,7 +24,7 @@ let secondWords = [
   "Studio",
 ];
 
-let startupName =
+const startupName =
   firstWords[Math.floor(Math.random() * 10)] +
   " " +
   secondWords[Math.floor(Math.random() * 10)];
