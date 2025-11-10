@@ -1,21 +1,23 @@
-let peterHouseWidth = 8;
-let peterHouseDepth = 10;
-let peterHouseHeight = 10;
+const peterHouseWidth = 8;
+const peterHouseDepth = 10;
+const peterHouseHeight = 10;
 
-let peterGardenSizeInM2 = 100;
-let peterHouseVolume = peterHouseWidth * peterHouseDepth * peterHouseHeight;
+const peterGardenSizeInM2 = 100;
+const peterHouseVolume = peterHouseWidth * peterHouseDepth * peterHouseHeight;
 
-let peterHousePrice = peterHouseVolume * 2.5 * 1000 + peterGardenSizeInM2 * 300;
+const peterHousePrice =
+  peterHouseVolume * 2.5 * 1000 + peterGardenSizeInM2 * 300;
 console.log(peterHousePrice);
 //Peters house is expensive
 
-let juliaHouseWidth = 5;
-let juliaHouseDepth = 11;
-let juliaHouseHeight = 10;
+const juliaHouseWidth = 5;
+const juliaHouseDepth = 11;
+const juliaHouseHeight = 10;
 
-let juliaGardenSizeInM2 = 70;
-let juliaHouseVolume = juliaHouseWidth * juliaHouseDepth * juliaHouseHeight;
+const juliaGardenSizeInM2 = 70;
+const juliaHouseVolume = juliaHouseWidth * juliaHouseDepth * juliaHouseHeight;
 
-let juliaHousePrice = juliaHouseVolume * 2.5 * 1000 + juliaGardenSizeInM2 * 300;
+const juliaHousePrice =
+  juliaHouseVolume * 2.5 * 1000 + juliaGardenSizeInM2 * 300;
 console.log(juliaHousePrice);
 //Julias house is cheap
