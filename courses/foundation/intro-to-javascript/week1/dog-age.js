@@ -1,6 +1,6 @@
 const dogYearOfBirth=2015;
 const dogYearFuture=2045;
-let dogYear=dogYearFuture-dogYearOfBirth;
+const dogYear=dogYearFuture-dogYearOfBirth;
 
 const shouldShowResultInDogYears = false;
 
