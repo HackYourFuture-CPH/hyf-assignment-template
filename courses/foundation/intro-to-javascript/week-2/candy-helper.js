@@ -22,16 +22,13 @@ function addCandy(candyType, weight) {
   }
 
   boughtCandyPrices.push(weight * price);
-  return boughtCandyPrices;
 }
 
 addCandy("sweet", 20);
 addCandy("toffee", 50);
 addCandy("chewing-gum", 10);
-console.log(boughtCandyPrices);
 
 const amountToSpend = Math.random() * 100;
-console.log("Amount to spend: " + amountToSpend);
 
 function canBuyMoreCandy(array, money) {
   let alreadySpent = 0;
