@@ -10,10 +10,11 @@ function addStudentToClass(studentName) {
     if (!class07Students.includes("Queen")) {
       class07Students.push(studentName);
     }
+    console.log("Queen is already in the class");
     return;
   }
 
-  if (class07Students.length > 6) {
+  if (class07Students.length >= 6) {
     console.log("Cannot add more students to class 07");
     return;
   }
@@ -25,8 +26,8 @@ function addStudentToClass(studentName) {
   }
 }
 
-function getNumberOfStudents(array) {
-  console.log("Students in the class: " + array.length);
+function getNumberOfStudents(studentsArray) {
+  console.log("Students in the class: " + studentsArray.length);
 }
 
 addStudentToClass("Anastasia");
