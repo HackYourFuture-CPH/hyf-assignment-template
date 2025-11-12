@@ -1,6 +1,15 @@
 
 
-function getFullName (firstName,surName) {
-    return firstName + " " + surName
+function getFullName (firstName, surname) {
+    
+   return firstName + " " + surname;
+    
+ 
 }
-console.log(getFullName("fullName1", "fullName2"));
+ 
+const fullName1 = getFullName ("Emebet" , "Hunde");
+const fullName2 = getFullName("Benjamin", "Hughes");
+
+console.log(fullName1); // Output Emebet Hunde
+
+console.log(fullName2); // Output Benjamin Hughes
