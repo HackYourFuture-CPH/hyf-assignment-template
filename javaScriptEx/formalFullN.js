@@ -4,7 +4,7 @@ function getFullName(firstName, surname, useFormalName, isFemale) {
   if (!firstName && !surname) {
     return "No name provided";
   }
-  let fullName = firstName + " " + surname;
+  const fullName = firstName + " " + surname;
   if (useFormalName) {
     if (isFemale) {
       fullName = "Lady " + fullName;   // for women
