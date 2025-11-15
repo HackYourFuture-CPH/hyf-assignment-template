@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Price List & Contact Form</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Price List</h1>
+    </header>
+
+    <main>
+      <section class="price-list">
+        <table>
+          <thead>
+            <tr>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Stock</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>White Chocolate</td>
+              <td>12 kr</td>
+              <td>17</td>
+            </tr>
+            <tr>
+              <td>Dark Chocolate</td>
+              <td>15 kr</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>Milk Chocolate</td>
+              <td>10 kr</td>
+              <td>24</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <hr />
+
+      <section class="contact-form">
+        <h2 id="contact-form">Contact Us</h2>
+
+        <form>
+          <label for="title">Title:</label>
+          <select id="title" name="title" required>
+            <option value="">Select your title...</option>
+            <option value="Mr">Mr</option>
+            <option value="Ms">Ms</option>
+            <option value="Mrs">Mrs</option>
+            <option value="Miss">Miss</option>
+          </select>
+
+          <label for="first-name">First Name:</label>
+          <input
+            type="text"
+            id="first-name"
+            name="first-name"
+            placeholder="Enter your first name"
+            required
+          />
+
+          <label for="last-name">Last Name:</label>
+          <input
+            type="text"
+            id="last-name"
+            name="last-name"
+            placeholder="Enter your last name"
+          />
+
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="you@example.com"
+            required
+          />
+
+          <label for="message">Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message here..."
+            required
+          ></textarea>
+
+          <button type="submit" class="submit">Submit</button>
+        </form>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 ChocoDelight</p>
+    </footer>
+  </body>
+</html>
