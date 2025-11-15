@@ -1,16 +1,14 @@
-
-function registerForEvent(name, index) {
-  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function getEventWeekday(numberOfDaysInTheFuture) {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  
   const today = new Date();
-  const dayName = days[today.getDay()]; 
-  const group = index % 3;              
-
-  console.log(name+ "registered on:" +dayName +" "+ "and"+" "+ "is in Group"+(group + 1));
+  const todayIndex = today.getDay(); 
+  
+  const eventDayIndex = (todayIndex + numberOfDaysInTheFuture) % 7;
+  const todayName = days[todayIndex];
+  const eventDayName = days[eventDayIndex];
+  
+  return `Today is ${todayName}. The event is in ${numberOfDaysInTheFuture} days, so it will be on ${eventDayName}.`;
 }
 
-
-registerForEvent("Julian", 0);
-registerForEvent("Anna", 1);
-registerForEvent("peter", 2);
-registerForEvent("Lars", 3);
-
+console.log(getEventWeekday(3));
