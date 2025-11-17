@@ -16,7 +16,19 @@ const seriesDurations = [
     days: 2,
     hours: 12,
     minutes: 0,
-  }
+  },
+  {
+  title: "Peppa Pig",
+  days: 0,
+  hours: 5,
+  minutes: 0,
+},
+{
+  title: "The Big Bang theory",
+  days: 7,
+  hours: 5,
+  minutes: 30,
+}
 ];
 
 function logOutSeriesText() {
