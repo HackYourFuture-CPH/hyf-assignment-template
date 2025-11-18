@@ -13,3 +13,20 @@ saveNote("Pick up groceries", 1);
 saveNote("Do laundry", 2);
 saveNote("Buy Items",3);
 console.log(notes);
+
+//2-> Get a note
+
+function getNote(id){
+    for(let i=0;i<=notes.length;i++){
+        if(notes[i].Id===id){
+            return notes[i];
+        }
+       
+    }
+     return "The Value of Id is not Valid or Empty";
+        
+}
+const firstNote=getNote(1);
+console.log("FirstNote Value: " ,firstNote);
+
+
