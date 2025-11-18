@@ -49,7 +49,7 @@ function showStatus(){
         totalDuration += activities[i].duration;
     }
 
-    console.log("Today " + dateToday + ", you have added " + activities.length + " activities. They amount to " + totalDuration + " min. of usage.");
+    console.log(dateToday + ": You added " + activities.length + " activities. They amount to " + totalDuration + " min. of usage.");
 
     if (totalDuration >= usageLimitInMinutes){
         console.log("Limit reached. No more smartphone usage.")
@@ -57,3 +57,33 @@ function showStatus(){
 }
 
 showStatus();
+
+function getMostTimeSpent() {
+
+  if (activities.length === 0) return;
+
+  const durationMap = {};
+  
+  for (let i = 0; i < activities.length; i++) {
+    const act = activities[i];
+    if (durationMap[act.activity]) {
+      durationMap[act.activity] += act.duration;
+    } else {
+      durationMap[act.activity] = act.duration;
+    }
+  }
+
+  let maxDuration = 0;
+  let maxActivityName = '';
+
+  for (const activity in durationMap) {
+    if (durationMap[activity] > maxDuration) {
+      maxDuration = durationMap[activity];
+      maxActivityName = activity;
+    }
+  }
+
+  console.log("Most time spent: " + maxActivityName + ", " + maxDuration + " minutes.");
+}
+
+getMostTimeSpent();
