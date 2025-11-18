@@ -17,7 +17,7 @@ console.log(notes);
 //2-> Get a note
 
 function getNote(id){
-    for(let i=0;i<=notes.length;i++){
+    for(let i=0;i<notes.length;i++){
         if(notes[i].Id===id){
             return notes[i];
         }
@@ -29,4 +29,11 @@ function getNote(id){
 const firstNote=getNote(1);
 console.log("FirstNote Value: " ,firstNote);
 
-
+//3-> Log out notes
+function logOutNotesFormatted(){
+     for(let i=0;i<notes.length;i++){
+      
+        console.log(`The note with id: ${notes[i].Id}, has the following note text: ${notes[i].Content} `);
+     }
+}
+logOutNotesFormatted();
