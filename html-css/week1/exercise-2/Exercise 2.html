@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 0;
+        padding: 20px;
+        max-width: 400px;
+        margin: 10px auto;
+        font-family: Arial, sans-serif;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 80%;
+      }
+
+      input,
+      select,
+      textarea,
+      button {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        width: auto;
+        border: none;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Contact Us</h1>
+      <form>
+        <label for="first-name">First Name</label>
+        <input
+          type="text"
+          name="First-name"
+          id="first-name"
+          placeholder="Enter your first name"
+        />
+
+        <label for="last-name">Last Name</label>
+        <input
+          type="text"
+          name="Last-name"
+          id="last-name"
+          placeholder="Enter your last name"
+        />
+
+        <label for="dropdown">Title</label>
+        <select id="dropdown">
+          <option>select</option>
+          <option>Mr</option>
+          <option>Mrs</option>
+          <option>Ms</option>
+          <option>Dr</option>
+          <option>Sir</option>
+          <option>Mam</option>
+        </select>
+        <label for Email>Email address</label>
+        <input
+          type="text"
+          name="Email"
+          id="Email"
+          placeholder="Enter your email address"
+          required
+        />
+
+        <label for="Message">Comments</label>
+        <textarea
+          text="Message"
+          name="Message"
+          id="Message"
+          placeholder="Please write your comments if any"
+          rows="5"
+          cols="20"
+        ></textarea>
+
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </body>
+</html>

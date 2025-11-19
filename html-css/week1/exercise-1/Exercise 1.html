@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Table</title>
+    <style>
+      table {
+        width: 70%;
+        margin: 90px auto;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        border: 1px solid black;
+        padding: 25px;
+        text-align: center;
+        height: 60px;
+      }
+
+      caption {
+        caption-side: top;
+        font-weight: bold;
+        font-size: 46px;
+        color: blue;
+        margin-bottom: 30px;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>
+        List Of Products In Stock
+      </caption>
+      <thead>
+        <tr>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Apple</td>
+          <td>$400</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>Samsung</td>
+          <td>$500</td>
+          <td>In Stock</td>
+        </tr>
+        <tr>
+          <td>iPhone 16</td>
+          <td>$400</td>
+          <td>Out of Stock</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
