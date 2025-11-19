@@ -40,4 +40,4 @@ function logOutSeriesText(seriesArray) {
   }
 }
 
-logOutSeriesText(seriesDurations); // logs out the text found above
+logOutSeriesText(seriesDurations);
