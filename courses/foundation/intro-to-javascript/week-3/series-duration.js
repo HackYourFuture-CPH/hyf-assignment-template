@@ -29,8 +29,10 @@ const averageLife = 80;
 
 function logOutSeriesText(seriesArray) {
   const lifeInHours = averageLife * 365 * 24;
+  let total = 0;
   for (let i = 0; i < seriesArray.length; i++) {
     const seriesInHours = seriesArray[i].days * 24 + seriesArray[i].hours;
+    total += (seriesInHours / lifeInHours) * 100;
     console.log(
       seriesArray[i].title +
         " took " +
@@ -38,6 +40,8 @@ function logOutSeriesText(seriesArray) {
         "% of my life"
     );
   }
+
+  console.log(`In total that is ${total}% of my life`);
 }
 
 logOutSeriesText(seriesDurations);

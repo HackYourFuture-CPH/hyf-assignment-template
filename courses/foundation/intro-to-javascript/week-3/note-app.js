@@ -2,14 +2,15 @@ const notes = [];
 
 function saveNote(content, id) {
   const newNote = {
-    content: content,
-    id: id,
+    content,
+    id,
   };
   notes.push(newNote);
 }
 
 saveNote("Pick up groceries", 1);
 saveNote("Do laundry", 2);
+saveNote("Watch TV", 3);
 
 console.log(notes);
 
@@ -27,10 +28,7 @@ console.log(firstNote);
 function logOutNotesFormatted() {
   for (let i = 0; i < notes.length; i++) {
     console.log(
-      "The note with id: " +
-        notes[i].id +
-        ", has the following note text: " +
-        notes[i].content
+      `The note with id: ${notes[i].id}, has the following note text: ${notes[i].content}`
     );
   }
 }
@@ -41,10 +39,10 @@ function removeNote(id) {
   for (let i = 0; i < notes.length; i++) {
     if (id === notes[i].id) {
       notes.splice(i, 1);
-      return notes;
     }
   }
+  return notes;
 }
 
-removeNote(1);
+removeNote(2);
 console.log(notes);
