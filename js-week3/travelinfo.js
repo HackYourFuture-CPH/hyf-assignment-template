@@ -1,3 +1,4 @@
+function calculateTime(speed,distance){}
 const travelInformation = {
   speed: 90, //km/hr
   destinationDistance: 400, //km
