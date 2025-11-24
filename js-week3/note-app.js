@@ -6,8 +6,8 @@ function saveNote(content, id) {
 }
 //create function getNote
 function getNote(id) {
-    if(typeof id!="number"){
-        console.log("error: id must be a number");
+    if(typeof id!=="number"|| id<=0){
+        console.log("error: id must be a positive number greater than zero");
      return null
     }
   // your code here
@@ -30,10 +30,8 @@ saveNote("plan a meeting", 1);
 saveNote("set Agendas ", 2);
 saveNote("send invitation email", 3);
 saveNote("prepare for the presentation ", 4);
-
-
  
 console.log(notes); 
-const firstNote = getNote(3);
+const firstNote = getNote(-1);
 console.log(firstNote);
 logOutNotesFormatted();
