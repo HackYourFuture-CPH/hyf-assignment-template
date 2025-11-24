@@ -18,7 +18,7 @@ for (let i=0; i<activitiesLength;i++){
 }
     console.log("you have added "+ activitiesLength+" activities. They amount to "+totalDuration+" minutes of usage");
     console.log("Number of activities used are  "+ activities.length);
-    if(totalDuration>usageLimit){
+    if(totalDuration>=usageLimit){
         console.log("You have reached your limit, no more smartphoning for you!");
     }
 }
