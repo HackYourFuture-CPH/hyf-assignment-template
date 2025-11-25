@@ -34,6 +34,9 @@ function getReply(command) {
       todos = todos.filter((item) => item !== todoToRemove);
       return `Remove ${todoToRemove} from my todo`;
     case "What is on my todo?":
+      if (todos.length === 0) {
+        return `No todos on the list`;
+      }
       return `You have ${todos.length} todos: ${todos.join(", ")}`;
     case "What day is it today?":
       const today = new Date();
