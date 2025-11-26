@@ -1,12 +1,12 @@
+     
 function getReply(command) {
   switch (command.toLowerCase()) {
     case "hello my name is benjamin":
       return "nice to meet you Benjamin";
 
     case "what is my name":
-    
-      return "Your name is Benjamin";
-
+    return "Your name is Benjamin";
+ 
     case "add fishing to my todo":
       return "Fishing added to your todo";
 
