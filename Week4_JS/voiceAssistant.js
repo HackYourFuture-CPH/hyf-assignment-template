@@ -60,7 +60,69 @@ function getReply(command) {
   if (lower.includes("what is on my todo")) {
     return `you have ${todos.length} todos - ${todos}`;
   }
+ //What day is it today
+  if (lower.includes("what day is it today")) {
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const todayDate = new Date();
+    const dateValue = todayDate.getDate();
+    const monthValue = todayDate.getMonth();
+    const yearValue = todayDate.getFullYear();
+    return `${dateValue}. of ${monthNames[monthValue]} ${yearValue}`;
+  }
 
+  //Simple Math
+  if (lower.includes("what is ")) {
+    const startValue = lower.indexOf("is") + "is".length;
+
+    const sliceValue = lower.slice(startValue).trim();
+
+    let operator;
+    if (sliceValue.includes("+")) {
+      operator = "+";
+    } else if (sliceValue.includes("-")) {
+      operator = "-";
+    } else if (sliceValue.includes("*")) {
+      operator = "*";
+    } else if (sliceValue.includes("/")) {
+      operator = "/";
+    } else if (sliceValue.includes("%")) {
+      operator = "%";
+    }
+    const numbers = sliceValue.split(operator);
+    if (numbers.length < 2) {
+      return "Invalid math command";
+    }
+    const number1 = Number(numbers[0].trim());
+    const number2 = Number(numbers[1].trim());
+    if (isNaN(number1) || isNaN(number2)) {
+      return "Invalid numbers";
+    }
+
+    if (operator === "+") {
+      return number1 + number2;
+    } else if (operator === "-") {
+      return number1 - number2;
+    } else if (operator === "*") {
+      return number1 * number2;
+    } else if (operator === "/") {
+      return number1 / number2;
+    } else if (operator === "%") {
+      return number1 % number2;
+    }
+  }
 }
 
 //My name is - Check Output
@@ -91,3 +153,13 @@ console.log(getReply("Remove fishing from my todo"));
 //Whats on my todo - Check Output
 console.log(getReply("What is on my todo?"));
 
+//What day is today - Check Output
+console.log(getReply("What day is it today?"));
+
+//Simple Math calculation - Check Output
+console.log(getReply("What is 3 + 3"));
+console.log(getReply("What is 3 - 3"));
+console.log(getReply("What is 3 * 3"));
+console.log(getReply("What is 4 * 12"));
+console.log(getReply("What is 6 / 3"));
+console.log(getReply("What is 4 % 3"));
