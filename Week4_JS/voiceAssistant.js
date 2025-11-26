@@ -123,6 +123,24 @@ function getReply(command) {
       return number1 % number2;
     }
   }
+  //Set a timer
+  if (lower.includes("set a timer for")) {
+    const startValue =
+      lower.indexOf("set a timer for") + "set a timer for".length;
+    const endValue = lower.indexOf("minutes");
+    const extractMinutesValue = lower.slice(startValue, endValue).trim();
+
+    const minutes = Number(extractMinutesValue);
+    if (isNaN(minutes)) {
+      return "Invalid timer value";
+    }
+    const milliSeconds = minutes * 60 * 1000;
+
+    setTimeout(() => {
+      console.log("Timer done");
+    }, milliSeconds);
+    return `Timer set for ${minutes} minutes`;
+  }
 }
 
 //My name is - Check Output
@@ -163,3 +181,8 @@ console.log(getReply("What is 3 * 3"));
 console.log(getReply("What is 4 * 12"));
 console.log(getReply("What is 6 / 3"));
 console.log(getReply("What is 4 % 3"));
+
+//Set Timer - Check Output
+console.log(getReply("set a timer for 4 minutes"));
+
+console.log(getReply("set a timer for 6 minutes"));
