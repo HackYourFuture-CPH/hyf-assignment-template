@@ -38,6 +38,29 @@ function getReply(command) {
     return `${extractValue} added to your todo`;
   }
 
+   //Removing
+  if (lower.includes("remove") && lower.includes("from my todo")) {
+    const itemRemoveStart = lower.indexOf("remove") + "remove".length;
+    const itemRemoveEnd = lower.indexOf("from my todo");
+    const extractRemoveValue = lower
+      .slice(itemRemoveStart, itemRemoveEnd)
+      .trim();
+
+    const findIndexOfRemoveValue = todos.indexOf(extractRemoveValue);
+
+    if (findIndexOfRemoveValue === -1) {
+      return `Item not found`;
+    } else {
+      const removedValue = todos.splice(findIndexOfRemoveValue, 1);
+      return `Removed ${extractRemoveValue} from your todo`;
+    }
+  }
+
+  //what is on my todo?
+  if (lower.includes("what is on my todo")) {
+    return `you have ${todos.length} todos - ${todos}`;
+  }
+
 }
 
 //My name is - Check Output
@@ -60,4 +83,11 @@ console.log(getReply("Add fishing to my todo"));
 console.log(getReply("Add singing to my todo"));
 
 console.log(getReply("Add singing in the shower to my todo"));
+
+//Remove from Todo - Check Output
+
+console.log(getReply("Remove fishing from my todo"));
+
+//Whats on my todo - Check Output
+console.log(getReply("What is on my todo?"));
 
