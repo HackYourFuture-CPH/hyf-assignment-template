@@ -17,6 +17,16 @@ function getReply(command) {
       return `You already introduce yourself as ${extractedName}`;
     }
   }
+  //What is my name
+  if (lower.includes("what is my name")) {
+    if (userName.length === 0) {
+      return `You haven’t told me your name yet`;
+    } else {
+      const userNameLastUsed = userName[userName.length - 1];
+
+      return `Your name is ${userNameLastUsed}`;
+    }
+  }
 
 }
 
@@ -29,3 +39,6 @@ console.log(getReply("My name is Abi"));
 console.log(getReply("My name is Gayu"));
 console.log(getReply("My name is Benjamin"));
 
+//What is my name - Check Output
+
+console.log(getReply("What is my name?"));
