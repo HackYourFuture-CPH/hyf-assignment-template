@@ -1,50 +1,99 @@
      
-function getReply(command) {
-  switch (command.toLowerCase()) {
-    case "hello my name is benjamin":
-      return "nice to meet you Benjamin";
+let userName = null;
+let todos = [];
 
-    case "what is my name":
-    return "Your name is Benjamin";
- 
-    case "add fishing to my todo":
-      return "Fishing added to your todo";
 
-    case "add singing in the shower to my todo":
-      return "Singing in the shower added to your todo";
+function setName(command) {
+  const name = command.substring(17).trim(); 
+  userName = name.charAt(0).toUpperCase() + name.slice(1);
+  return `Nice to meet you ${userName}`;
+}
 
-    case "what is on my todo":
-      return "You have 2 todos - fishing, singing in the shower";
+function getName() {
+  if (!userName) {
+    return "I don't know your name yet.";
+  }
+  return `Your name is ${userName}`;
+}
 
-    case "what day is it today?":
-      return (
-        "Today is " +
-        new Date().toLocaleDateString("en-us", {
-          weekday: "long",
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        })
-      );
+function addTodo(command) {
+  const item = command.substring(4, command.indexOf(" to my todo")).trim();
+  todos.push(item);
+  return `${item} added to your todo`;
+}
 
-    case "what is 3 plus 3":
-      return "3 plus 3 is 6";
+function removeTodo(command) {
+  const item = command.substring(7, command.indexOf(" from my todo")).trim();
+  const index = todos.indexOf(item);
 
-    case "what is 4 * 12":
-      return "4 multiplied by 12 is 48";
+  if (index === -1) return `${item} is not in your todo`;
 
-    case "set a timer for 4 minutes":
-      
-      setTimeout(() => {
-        console.log("⏰ Timer done! 4 minutes have passed.");
-      }, 4 * 60 * 1000);
+  todos.splice(index, 1);
+  return `Removed ${item} from your todo`;
+}
 
-      return "Timer set for 4 minutes";
+function listTodos() {
+  if (todos.length === 0) return "Your todo list is empty.";
+
+  return `You have ${todos.length} todos - ${todos.join(", ")}`;
+}
+
+function getDate() {
+  const date = new Date();
+  return `${date.getDate()}. of ${date.toLocaleString("en-us", {
+    month: "long",
+  })} ${date.getFullYear()}`;
+}
+
+function doMath(command) {
+  const expression = command.replace("what is", "").trim();
+  try {
+    return eval(expression);
+  } catch {
+    return "I can't calculate that.";
   }
 }
+
+function setTimer(command) {
+  const minutes = parseInt(command.match(/\d+/)[0]);
+  setTimeout(() => console.log("⏰ Timer done!"), minutes * 60 * 1000);
+  return `Timer set for ${minutes} minutes`;
+}
+
+
+function joke() {
+  return "Why was the function sad? Because it didn’t get any arguments!";
+}
+
+
+function getReply(command) {
+  const lower = command.toLowerCase();
+
+  if (lower.startsWith("hello my name is")) return setName(command);
+  if (lower === "what is my name") return getName();
+
+  if (lower.includes("add") && lower.includes("to my todo")) return addTodo(command);
+  if (lower.includes("remove") && lower.includes("from my todo")) return removeTodo(command);
+  if (lower === "what is on my todo") return listTodos();
+
+  if (lower === "what day is it today?") return getDate();
+
+  if (lower.startsWith("what is")) return doMath(lower);
+
+  if (lower.startsWith("set a timer for")) return setTimer(lower);
+
+  if (lower === "tell me a joke") return joke();
+
+  return "I don't understand that command.";
+}
+
 
 console.log(getReply("Hello my name is Benjamin"));
 console.log(getReply("What is my name"));
 console.log(getReply("Add fishing to my todo"));
-console.log(getReply("add singing in the shower to my todo"));
-console.log(getReply("Set a timer for 4 minutes"));
+console.log(getReply("Add singing in the shower to my todo"));
+console.log(getReply("Remove fishing from my todo"));
+console.log(getReply("What is on my todo"));
+console.log(getReply("What is 4 * 12"));
+console.log(getReply("Set a timer for 1 minutes"));
+console.log(getReply("Tell me a joke"));
