@@ -1,10 +1,8 @@
-     
 let userName = null;
 let todos = [];
 
-
 function setName(command) {
-  const name = command.substring(17).trim(); 
+  const name = command.substring(17).trim();
   userName = name.charAt(0).toUpperCase() + name.slice(1);
   return `Nice to meet you ${userName}`;
 }
@@ -60,11 +58,9 @@ function setTimer(command) {
   return `Timer set for ${minutes} minutes`;
 }
 
-
 function joke() {
   return "Why was the function sad? Because it didn’t get any arguments!";
 }
-
 
 function getReply(command) {
   const lower = command.toLowerCase();
@@ -72,8 +68,10 @@ function getReply(command) {
   if (lower.startsWith("hello my name is")) return setName(command);
   if (lower === "what is my name") return getName();
 
-  if (lower.includes("add") && lower.includes("to my todo")) return addTodo(command);
-  if (lower.includes("remove") && lower.includes("from my todo")) return removeTodo(command);
+  if (lower.includes("add") && lower.includes("to my todo"))
+    return addTodo(command);
+  if (lower.includes("remove") && lower.includes("from my todo"))
+    return removeTodo(command);
   if (lower === "what is on my todo") return listTodos();
 
   if (lower === "what day is it today?") return getDate();
@@ -86,7 +84,6 @@ function getReply(command) {
 
   return "I don't understand that command.";
 }
-
 
 console.log(getReply("Hello my name is Benjamin"));
 console.log(getReply("What is my name"));
