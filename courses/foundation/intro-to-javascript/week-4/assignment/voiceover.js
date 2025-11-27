@@ -1,15 +1,15 @@
-// import "./styles.scss";
-
 let savedName = "";
 let myTodos = [];
 
-function getReply(command) {
-  let text = command.toLowerCase();
-
+function greetingsReply(text, command) {
   if (text.includes("hello my name is")) {
-    let parts = command.split(" is ");
-    savedName = parts[1];
-    return "Nice to meet you " + savedName;
+    const parts = command.split(" is ");
+    if (parts.length > 1) {
+      savedName = parts[1];
+      return "Nice to meet you " + savedName;
+    } else {
+      return "Please tell me your name.";
+    }
   }
 
   if (text.includes("what is my name")) {
@@ -18,157 +18,142 @@ function getReply(command) {
     }
     return "Your name is " + savedName;
   }
+}
+
+function addTodo(command) {
+  const task = command.replace("Add ", "").replace(" to my todo", "");
+  myTodos.push(task);
+  return task + " added to your todo";
+}
+
+function removeTodo(command) {
+  const task = command.replace("Remove ", "").replace(" from my todo", "");
+  const index = myTodos.indexOf(task);
+
+  if (index !== -1) {
+    myTodos.splice(index, 1);
+    return "Removed " + task + " from your todo";
+  } else {
+    return "I could not find that item";
+  }
+}
+
+function todoCheck() {
+  if (myTodos.length === 0) {
+    return "You have no todos";
+  }
+  return "You have " + myTodos.length + " todos: " + myTodos.join(" and ");
+}
+
+function dayToday() {
+  const today = new Date();
+  const monthNames = [
+    "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December",
+  ];
+
+  const day = today.getDate();
+  const monthIndex = today.getMonth();
+  const year = today.getFullYear();
+
+  return day + ". of " + monthNames[monthIndex] + " " + year;
+}
+
+function calculation(text) {
+  const parts = text.split(" ");
+  const number1 = Number(parts[2]);
+  const number2 = Number(parts[4]);
+
+  if (text.includes("+")) {
+    return number1 + number2;
+  }
+
+  if (text.includes("-")) {
+    return number1 - number2;
+  }
+  
+  if (text.includes("*")) {
+    return number1 * number2;
+  }
+
+  if (text.includes("/")) {
+    return number1 / number2;
+  }
+  
+  return "I could not calculate that right now.";
+}
+
+function setTimer(text) {
+  const parts = text.split(" ");
+  const minutes = Number(parts[4]);
+
+  if (isNaN(minutes)) {
+    return "Please provide a valid number of minutes.";
+  }
+
+  const timeToWait = minutes * 60 * 1000;
+
+  setTimeout(function () {
+    console.log("Timer done!");
+    if (typeof alert !== "undefined") {
+      alert("Timer done!");
+    }
+  }, timeToWait);
+
+  return "Timer set for " + minutes + " minutes";
+}
+
+function background() {
+  if (typeof document !== "undefined") {
+    document.body.style.backgroundColor = "red";
+    return "I have changed the background to red";
+  } else {
+    return "I cannot change background color outside of a browser.";
+  }
+}
+
+function getReply(command) {
+  const text = command.toLowerCase();
+
+  if (text.includes("hello my name is") || text.includes("what is my name")) {
+    return greetingsReply(text, command);
+  }
 
   if (text.includes("add") && text.includes("to my todo")) {
-    let task = command.replace("Add ", "").replace(" to my todo", "");
-    myTodos.push(task);
-    return task + " added to your todo";
+    return addTodo(command);
   }
 
   if (text.includes("remove") && text.includes("from my todo")) {
-    let task = command.replace("Remove ", "").replace(" from my todo", "");
-
-    let index = myTodos.indexOf(task);
-
-    if (index !== -1) {
-      myTodos.splice(index, 1);
-      return "Removed " + task + " from your todo";
-    } else {
-      return "I could not find that item";
-    }
+    return removeTodo(command);
   }
 
   if (text.includes("what is on my todo")) {
-    if (myTodos.length === 0) {
-      return "You have no todos";
-    }
-    return "You have " + myTodos.length + " todos: " + myTodos.join(" and ");
+    return todoCheck();
   }
 
   if (text.includes("what day is it today")) {
-    let today = new Date();
-    let monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    let day = today.getDate();
-    let monthIndex = today.getMonth();
-    let year = today.getFullYear();
-
-    return day + ". of " + monthNames[monthIndex] + " " + year;
+    return dayToday();
   }
 
-  if (text.startsWith("what is") && text.includes("+")) {
-    let parts = text.split(" ");
-    let number1 = Number(parts[2]);
-    let number2 = Number(parts[4]);
-    let result = number1 + number2;
-    return result;
-  }
-
-  if (text.startsWith("what is") && text.includes("*")) {
-    let parts = text.split(" ");
-    let number1 = Number(parts[2]);
-    let number2 = Number(parts[4]);
-    let result = number1 * number2;
-    return result;
+  if (text.startsWith("what is") && (text.includes("+") || text.includes("-") || text.includes("*") || text.includes("/") )) {
+    return calculation(text);
   }
 
   if (text.includes("set a timer for")) {
-    let parts = text.split(" ");
-    let minutes = Number(parts[4]);
-
-    let timeToWait = minutes * 60 * 1000;
-
-    setTimeout(function () {
-      console.log("Timer done!");
-      alert("Timer done!");
-    }, timeToWait);
-
-    return "Timer set for " + minutes + " minutes";
+    return setTimer(text);
   }
 
   if (text.includes("make background red")) {
-    document.body.style.backgroundColor = "red";
-    return "I have changed the background to red";
+    return background();
   }
 
   return "I did not understand that";
 }
 
-console.log(getReply("Hello my name is Arman")); // "Nice to meet you Arman"
-console.log(getReply("What is my name?")); // "Your name is Arman"
-console.log(getReply("Add fishing to my todo")); // "fishing added to your todo"
-
-//FROM CODESANDBOX FORK
-
-// Or if installed from NPM to use with a bundler
-// import Artyom from "artyom.js";
-// // const artyom = require("artyom.js");
-// const artyom = new Artyom();
-
-// function isgetReplyAvailable() {
-//   return typeof getReply !== "undefined" && typeof getReply === "function";
-// }
-
-// if (isgetReplyAvailable()) {
-//   let command;
-//   let timeoutId;
-//   let setIntervalTimer;
-
-//   const button = document.querySelector("button");
-//   button.addEventListener("click", () => {
-//     button.innerHTML = "Talk now 🙂";
-//     setIntervalTimer = setInterval(() => {
-//       const randomNumber = Math.floor(Math.random() * 6) + 2;
-//       if (randomNumber % 2 === 0) {
-//         button.innerHTML = "Talk now 😮";
-//       } else {
-//         button.innerHTML = "Talk now 🙂";
-//       }
-//     }, 100);
-//     clearTimeout(timeoutId);
-
-//     command = "";
-//     timeoutId = setTimeout(() => {
-//       clearInterval(setIntervalTimer);
-//       const response = getReply(command);
-
-//       artyom.say(response);
-
-//       button.innerHTML = "Give a new command";
-//     }, 5000);
-//   });
-
-//   var UserDictation = artyom.newDictation({
-//     continuous: false, // Enable continuous if HTTPS connection
-//     onResult: function (text) {
-//       // Do something with the text
-//       if (text.length > command.length) {
-//         command = text;
-//         console.log(command);
-//       }
-//     },
-//     onStart: function () {
-//       console.log("Dictations started by the users");
-//     },
-//     onEnd: function () {
-//       console.log("Dictation stopped by the user");
-//     },
-//   });
-
-//   UserDictation.start();
-// } else {
-//   alert("add the getReply function!");
-// }
+console.log("1:", getReply("Hello my name is Arman")); 
+console.log("2:", getReply("What is my name?")); 
+console.log("3:", getReply("Add fishing to my todo")); 
+console.log("4:", getReply("What is on my todo"));
+console.log("5:", getReply("what is 15 / 5"));
+console.log("6:", getReply("What day is it today"));
+console.log("7:", getReply("set a timer for 1 minutes"));
