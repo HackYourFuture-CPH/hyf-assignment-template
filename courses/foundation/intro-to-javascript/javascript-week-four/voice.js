@@ -1,8 +1,9 @@
 let userName = null;
-let todos = [];
+const todos = [];
 
 function setName(command) {
-  const name = command.substring(17).trim();
+  const prefix = "Hello my name is ";
+  const name = command.slice(prefix.length).trim();
   userName = name.charAt(0).toUpperCase() + name.slice(1);
   return `Nice to meet you ${userName}`;
 }
@@ -45,8 +46,13 @@ function getDate() {
 
 function doMath(command) {
   const expression = command.replace("what is", "").trim();
+  if (!/^[0-9+\-*/().\s]+$/.test(expression)) {
+    return "I can only calculate simple math expressions.";
+  }
+
   try {
-    return eval(expression);
+    const result = Function(`"use strict"; return (${expression})`)(); 
+    return result;
   } catch {
     return "I can't calculate that.";
   }
