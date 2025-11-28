@@ -32,6 +32,6 @@ jobs:
           message: |
             :warning: Are you a trainee? It looks like you might be trying to submit an assignment.
 
-            If so, you are incorrectly creating a pull request to the wrong repo. Please follow these [step by step instructions](https://github.com/HackYourFuture-CPH/hyf-assignment-template?tab=readme-ov-file#2-submission-process), and close this PR before continuing.
+            If so, you are incorrectly creating a pull request to the wrong repo. Please follow these [step by step instructions](https://github.com/HackYourFuture-CPH/hyf-assignment-template?tab=readme-ov-file#2-submission-process), and remember to close this PR.
 
             (If you are a mentor, and are trying to contribute, reach out in #mentorroom for help.)
