@@ -1,0 +1,2 @@
+Hello! I am passionate about acquiring new technologies and I am enthusiastic about exploring advancements in AI and data analytics. I enjoy addressing challenges through critical thinking and effective problem-solving. 
+I have started learning webpage development at HYF. I'm interested in coding and am currently enjoying the process, even though some things can be tricky as a beginner. I am confident that I will become a good front-end developer soon.  
