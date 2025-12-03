@@ -1,0 +1,51 @@
+
+
+The components of the Architecture
+
+Storage Components
+
+•	Relational Database (SQL / MySQL / similar)
+
+o	Stores all structured recipe information:
+
+	Recipe ID (unique identifier)
+	Title
+	Ingredients
+	Instructions
+	Category
+	Created By (links recipe to the user)
+
+o	Also holds Users (login credentials, profile info) and Favourites (links between users and recipes).
+
+•	Cloud Storage (Azure Blob/Google Cloud Storage)
+
+o	Stores recipe images or attachments (eg. photos of dishes).
+o	The database keeps the URL reference to the image stored in cloud storage.
+
+Communication Flow
+
+•	The frontend (web or mobile app) talks to the backend using HTTP/HTTPS requests. The backend exposes endpoints as either:
+o	REST API (eg, GET /recipes, POST /recipes, PUT /recipes/{id})
+o	or Graph QL API (queries and mutations for flexible data fetching).
+
+•	Authentication: Each request includes an authentication token. The backbend’s Authentication Service validates the 
+        token before allowing access.
+•	Frontend → Backend: Sends JSON payloads with recipe data, user actions, or filters.
+•	Backend → Frontend: Responds with JSON containing recipe details, user info, or confirmation messages.
+•	Routing: Requests first hit the API Gateway (or backend router). The gateway forwards them to the correct
+        microservice:
+
+o	Recipe Service (CRUD)
+o	Favourites Service
+o	Search Service
+o	Notification Service
+when a user adds a new recipe
+
+•	User fills recipe form in the frontend.
+•	Frontend sends POST /recipes with recipe data → Backend API Gateway.
+•	Backend validates token → passes to Recipe Service.
+•	Recipe Service saves data in Database and image in Cloud Storage.
+•	Backend responds with success → Frontend updates UI.
+
+
+
