@@ -1,0 +1,21 @@
+
+
+Brief explanations of each component
+
+User   * Interacts with the app through a browser or mobile interface.
+       * Performs actions like clicking buttons, filling forms, and viewing recipes.
+
+
+Frontend    * Displays the user interface (recipe list, forms, details).
+            * Sends HTTP requests to the backend (GET, POST, PUT, DELETE).   
+
+Backend     * Provides an API for the frontend.
+            * Handles requests such as adding, retrieving, editing, and deleting recipes.
+            * Communicates with the database to store or retrieve recipe data.            
+
+
+Database     * Stores recipe information:  Title
+                                           Ingredients
+                                           Instruction 
+    
+               
