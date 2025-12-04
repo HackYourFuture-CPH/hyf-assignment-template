@@ -1,0 +1,48 @@
+
+
+
+Sequence diagram: Adding a new Recipe                         
+
+User → Frontend → Backend → Database
+User clicks "Add Recipe"
+Frontend sends POST /recipes with recipe data
+Backend saves recipe to Database
+Database confirms save
+Backend sends success response
+Frontend updates recipe list or redirects
+
+
+Sequence diagram: Viewing a specific Recipe
+
+User → Frontend → Backend → Database
+User selects a recipe
+Frontend sends GET /recipes/:id
+Backend requests recipe from Database
+Database returns recipe details
+Backend sends data to Frontend
+Frontend displays the recipe
+
+
+Sequence diagram: Editing an existing Recipe
+
+User → Frontend → Backend → Database
+User clicks "Edit"
+Frontend sends GET /recipes/:id to load existing data
+Backend fetches recipe from Database
+Frontend shows recipe in an editable form
+User submits changes
+Frontend sends PUT /recipes/:id with updated data
+Backend updates recipe in Database
+Database confirms update
+Backend sends success response
+Frontend shows updated recipe
+
+Sequence diagram: Deleting a Recipe
+
+User → Frontend → Backend → Database
+User clicks "Delete" on a recipe
+Frontend sends DELETE /recipes/:id
+Backend instructs Database to remove the recipe
+Database confirms deletion
+Backend sends success response
+Frontend updates the recipe list
