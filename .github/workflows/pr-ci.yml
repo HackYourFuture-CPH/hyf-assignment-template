@@ -1,0 +1,94 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+
+permissions:
+  contents: read
+  members: read
+  pull-requests: write
+
+jobs:
+  pr-comment:
+    name: Handle misdirected PRs
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
+    env:
+    # Teams to apply this workflow for:
+      TEAM_SLUGS: '["TeamX", "TeamY"]'
+    # The PR comment:
+      COMMENT_BODY: |
+        hej @${{ github.event.pull_request.user.login }}
+    # TODO: finish comment body
+    steps:
+      - name: Check team membership
+        id: team_check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const traineeTeamSlugs = JSON.parse(process.env.TEAM_SLUGS);
+            const authorUsername = context.payload.pull_request.user.login;
+            const curriculumCrewTeamSlug = 'curriculum-crew';
+            
+            try {
+              await github.rest.teams.getMembershipForUserInOrg({
+                org: context.repo.owner,
+                team_slug: curriculumCrewTeamSlug,
+                authorUsername,
+              });
+              core.info(`User ${authorUsername} is a member of ${curriculumCrewTeamSlug} team. Skipping workflow.`);
+              core.setOutput("is_curriculum_crew", "true");
+              return;
+            } catch (error) {
+              if (error.status === 404) {
+                core.setOutput("is_curriculum_crew", "false");
+              } else {
+                throw error;
+              }
+            }
+            
+            for (const teamSlug of traineeTeamSlugs) {
+              try {
+                await github.rest.teams.getMembershipForUserInOrg({
+                  org: context.repo.owner,
+                  team_slug: teamSlug,
+                  authorUsername,
+                });
+                core.info(`✅ User ${authorUsername} is a member of team ${teamSlug}.`);
+                core.setOutput("is_trainee", "true");
+                return;
+              } catch (error) {
+                if (error.status === 404) {
+                  continue;
+                } else {
+                  throw error;
+                }
+              }
+            }
+            
+            core.info(`User ${authorUsername} is not a member of any configured team.`);
+      - name: Comment on PR and close
+        if: steps.team_check.outputs.is_trainee == 'true' && steps.team_check.outputs.is_curriculum_crew == 'false'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: process.env.COMMENT_BODY,
+            });
+            
+            await github.rest.pulls.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.payload.pull_request.number,
+              state: 'closed',
+            });
+            
+            core.info(`PR #${context.payload.pull_request.number} has been commented on and closed.`);
+
