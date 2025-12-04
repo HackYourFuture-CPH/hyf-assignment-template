@@ -19,7 +19,9 @@ jobs:
     if: github.event.pull_request.draft == false
     env:
     # Teams to apply this workflow for:
-      TEAM_SLUGS: '["TeamX", "TeamY"]'
+      TRAINEE_TEAMS_SLUGS: '["TeamX", "TeamY"]'
+    # Curriculum crew team slug:
+      CURRICULUM_CREW_TEAM_SLUG: 'curriculum-crew'
     # The PR comment:
       COMMENT_BODY: |
         hej @${{ github.event.pull_request.user.login }}
@@ -30,9 +32,9 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            const traineeTeamSlugs = JSON.parse(process.env.TEAM_SLUGS);
+            const traineeTeamSlugs = JSON.parse(process.env.TRAINEE_TEAMS_SLUGS);
             const authorUsername = context.payload.pull_request.user.login;
-            const curriculumCrewTeamSlug = 'curriculum-crew';
+            const curriculumCrewTeamSlug = process.env.CURRICULUM_CREW_TEAM_SLUG;
             
             try {
               await github.rest.teams.getMembershipForUserInOrg({
