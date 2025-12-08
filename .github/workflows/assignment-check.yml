@@ -3,35 +3,25 @@
 name: Assignment Check
 
 on:
-  pull_request_target:  # Use pull_request_target to have write permissions for fork PRs
+  pull_request_target: # Use pull_request_target to have write permissions for fork PRs
     types: [opened]
 
 jobs:
   check-if-fork-and-comment:
+    if: ${{ github.event.pull_request.head.repo.fork && !github.event.pull_request.base.repo.fork }}
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
 
     steps:
-      - name: Check PR is a fork
-        id: check_fork
-        uses: actions/github-script@v7
-        with:
-          script: |
-            const pr = context.payload.pull_request;
-            const isFork = pr.head.repo && pr.head.repo.id !== pr.base.repo.id;
-            console.log(`From fork? ${isFork}`);
-
-            core.setOutput('should_comment', isFork);
-
       - name: Comment assignment instructions for trainees
-        if: steps.check_fork.outputs.should_comment == 'true'
-        uses: thollander/actions-comment-pull-request@v3
-        continue-on-error: true
-        with:
-          message: |
+        run: |
+          gh pr comment ${{ github.event.pull_request.number }} --repo ${{ github.event.repository.full_name }} --body-file - <<COMMENT
             :warning: Are you a trainee? It looks like you might be trying to submit an assignment.
 
             If so, you are incorrectly creating a pull request to the wrong repo. Please follow these [step by step instructions](https://github.com/HackYourFuture-CPH/hyf-assignment-template?tab=readme-ov-file#2-submission-process), and remember to close this PR.
 
             (If you are a mentor, and are trying to contribute, reach out in #mentorroom for help.)
+          COMMENT
+        env:
+          GH_TOKEN: ${{ github.token }}
