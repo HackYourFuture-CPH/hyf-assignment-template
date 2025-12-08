@@ -1,6 +1,6 @@
 # Check whether a PR is from a fork (likely a trainee).
 # If from a fork, add a comment reminding the trainee about the correct submission process.
-name: Assignment Check
+name: Assignment Comment
 
 on:
   pull_request_target: # Use pull_request_target to have write permissions for fork PRs
