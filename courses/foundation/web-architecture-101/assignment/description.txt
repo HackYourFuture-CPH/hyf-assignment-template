@@ -1,0 +1,16 @@
+Recipe collection app assignment
+
+The architecture of the recipe app: 
+
+User → Frontend → Backend → Database
+
+User uses a device to operate the recipe app by inputing data or clicking buttons. The app(frontend) then communicates with the servers(backend) via HTTP methods. Depending on the user's actions, different HTTP methods are used - POST to Create, GET to Read, Put to Update and DELETE to Delete. These are belonging to the CRUD operations for managing data. Methods that create and update the data require the body (the actual data) to be included in communication with the backend. This is sent in form of JSON. After request was received, the backend then communicates with the Database via Queries. All the data is stores in the Databases. If the request contained data, Backend will parse JSON data to an acceptable form for Database. If all the steps were successful, each component will validate and send a response. Database will either send the Successful code or the data, Backend will send the status using an appropriate HTTP response (such as 200 OK or 201 CREATED), while the Fronted will notify the user of the operation being done using a notification. Same is done with less succesful steps, when the responses will match the failure. 
+
+EXAMPLE: User wants to add a new recipe
+
+User inputs the recipe data and clicks the "Add new Recipe" button 
+Fronted sends a request to the backend via POST method which contains body with JSON recipe data
+Backend queries data to database 
+Database sends response of succesfull insertion
+Backend send the HTTP response of 201 CREATED to fronted
+Fronted notifies the user that the new recipe has been successfully added
