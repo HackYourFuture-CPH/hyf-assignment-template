@@ -1,0 +1,6 @@
+* {box-sizing:border-box;
+  margin:10px 10px 0 10px;
+}
+table, th, td {
+  border: 1px solid black;
+}
