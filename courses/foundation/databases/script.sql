@@ -1,7 +1,7 @@
 -- 1. How many tasks are in the task table?
-SELECT * FROM task;
+SELECT COUNT(*) FROM task;
 -- 2. How many tasks in the task table do not have a valid due date?
-SELECT * FROM task WHERE due_date;
+SELECT COUNT(*) FROM task WHERE due_date IS NULL
 -- 3. Find all the tasks that are marked as done
 SELECT * FROM task WHERE status_id = 3;
 -- 4. Find all the tasks that are not marked as done
