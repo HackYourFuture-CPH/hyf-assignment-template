@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>My Personal Portfolio</title>
+  </head>
+  <body>
+    <header>
+      <h1 class="title">Emebet Hunde</h1>
+      <h2 class="subtitle">Web Development Trainee</h2>
+      <button id="colorButton" class="fun-button">
+        Change Background Color!
+      </button>
+    </header>
+    <section class="about-me">
+      <img
+        src="https://i.postimg.cc/FHprXsfh/IMG-0919.jpg"
+        class="profile-pic"
+        alt="Emebet"
+      />
+
+      <p>
+        Hi there! My name is Emebet ,I'm stay home mom of two wonderful kids and
+        web development trainee.Motherhood has been my greatest adventure,filled
+        with challenges,laughter and countless learning moments.In my free time,
+        I like reading walking in the park and learning new things.
+      </p>
+    </section>
+    <p class="education-intro">
+      Here is a summary of my educational background and achievements.
+    </p>
+    <section class="education-section">
+      <div class="education-card">
+        <h3>Bachelor's Degree in Mathematics</h3>
+        <p>Dilla University Ethiopia</p>
+        <p>2011</p>
+      </div>
+      <div class="education-card">
+        <h3>Certified Nursing Assistant</h3>
+        <p>DT&T Nursing school USA</p>
+        <p>2013</p>
+      </div>
+      <div class="education-card">
+        <h3>Technical skills</h3>
+        <ul>
+          <li>💻HTML</li>
+          <li>🎨CSS</li>
+          <li>🧩Git and GitHub</li>
+          <li>📱Responsive Design</li>
+          <li>🧠Problem Solving</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>©️ 2025 My Personal Portfolio</p>
+    </footer>
+
+    <script>
+      document.getElementById("colorButton").onclick = function () {
+        const randomBg =
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0");
+        document.body.style.background = randomBg;
+
+        const randomText =
+          "#" +
+          Math.floor(Math.random() * 16777215)
+            .toString(16)
+            .padStart(6, "0");
+        this.style.color = randomText;
+      };
+    </script>
+  </body>
+</html>
