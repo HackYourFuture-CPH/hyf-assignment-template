@@ -15,12 +15,32 @@ const knexInstance = knex({
 });
 
 app.get("/", async (req, res) => {
-  const count = await knexInstance.raw("SELECT COUNT(*) FROM task");
-  result = res.json(count);
+  const result = await knexInstance.raw("SELECT COUNT(*) FROM task");
+  const count = result[0]["COUNT(*)"];
+
   console.log("count" + result);
   res.send(`
-    <h1>Main page</h1>
-    <h2>There're ${result} tasks in your ToDo list</h2>
+  <div style="
+  max-width: 500px;
+  margin: 80px auto;
+  padding: 32px 24px;
+  background: #ecececff;
+  border-radius: 16px;
+  border: 2px solid rgba(0,0,0,0.6);
+  text-align: center;
+">
+    <h1 style="
+    text-transform: uppercase;
+    color: #126619ff; 
+    text-shadow: 1px 1px 0 #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;">Main page</h1>
+
+    <h2 style="
+    font-family: "Arial";
+    color: #535353ff;
+    ">There're ${count} tasks in your ToDo list</h2>
+    </div>
     `);
 });
 
