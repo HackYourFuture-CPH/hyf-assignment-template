@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hogwarts House generator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="generator-container">
+      <h1 class="hogwarts-heading">Hogwarts House generator</h1>
+      <form id="hogwarts-form" class="hogwarts-form">
+        <label class="name-label" for="name">Enter your name:</label>
+        <input
+          class="name-input"
+          type="text"
+          id="name"
+          required
+          minlength="3"
+          maxlength="15"
+        />
+        <button class="submit-button" type="submit">Submit</button>
+      </form>
+
+      <div class="hogwarts-results">
+        <p class="results-paragraph">Submit your name and find out!</p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
