@@ -26,21 +26,21 @@ window.getAvailableProducts = function () {
       "Dirty",
     ];
     const productNames = [
-      "Carrot",
-      "Drone",
-      "Giftcard",
-      "Puppy",
-      "Car",
-      "Shirt",
-      "Milk",
-      "Chalk",
-      "Fish fingers",
-      "Socks",
-      "Chocolate",
-      "Toothbrush",
-      "Computer",
-      "Nokia",
-      "Cologne",
+      "Carrot 🥕",
+      "Drone 🚁",
+      "Giftcard 🎁",
+      "Puppy 🐶",
+      "Car 🚗",
+      "Shirt 👕",
+      "Milk 🥛",
+      "Chalk 🧂",
+      "Fish fingers 🐟",
+      "Socks 🧦",
+      "Chocolate 🍫",
+      "Toothbrush 🪥",
+      "Computer 💻",
+      "Nokia 📱",
+      "Cologne 🌿",
     ];
 
     let chosenProductName = getRandomItem(productNames);
@@ -57,7 +57,7 @@ window.getAvailableProducts = function () {
   const numberOfAvailableProducts = getRandomInt(0, 30);
   const availableProducts = Array.apply(
     null,
-    Array(numberOfAvailableProducts),
+    Array(numberOfAvailableProducts)
   ).map(() => {
     const name = getRandomProductName();
     return {
