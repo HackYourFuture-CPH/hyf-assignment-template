@@ -1,0 +1,57 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  transition: background-color 0.5s ease;
+}
+
+#container {
+  background-color: white; 
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  text-align: center;
+  width: 300px;
+}
+
+input {
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+#houseImage {
+  margin: 20px auto 0 auto;
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: block;
+}
+
+#houseDescription {
+  margin-top: 10px;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+#houseImage.show,
+#houseDescription.show {
+  opacity: 1;
+}
