@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HyfBay</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <main>
+    <h1>hyfBay</h1>
+    <div id="controls">
+      <input type="text" id="searchInput" placeholder="Search product..." />
+      <input type="number" id="minPrice" placeholder="Min price" />
+      <input type="number" id="maxPrice" placeholder="Max price" />
+      <select id="sortSelect">
+        <option value="">Sort by</option>
+        <option value="priceAsc">Price ↑</option>
+        <option value="priceDesc">Price ↓</option>
+        <option value="ratingAsc">Rating ↑</option>
+        <option value="ratingDesc">Rating ↓</option>
+      </select>
+    </div>
+    <ul id="productList"></ul>
+  </main>
+  <script src="hyfBayHelpers.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
