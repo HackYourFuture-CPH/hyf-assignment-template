@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pink vibes 🌸</title>
+    <style>
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #ffd6e8, #ffeef6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .card {
+        background: white;
+        padding: 32px 64px 32px 32px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(255, 105, 180, 0.25);
+        max-width: 400px;
+        width: 100%;
+        text-align: center;
+      }
+
+      h1 {
+        color: #ff5fa2;
+        margin-bottom: 10px;
+      }
+
+      p {
+        color: #666;
+        margin-bottom: 24px;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 16px;
+        border-radius: 12px;
+        border: 2px solid #ffd1e6;
+        font-size: 14px;
+      }
+
+      input:focus {
+        outline: none;
+        border-color: #ff5fa2;
+      }
+
+      button {
+        background: #ff5fa2;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 999px;
+        font-size: 14px;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(255, 95, 162, 0.4);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 95, 162, 0.45);
+      }
+
+      .user-count {
+        margin-top: 20px;
+        font-size: 18px;
+        color: #ff5fa2;
+        font-weight: bold;
+      }
+
+      .postman-link {
+        display: block;
+        margin-top: 10px;
+        font-size: 30px;
+        color: #ff5fa2;
+        text-decoration: underline;
+      }
+
+      .footer {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #aaa;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Hello 💕</h1>
+      <p>Welcome to cute pink page</p>
+
+      <input type="text" id="name" placeholder="Your name" />
+      <input type="password" id="password" placeholder="Your password" />
+      <button id="create-user-btn">Create User 💖</button>
+
+      <div class="user-count">Loading user count...</div>
+      <a
+        class="postman-link"
+        href="https://bakraniris-3817171.postman.co/workspace/Default-workspace~e8530c68-1f67-462e-923f-c22f6245976f/collection/50891402-81a56e71-9efa-45b9-892c-ce0a3a630985?action=share&creator=50891402"
+        target="_blank"
+        >Postman link</a
+      >
+
+      <div class="footer">powered by good vibes only ✨</div>
+    </div>
+
+    <script>
+      async function fetchUserCount() {
+        try {
+          const res = await fetch("http://localhost:3000/user-count");
+          const count = await res.text();
+          document.querySelector(".user-count").textContent =
+            "Total users: " + count;
+        } catch (err) {
+          console.error(err);
+          document.querySelector(".user-count").textContent =
+            "Could not load user count";
+        }
+      }
+
+      document
+        .getElementById("create-user-btn")
+        .addEventListener("click", async () => {
+          const name = document.getElementById("name").value;
+          const password = document.getElementById("password").value;
+
+          if (!name || !password) {
+            alert("Please enter both name and password.");
+            return;
+          }
+
+          try {
+            const response = await fetch("http://localhost:3000/create-user", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ name, password }),
+            });
+
+            if (response.ok) {
+              alert("User created successfully!");
+              fetchUserCount();
+            } else {
+              const errorText = await response.text();
+              alert("Error: " + errorText);
+            }
+          } catch (err) {
+            console.error(err);
+            alert("Failed to create user.");
+          }
+        });
+
+      fetchUserCount();
+    </script>
+  </body>
+</html>
