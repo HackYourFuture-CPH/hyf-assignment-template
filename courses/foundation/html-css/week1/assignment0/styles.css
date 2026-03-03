@@ -1,0 +1,14 @@
+.image img {
+  border: 10px solid black;
+  width: 300px;
+  transition: all 0.3s animate;
+}
+
+.image img:hover {
+  border-color: orange;
+}
+
+.image p{
+  margin: 40px 15px;
+  font-size:30px;
+}
