@@ -1,5 +1,7 @@
 tomato
 broccoli
-pepper
+onion
 carrot
 potato
+radish
+corn
