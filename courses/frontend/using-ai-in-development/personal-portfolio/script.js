@@ -16,5 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   btn.addEventListener("click", () => {
     const color = randomHexColor();
     document.body.style.backgroundColor = color;
+    btn.textContent = `Background: ${color}`;
   });
 });

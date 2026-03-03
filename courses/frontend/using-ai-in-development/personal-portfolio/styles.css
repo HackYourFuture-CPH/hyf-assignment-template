@@ -1,20 +1,43 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
 
+ul,
+li {
+  list-style: none; /* remove default bullets */
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .page {
   background-color: #f3f6fb;
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial,
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    Arial,
     sans-serif;
   color: #222;
-  max-width: 800px;
+  max-width: 1100px;
   margin: 2rem auto;
   padding: 2rem 1rem;
 }
 
-.about-main {
+.main {
   background: #ffffff;
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 6px 18px rgba(20, 30, 50, 0.4);
+}
+
+.about-section {
+  display: flex;
+  flex-direction: column;
 }
 
 .about-heading {
@@ -28,9 +51,11 @@
   margin-top: 0;
   line-height: 1.6;
   color: #2b3440;
+  max-width: 800px;
+  align-self: center;
 }
 
-.about-subheading {
+.subheading {
   margin-top: 1.5rem;
   font-weight: 600;
   color: #0f1724;
@@ -41,13 +66,12 @@
   margin-top: 1rem;
   padding-left: 1.25rem;
   color: #2b3440;
-  list-style: none; /* remove default bullets */
 }
 
 .about-item {
   margin-bottom: 0.5rem;
   position: relative;
-  padding-left: 1.9rem;
+  padding-left: 6rem;
 }
 
 /* photo kept as class already */
@@ -60,8 +84,7 @@
   border: 2px solid #383838;
 }
 
-/* Button styles for the background changer */
-.color-btn {
+.styled-button {
   display: block;
   margin: 1.5rem auto 0;
   padding: 0.6rem 1rem;
@@ -73,38 +96,81 @@
   cursor: pointer;
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
 }
-.color-btn:active {
+.styled-button:active {
   transform: translateY(1px);
 }
-.color-btn:focus {
+.styled-button:focus {
   outline: 2px solid rgba(0, 0, 0, 0.2);
 }
-
-/* default icon styling (size, vertical alignment) */
-.about-item::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  top: 0;
-  font-size: 1.15rem;
-  line-height: 1;
+.styled-button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* per-item semantic icons (change emojis if you prefer images or SVGs) */
-.about-item:nth-child(1)::before {
-  content: "💻";
-} /* JavaScript / tooling */
-.about-item:nth-child(2)::before {
-  content: "🎨";
-} /* Design / accessibility */
-.about-item:nth-child(3)::before {
-  content: "🤖";
-} /* AI / automation */
+.projects-list {
+  display: flex;
+  gap: 20px;
+}
+
+.project-item {
+  display: flex;
+}
+
+.project-container {
+  border-radius: 8px;
+  padding: 0.75rem;
+  box-shadow: 0 6px 18px rgba(20, 30, 50, 0.4);
+}
+
+.project-img {
+  width: 100%;
+  border-radius: 8px;
+  height: 300px;
+
+  display: block;
+}
+
+.project-description {
+  flex-grow: 1;
+}
+
+@media (max-width: 786px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .main {
+    width: 80%;
+  }
+
+  .about-item {
+    align-self: center;
+    padding: 0;
+  }
+
+  .projects-list {
+    flex-direction: column;
+  }
+
+  .project-container {
+    padding: 2rem;
+  }
+
+  .project-img {
+    height: fit-content;
+  }
+}
 
 /* optional: reduce icon size on small screens */
 @media (max-width: 479px) {
   .about-item::before {
     font-size: 1rem;
     top: 0.05rem;
+  }
+
+  .project-container {
+    padding: 0.5rem;
   }
 }
