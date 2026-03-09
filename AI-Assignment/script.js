@@ -1,7 +1,3 @@
-/**
- * @format
- */
-
 function changeBackground() {
   try {
     const colors = [
