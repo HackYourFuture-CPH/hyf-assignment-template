@@ -95,3 +95,111 @@ const totalByTag = moviesWithTag.reduce(
 );
 
 console.log(totalByTag);
+
+// App logic
+const randomButton = document.querySelector(".random-movies");
+const eightiesButton = document.querySelector(".eighties-movies");
+const goodButton = document.querySelector(".good-movies");
+const badButton = document.querySelector(".bad-movies");
+const shortTitleButton = document.querySelector(".short-titled-movies");
+const alienButton = document.querySelector(".alien-movies");
+const fishButton = document.querySelector(".fish-movies");
+const cardElements = document.querySelectorAll(".movie-card");
+
+const moviesAmount = 10;
+
+function getMovieEmoji(movie) {
+  const title = movie.title.toLowerCase();
+
+  if (title.includes("alien")) {
+    return "👽";
+  }
+
+  if (title.includes("fish")) {
+    return "🐟";
+  }
+
+  if (movie.year >= 1980 && movie.year <= 1989) {
+    return "🪩";
+  }
+
+  return "🍿";
+}
+
+function getRandom(howMany, array) {
+  const shuffled = array.sort(() => 0.5 - Math.random());
+
+  let selected = shuffled.slice(0, howMany);
+  console.log(selected);
+  return selected;
+}
+
+function renderMovies(moviesToRender) {
+  cardElements.forEach((card) => {
+    card.innerHTML = "";
+  });
+
+  moviesToRender.forEach((movie, index) => {
+    if (index < cardElements.length) {
+      const card = cardElements[index];
+
+      const emoji = getMovieEmoji(movie);
+
+      const infoDiv = document.createElement("div");
+      infoDiv.classList.add("movie-info");
+      infoDiv.innerHTML = `
+        <p class="movie-emoji">${emoji}</p>
+        <h3 class="movie-title">${movie.title}</h3>
+        <p class="movie-info-description">Year: ${movie.year}</p>
+        <p class="movie-info-description">Rating: ${movie.rating}</p>
+      `;
+
+      card.appendChild(infoDiv);
+
+      setTimeout(() => infoDiv.classList.add("visible"), 50);
+    }
+  });
+}
+
+randomButton.addEventListener("click", () => {
+  const randomMovies = getRandom(moviesAmount, movies);
+  renderMovies(randomMovies);
+});
+
+eightiesButton.addEventListener("click", () => {
+  const eightiesMovies = getRandom(moviesAmount, moviesFrom80);
+  renderMovies(eightiesMovies);
+});
+
+goodButton.addEventListener("click", () => {
+  const goodMoviesArray = moviesWithTag.filter((movie) => movie.tag === "Good");
+  const goodMovies = getRandom(moviesAmount, goodMoviesArray);
+  renderMovies(goodMovies);
+});
+
+badButton.addEventListener("click", () => {
+  const badMoviesArray = moviesWithTag.filter((movie) => movie.tag === "Bad");
+  const badMovies = getRandom(moviesAmount, badMoviesArray);
+  renderMovies(badMovies);
+});
+
+shortTitleButton.addEventListener("click", () => {
+  const shortTitled = getRandom(moviesAmount, shortTitleMovies);
+  renderMovies(shortTitled);
+});
+
+alienButton.addEventListener("click", () => {
+  const alienMoviesArray = movies.filter((movie) =>
+    movie.title.toLowerCase().includes("alien"),
+  );
+  const alienMovies = getRandom(moviesAmount, alienMoviesArray);
+  renderMovies(alienMovies);
+});
+
+fishButton.addEventListener("click", () => {
+  const fishMoviesArray = movies.filter((movie) =>
+    movie.title.toLowerCase().includes("fish"),
+  );
+  const fishMovies = getRandom(moviesAmount, fishMoviesArray);
+  renderMovies(fishMovies);
+});
