@@ -55,6 +55,20 @@ const keywordsMovies = movies.filter((movie) => {
 console.log(keywordsMovies);
 
 // an array of movies where a word in the title is duplicated
+const duplicatedMovies = movies.filter((movie) => {
+  const cleanTitle = movie.title.toLowerCase().replace(/[^a-z0-9 ]/g, "");
+
+  const words = cleanTitle.split(" ");
+
+  const hasDuplicate = words.some((word, index) => {
+    if (word === "") return false;
+    return words.indexOf(word) !== words.lastIndexOf(word);
+  });
+
+  return hasDuplicate;
+});
+
+console.log(duplicatedMovies);
 
 // Calculate the average rating of all the movies
 const sumRating = movies.reduce((accumulator, movie) => {
