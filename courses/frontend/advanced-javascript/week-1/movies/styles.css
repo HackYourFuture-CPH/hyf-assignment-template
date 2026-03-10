@@ -1,0 +1,98 @@
+@font-face {
+  font-family: "Undeveloped";
+  src: url("./fonts/Undeveloped.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "UndevelopedBook";
+  src: url("./fonts/UndevelopedBook.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Ticketmaster";
+  src: url("./fonts/Ticketmaster.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li,
+blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img {
+  width: 100%;
+}
+
+body {
+  background-image: url("./images/background.jpg");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  margin-block: 50px;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  background-color: black;
+  padding: 20px;
+}
+
+.app-heading {
+  color: white;
+  font-size: 144px;
+  font-family: "Ticketmaster", sans-serif;
+}
+
+.buttons-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: white;
+  color: black;
+  border: none;
+}
+
+.button:hover {
+  background-color: gold;
+}
+
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.movie-card {
+  background-color: gold;
+  width: 100%;
+  aspect-ratio: 1;
+  background-image: url("./images/popcorn.jpg");
+  background-size: cover;
+}
