@@ -104,9 +104,18 @@ const badButton = document.querySelector(".bad-movies");
 const shortTitleButton = document.querySelector(".short-titled-movies");
 const alienButton = document.querySelector(".alien-movies");
 const fishButton = document.querySelector(".fish-movies");
+
+const allButtons = document.querySelectorAll(".button");
+
 const cardElements = document.querySelectorAll(".movie-card");
 
 const moviesAmount = 10;
+
+function setActiveButton(clickedButton) {
+  allButtons.forEach((btn) => btn.classList.remove("active"));
+
+  clickedButton.classList.add("active");
+}
 
 function getMovieEmoji(movie) {
   const title = movie.title.toLowerCase();
@@ -161,34 +170,40 @@ function renderMovies(moviesToRender) {
   });
 }
 
-randomButton.addEventListener("click", () => {
+randomButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const randomMovies = getRandom(moviesAmount, movies);
   renderMovies(randomMovies);
 });
 
-eightiesButton.addEventListener("click", () => {
+eightiesButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const eightiesMovies = getRandom(moviesAmount, moviesFrom80);
   renderMovies(eightiesMovies);
 });
 
-goodButton.addEventListener("click", () => {
+goodButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const goodMoviesArray = moviesWithTag.filter((movie) => movie.tag === "Good");
   const goodMovies = getRandom(moviesAmount, goodMoviesArray);
   renderMovies(goodMovies);
 });
 
-badButton.addEventListener("click", () => {
+badButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const badMoviesArray = moviesWithTag.filter((movie) => movie.tag === "Bad");
   const badMovies = getRandom(moviesAmount, badMoviesArray);
   renderMovies(badMovies);
 });
 
-shortTitleButton.addEventListener("click", () => {
+shortTitleButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const shortTitled = getRandom(moviesAmount, shortTitleMovies);
   renderMovies(shortTitled);
 });
 
-alienButton.addEventListener("click", () => {
+alienButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const alienMoviesArray = movies.filter((movie) =>
     movie.title.toLowerCase().includes("alien"),
   );
@@ -196,7 +211,8 @@ alienButton.addEventListener("click", () => {
   renderMovies(alienMovies);
 });
 
-fishButton.addEventListener("click", () => {
+fishButton.addEventListener("click", (event) => {
+  setActiveButton(event.currentTarget);
   const fishMoviesArray = movies.filter((movie) =>
     movie.title.toLowerCase().includes("fish"),
   );

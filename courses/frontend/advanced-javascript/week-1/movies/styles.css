@@ -78,6 +78,12 @@ body {
   background-color: gold;
 }
 
+.button.active {
+  background-color: gold;
+  cursor: default;
+  pointer-events: none;
+}
+
 .movies-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
