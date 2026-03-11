@@ -31,6 +31,7 @@ img {
 body {
   background-image: url("./images/background.jpg");
   background-size: cover;
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   margin-block: 50px;
@@ -44,13 +45,19 @@ body {
   background-color: black;
   padding: 20px;
   margin: 0 auto;
+  box-shadow:
+    0 0 2px #fff,
+    0 0 3px #fff,
+    0 0 10px gold,
+    0 0 15px gold;
 }
 
 .app-heading {
   color: white;
-  font-size: 144px;
+
   font-family: "Ticketmaster", sans-serif;
   text-align: center;
+  font-size: clamp(3rem, 10vw, 9rem);
 }
 
 .buttons-container {
@@ -118,4 +125,55 @@ body {
 
 .movie-emoji {
   font-size: 48px;
+}
+
+@media (max-width: 1200px) {
+  body {
+    font-size: 0.75rem;
+  }
+
+  .movie-card {
+    width: 150px;
+  }
+
+  .movie-title {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 950px) {
+  body {
+    font-size: 0.75rem;
+    margin-block: 20px;
+  }
+
+  .app-container {
+    margin: 20px;
+  }
+
+  .movies-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .movie-card {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 650px) {
+  .app-container {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .buttons-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .movie-card {
+    max-width: 130px;
+  }
 }
