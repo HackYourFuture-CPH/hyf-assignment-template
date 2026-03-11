@@ -2,12 +2,12 @@
 
 import { teas } from "./teas.js";
 function inventoryReport(teas) {
-  const inventoryValues = teas.map((tea) => tea.pricePerGram * tea.stockCount); //map each tea to its inventory values
   let totalInventoryValue = 0;
-  inventoryValues.forEach((value) => (totalInventoryValue += value)); //sum of the inventory values
-  const prices = teas.map((tea) => tea.pricePerGram); //map each tea to its price per gram
   let totalPrice = 0;
-  prices.forEach((price) => (totalPrice += price)); //sum all the prices
+  teas.forEach((tea) => {
+    totalInventoryValue += tea.pricePerGram * tea.stockCount;
+    totalPrice += tea.pricePerGram;
+  });
   return {
     totalTeas: teas.length,
     inStock: teas.filter((tea) => tea.inStock === true).length,
