@@ -1,4 +1,5 @@
 body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   background-color: rgb(157, 255, 222);
@@ -11,7 +12,7 @@ h1 {
   font-size: 3rem;
   color: #031d37;
   text-align: center;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 ul {
@@ -41,7 +42,7 @@ header {
     justify-content: center;
     gap: 20px;
   }
-} 
+}
 
 
 button {
@@ -56,10 +57,12 @@ button {
   display: block;
   margin-left: auto;
   margin-right: auto;
-} 
+}
+
 button:hover {
   background-color: #d90909;
-} 
+}
+
 button:active {
   background-color: #00251a;
-} 
+}
