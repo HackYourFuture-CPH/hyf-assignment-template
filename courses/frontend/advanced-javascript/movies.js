@@ -108,13 +108,14 @@ const ratingAbove6 = movies
 const keywords = ["Surfer", "Alien", "Benjamin"];
 
 
-const keyWordCount = movies.reduce((count, movie) => {
+const keyWordCount = movies.filter(movie => {
   const titleLower = movie.title.toLowerCase();
-  keywords.forEach(keyword => {
-    if (titleLower.includes(keyword.toLowerCase())) count++;
-  });
-  return count;
-}, 0);
+  return keywords.some(keyword =>
+    titleLower.includes(keyword.toLowerCase())
+  );
+}).length;
+
+
 
 
 const moviesWithDuplicateWords = movies.filter(movie => {
