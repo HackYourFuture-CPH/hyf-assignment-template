@@ -1,4 +1,3 @@
-/** @format */
 
 import { teas } from "./teas.js";
 const result = [];
