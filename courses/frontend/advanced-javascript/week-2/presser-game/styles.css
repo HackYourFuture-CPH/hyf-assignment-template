@@ -48,11 +48,11 @@ body {
   font-size: 20px;
   padding: 20px;
   border: 2px solid black;
-  cursor: pointer;
   background-color: darkgrey;
 }
 
-.start-button:hover {
+.start-button:hover:not(:disabled) {
+  cursor: pointer;
   background-color: rgb(254, 234, 19);
 }
 
