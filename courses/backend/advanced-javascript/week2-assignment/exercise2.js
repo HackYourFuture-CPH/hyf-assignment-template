@@ -1,7 +1,7 @@
 
 import { teas } from "../data/teas.js";
 
-const order = {
+export const order = {
     id: 1001,
     customerId: 42,
     items: [
@@ -13,7 +13,7 @@ const order = {
 
 
 // 1. validateOrder(order, callback) - 200ms delay
-function validateOrder(order, callback) {
+export function validateOrder(order, callback) {
     setTimeout(() => {
         const errors = [];
         for (const item of order.items) {
@@ -27,7 +27,7 @@ function validateOrder(order, callback) {
 }
 
 // 2. calculateTotal(order, callback) - 300ms delay
-function calculateTotal(order, callback) {
+export function calculateTotal(order, callback) {
     setTimeout(() => {
         let total = 0;
         for (const item of order.items) {
@@ -41,7 +41,7 @@ function calculateTotal(order, callback) {
 }
 
 // 3. checkStock(order, callback) - 400ms delay
-function checkStock(order, callback) {
+export function checkStock(order, callback) {
     setTimeout(() => {
         const shortages = [];
         let inStock = true;
