@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Mouse Tracker</title>
+  </head>
+  <body>
+    <h1>Move your mouse around!</h1>
+    <p id="average-position">
+      Average mouse position will be displayed here after 30 seconds.
+    </p>
+    <script>
+      let X = 0,
+        Y = 0,
+        count = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        X += e.clientX;
+        Y += e.clientY;
+        count++;
+      });
+
+      setTimeout(() => {
+        if (count === 0) {
+          document.getElementById("average-position").textContent =
+            "No mouse movements detected in the last 30 seconds.";
+          return;
+        }
+        document.getElementById("average-position").textContent =
+          "Average mouse position after 30 seconds:" +
+          ` X: ${X / count}, Y: ${Y / count}`;
+      }, 30000);
+    </script>
+  </body>
+</html>

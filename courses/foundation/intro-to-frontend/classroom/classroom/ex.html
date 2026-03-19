@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>textContent vs innerHTML</title>
+  </head>
+  <body>
+    <h2>textContent vs innerHTML</h2>
+
+    <p id="output">Result</p>
+
+    <button id="textBtn">Use textContent</button>
+    <button id="htmlBtn">Use innerHTML</button>
+
+    <script>
+      const output = document.getElementById("output");
+      const textBtn = document.getElementById("textBtn");
+      const htmlBtn = document.getElementById("htmlBtn");
+
+      textBtn.addEventListener("click", function () {
+        output.textContent = "<strong>Hello World</strong>";
+      });
+
+      htmlBtn.addEventListener("click", function () {
+        output.innerHTML = "<strong>Hello World</strong>";
+      });
+    </script>
+  </body>
+</html>

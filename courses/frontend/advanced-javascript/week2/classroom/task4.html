@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Button Counter</title>
+  </head>
+  <body>
+    <p>Move your mouse to see its position.</p>
+    <p id="screen-log"></p>
+
+    <script>
+      document.addEventListener("mousemove", (event) => {
+        const x = event.clientX;
+        const y = event.clientY;
+        document.getElementById("screen-log").textContent = `X: ${x}, Y: ${y}`;
+      });
+    </script>
+  </body>
+</html>

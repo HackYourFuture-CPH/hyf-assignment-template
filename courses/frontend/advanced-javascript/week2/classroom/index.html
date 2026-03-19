@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Button Counter</title>
+  </head>
+  <body>
+    <button id="btn1">First Button</button>
+    <button id="btn2">Second Button</button>
+
+    <p id="output"></p>
+
+    <script>
+      let count = 0;
+
+      function clickHandler() {
+        document.getElementById("output").textContent = count;
+        count++;
+      }
+
+      document.getElementById("btn1").onclick = clickHandler;
+      document.getElementById("btn2").onclick = clickHandler;
+    </script>
+  </body>
+</html>

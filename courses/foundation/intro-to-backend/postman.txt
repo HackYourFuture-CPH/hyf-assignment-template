@@ -1,0 +1,16 @@
+
+Request Name	   Method	URL	Description
+Get 5 random dogs	GET	    https://dog.ceo/api/breeds/image/random/5	
+                            //Fetch 5 random dog images from any breed
+
+List all breeds	    GET	    https://dog.ceo/api/breeds/list/all	
+                            //Returns a list of all dog breeds and sub-breeds
+
+3 Beagle images	    GET	    https://dog.ceo/api/breed/beagle/images/random/3
+	                        //Fetch 3 random images of Beagles
+
+Poodle sub-breeds	GET 	https://dog.ceo/api/breed/poodle/list	
+                            //List all sub-breeds of poodles (miniature, standard, toy)
+
+Toy poodle images	GET	    https://dog.ceo/api/breed/poodle/toy/images
+                         	Get all images of the toy poodle sub-breed

@@ -1,0 +1,43 @@
+1. Where is the recipe data stored?
+   ->The recipe data is stored in a Database.
+     Examples of databases you could use:
+     SQL 
+    The database keeps:
+    Recipe title.
+    Ingredients.
+
+2. How does the frontend communicate with the backend?
+  ->The frontend (UI) communicates with the backend using HTTP requests over an API.
+Examples:
+     GET /recipes → fetch all recipes
+     GET /recipes/:id → fetch a single recipe
+     POST /recipes → add a recipe
+     PUT /recipes/:id → update a recipe
+     DELETE /recipes/:id → delete a recipe
+Communication flow:
+Frontend → Backend → Database → Backend → Frontend
+The backend processes the request, interacts with the database, and returns a response (data or success message).
+
+3. What happens when a user adds a new recipe?
+    -Here is the step-by-step flow:
+    -User Action
+    -The user fills in recipe details (title, ingredients, instructions).
+    -They click "Add Recipe".
+Frontend
+    -The frontend collects the recipe data.
+    -It sends an HTTP POST request to the backend:
+POST /recipes with the recipe JSON data.
+Backend->
+     -The backend receives the POST request.
+    -It validates the recipe data.
+      It creates a new recipe object.
+      It saves the recipe to the database.
+Database
+       The database stores the recipe.
+       It returns the newly created recipe record to the backend.
+Backend → Frontend
+       The backend sends a response:
+       201 Created + recipe data
+Frontend->
+The UI updates to show the new recipe.
+A success message is displayed.

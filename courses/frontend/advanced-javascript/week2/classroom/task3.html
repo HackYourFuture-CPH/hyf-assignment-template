@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>DOM Loaded Example</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <p id="content">
+      This is a simple example of using the DOMContentLoaded event.
+    </p>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {});
+      content.textContent = "The DOM is fully loaded and parsed!";
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+//ADDING THE RECIPE
+
+User → Frontend → Backend → Database
+User clicks "Add Recipe" button
+Frontend opens a form; user fills title, ingredients, instructions
+Frontend does client-side validation
+Frontend sends POST /recipes with recipe JSON
+Backend receives POST /recipes
+Backend validates server-side
+Backend inserts recipe into Database (INSERT)
+Database returns created recipe id / record
+Backend responds 201 Created with created recipe JSON
+Frontend receives success response and shows the new recipe (updates UI)
+
+//VIEWING THE RECIPE
+
+User → Frontend → Backend → Database
+User clicks a recipe from list or enters URL /recipes/123
+Frontend sends GET /recipes/123
+Backend receives GET /recipes/123
+Backend queries Database (SELECT \* FROM recipes WHERE id=123)
+Database returns recipe data
+Backend responds 200 OK with recipe JSON
+Frontend renders recipe details to the user
+
+//UPDATING THE RECIPES
+
+User → Frontend → Backend → Database
+User clicks "Edit" on recipe 123
+Frontend loads existing recipe into an edit form (GET /recipes/123 or from local state)
+User updates fields and clicks "Save"
+Frontend does client-side validation
+Frontend sends PUT /recipes/123 with updated recipe JSON
+Backend receives PUT /recipes/123
+Backend validates server-side
+Backend updates Database (UPDATE recipes SET ... WHERE id=123)
+Database returns success / updated record
+Backend responds 200 OK with updated recipe JSON
+Frontend receives response and updates the UI

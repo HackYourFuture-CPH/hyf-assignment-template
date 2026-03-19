@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dog Fan Website</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+        text-align: center;
+        background-color: #f5f5f5;
+      }
+      img {
+        max-width: 300px;
+        display: block;
+        margin: 10px auto;
+      }
+      select,
+      button {
+        padding: 5px 10px;
+        margin: 5px;
+      }
+      #breed-name {
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>🐶 Dog Fan Website 🐶</h1>
+
+    <h2>Random Dog Image (updates every 2 sec)</h2>
+    <img id="random-dog" src="" alt="Random Dog" />
+    <div id="random-breed-name"></div>
+
+    <h2>Choose a Breed</h2>
+    <select id="breed-select">
+      <option value="">-- Loading breeds... --</option>
+    </select>
+    <button id="show-breed-dog">Show Dog</button>
+    <img id="breed-dog" src="" alt="Breed Dog" />
+    <div id="breed-name"></div>
+
+    <script>
+      // Elements
+      const randomDogImg = document.getElementById("random-dog");
+      const randomBreedName = document.getElementById("random-breed-name");
+      const breedSelect = document.getElementById("breed-select");
+      const breedDogImg = document.getElementById("breed-dog");
+      const breedNameDiv = document.getElementById("breed-name");
+      const showBreedBtn = document.getElementById("show-breed-dog");
+
+      // 1️⃣ Fetch random dog image every 2 seconds
+      function fetchRandomDog() {
+        fetch("https://dog.ceo/api/breeds/image/random")
+          .then((res) => res.json())
+          .then((data) => {
+            randomDogImg.src = data.message;
+            // Extract breed from URL
+            const breed = data.message.split("/")[4];
+            randomBreedName.textContent = "Breed: " + breed;
+          });
+      }
+      fetchRandomDog(); // Initial fetch
+      setInterval(fetchRandomDog, 2000); // Every 2 sec
+
+      // 2️⃣ Fetch all breeds and populate select
+      fetch("https://dog.ceo/api/breeds/list/all")
+        .then((res) => res.json())
+        .then((data) => {
+          const breeds = Object.keys(data.message);
+          breedSelect.innerHTML =
+            "<option value=''>-- Select Breed --</option>";
+          breeds.forEach((breed) => {
+            const option = document.createElement("option");
+            option.value = breed;
+            option.textContent = breed;
+            breedSelect.appendChild(option);
+          });
+        });
+
+      // 3️⃣ Show random image of selected breed
+      showBreedBtn.addEventListener("click", () => {
+        const breed = breedSelect.value;
+        if (!breed) return alert("Please select a breed!");
+        fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
+          .then((res) => res.json())
+          .then((data) => {
+            breedDogImg.src = data.message;
+            breedNameDiv.textContent = "Breed: " + breed;
+          });
+      });
+    </script>
+  </body>
+</html>
