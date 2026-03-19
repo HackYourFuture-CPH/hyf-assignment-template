@@ -18,3 +18,16 @@ ul {
   margin: 0;
   padding: 0;
 }
+.rating-low {
+  border-left: 4px solid red;
+}
+
+.rating-high {
+  border-left: 4px solid green;
+}
+
+.product-card {
+  background: white;
+  padding: 10px;
+  margin: 10px 0;
+}

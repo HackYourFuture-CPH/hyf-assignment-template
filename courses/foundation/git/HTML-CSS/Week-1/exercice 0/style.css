@@ -1,0 +1,27 @@
+
+body{
+    background-color: bisque;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 1rem;
+}
+
+h1{
+    text-align: center;
+    color: brown;
+}
+
+.centerText{
+    text-align: center;
+}
+
+img{
+   position: relative;
+   left: 40%;
+   border-radius: 10px;
+
+}
+
+h3{
+    font-weight: 300;
+   color: red;
+}
