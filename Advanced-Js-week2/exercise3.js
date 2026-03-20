@@ -59,17 +59,11 @@ function processOrder(order) {
       console.log("Total:", pricing.total, "DKK");
 
       // checkStock
-      checkStock(order, (err, stock) => {
-        if (err) {
-          console.log("Stock check error:", err);
+      checkStock(order, (stock) => {
+        if (!stock.inStock) {
+          console.log("Stock check failed:", stock.shortages);
           return;
         }
-
-        if (!stock.available) {
-          console.log("Stock check failed:", stock.errors);
-          return;
-        }
-
         console.log("Stock check passed");
       });
     });
