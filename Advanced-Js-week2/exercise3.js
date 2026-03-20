@@ -10,10 +10,14 @@ const order = {
 };
 function validateOrder(order, callback) {
   setTimeout(() => {
-    const validItems = order.items.every((item) =>
-      teas.some((tea) => tea.id === item.teaId),
+    const invalidItems = order.items.filter(
+      (item) => !teas.find((tea) => tea.id === item.teaId),
     );
-    callback({ valid: validItems, errors: [] });
+    const errors = invalidItems.map((item) => `Invalid tea ID:${item.teaId}`);
+    callback({
+      valid: invalidItems.length === 0,
+      errors,
+    });
   }, 200);
 }
 function calculateTotal(order, callback) {
