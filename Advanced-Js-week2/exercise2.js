@@ -11,12 +11,13 @@ const order = {
 //validating the order by checking if all tea IDs are valid and simulate a delay of 200ms
 function validateOrder(order, callback) {
   setTimeout(() => {
-    const validItems = order.items.every((item) =>
-      teas.find((tea) => tea.id === item.teaId),
+    const invalidItems = order.items.filter(
+      (item) => !teas.find((tea) => tea.id === item.teaId),
     );
+    const errors = invalidItems.map((item) => `Invalid tea ID:${item.teaId}`);
     callback({
-      valid: validItems,
-      errors: validItems ? [] : ["Invalid tea IDs"],
+      valid: invalidItems.length === 0,
+      errors,
     });
   }, 200);
 }
