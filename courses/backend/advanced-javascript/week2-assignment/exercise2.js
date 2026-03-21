@@ -10,7 +10,7 @@ const order = {
   ],
 };
 //  Validate
-function validateOrder(order, callback) {
+export function validateOrder(order, callback) {
   setTimeout(() => {
     const errors = order.items
       .filter((item) => !teas.find((t) => t.id === item.teaId))
@@ -21,7 +21,7 @@ function validateOrder(order, callback) {
 }
 validateOrder(order, console.log);
 // Calculate total
-function calculateTotal(order, callback) {
+export function calculateTotal(order, callback) {
   setTimeout(() => {
     let total = 0;
     for (const item of order.items) {
@@ -35,7 +35,7 @@ function calculateTotal(order, callback) {
 calculateTotal(order, console.log);
 
 // Check stock
-function checkStock(order, callback) {
+export function checkStock(order, callback) {
   setTimeout(() => {
     const shortages = [];
 
