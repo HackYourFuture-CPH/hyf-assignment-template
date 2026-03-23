@@ -15,6 +15,9 @@ const restartBtn = document.getElementById("restartBtn");
 
  
 button.addEventListener("click", function () {
+
+    if (gameActive) return;
+    
     const input = document.getElementById("timeInput");
     const gameTime = Number(input.value);
 

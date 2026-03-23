@@ -10,7 +10,7 @@
 
 function logAfterDelay(delay, stringToLog){
     setTimeout(()=>{
-        console.log("stringToLog")
+        console.log(stringToLog);
 
         }, delay * 1000)
    
@@ -18,9 +18,7 @@ function logAfterDelay(delay, stringToLog){
         
 const button =document.getElementById("clickBtn");
 button.addEventListener("click", function() {
-            setTimeout(() => {
-          console.log("Called after 5 seconds")  
-        }, 5000);
+            logAfterDelay(5, "Called after 5 seconds");
         })
            
     }
@@ -115,6 +113,17 @@ function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
         logBadJoke();
     }
 }
+
+function logFunnyJoke() {
+    console.log("Funny joke");
+}
+
+function logBadJoke() {
+    console.log("Bad joke");
+}
+
+jokeCreator(true, logFunnyJoke, logBadJoke);
+jokeCreator(false, logFunnyJoke, logBadJoke);
 
 
 
