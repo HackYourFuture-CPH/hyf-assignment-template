@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self';" />
+    <meta
+      name="description"
+      content="Personal portfolio of Anastasia S., a developer focused on clean, accessible web experiences."
+    />
+    <title>About Me</title>
+    <link rel="icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="page">
+    <main class="main">
+      <section class="about-section">
+        <h1 class="about-heading">About Me</h1>
+        <img
+          class="about-photo"
+          src="./images/personal-photo.jpg"
+          alt="Photo of me"
+        />
+        <p class="about-intro">
+          I'm a developer focused on building clean, accessible web experiences.
+          I enjoy learning new technologies and improving how users interact
+          with apps.
+        </p>
+
+        <h2 class="about-subheading subheading">Interests &amp; Skills</h2>
+        <ul class="about-list">
+          <li class="about-item">💻 JavaScript and modern front-end tooling</li>
+          <li class="about-item">🎨 Responsive design and accessibility</li>
+          <li class="about-item">🤖 AI-assisted development and automation</li>
+        </ul>
+
+        <!-- fun button to change background color -->
+        <button class="color-btn styled-button" type="button">
+          Change Background
+        </button>
+      </section>
+      <section class="projects-section">
+        <h2 class="projects-heading subheading">Projects</h2>
+        <ul class="projects-list">
+          <li class="project-item">
+            <div class="project-container">
+              <img
+                class="project-img"
+                src="./images/memory-game.png"
+                alt="Memory Game project"
+              />
+              <h3 class="project-heading">Memory Game</h3>
+              <p class="project-description">
+                A classic Memory Card Game built with JavaScript, featuring a
+                backend and database for dynamic card data, responsive design,
+                and multiple difficulty levels.
+              </p>
+              <button class="styled-button">
+                <a
+                  href="https://github.com/nastiasolo/memory-game-fullstack"
+                  target="_blank"
+                >
+                  On GitHub
+                </a>
+              </button>
+            </div>
+          </li>
+          <li class="project-item">
+            <div class="project-container">
+              <img
+                class="project-img"
+                src="./images/expense-tracker.png"
+                alt="Expense Tracker project"
+              />
+              <h3 class="project-heading">Expense Tracker App</h3>
+              <p class="project-description">
+                A simple Expense Tracker that lets you log daily spendings,
+                categorize expenses, view monthly total, and track your budget
+                in real time. Built with HTML, CSS, and JavaScript.
+              </p>
+              <button class="styled-button">
+                <a
+                  href="https://github.com/nastiasolo/expense-tracker"
+                  target="_blank"
+                  >On GitHub</a
+                >
+              </button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
