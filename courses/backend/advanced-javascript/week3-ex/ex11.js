@@ -8,7 +8,7 @@ async function getTeaWithStock(id) {
         const tea = await response.json();
         console.log("Tea:", tea.name);
 
-        const  = await fetch(`${API_BASE}/inventory`);
+        const inventoryResponse = await fetch(`${API_BASE}/inventory`);
         const inventory = await inventoryResponse.json();
 
         const teaStock = inventory.find(item => item.teaId === id);
