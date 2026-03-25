@@ -76,4 +76,16 @@ input::placeholder {
         width: 100%;              
         font-size: 20px;          
     }
+
+        input {
+        padding: 6px 8px;    
+        font-size: 14px;       
+    }
+
+    input::placeholder {
+        font-size: 8px;       
+        letter-spacing: 0.2px; 
+    }
+
+
 }
