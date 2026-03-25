@@ -1,4 +1,5 @@
-// Helper: sign up (only needed once)
+// sign up and order API example
+const API_BASE = "http://localhost:3000";
 async function signup(email, password) {
     const response = await fetch(`${API_BASE}/auth/signup`, {
         method: "POST",
