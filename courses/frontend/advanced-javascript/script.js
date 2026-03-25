@@ -1,12 +1,20 @@
-let rates = {}; 
 
-async function getCurrencies() {
-    const res = await fetch("https://open.er-api.com/v6/latest/EUR");
-    const data = await res.json();
 
-    rates = data.rates; 
+async function getCurrencies() { 
+      try {
+            const res = await fetch("https://open.er-api.com/v6/latest/EUR");
+            const data = await res.json();
+            return data.rates;
 
-    const currencyList = Object.keys(rates);
+        } catch(err) {
+    throw "Fetching the currencies went wrong";
+}
+   }
+
+   async function setUp() {
+       const rates = await getCurrencies();
+
+        const currencyList = Object.keys(rates);
 
     const fromSelect = document.getElementById("from");
     const toSelect = document.getElementById("to");
@@ -28,18 +36,25 @@ async function getCurrencies() {
     
     fromSelect.value = "EUR";
     toSelect.value = "DKK";
+    
+    convert(rates);
 
+document.getElementById("amount").addEventListener("input", () => convert(rates));
+document.getElementById("from").addEventListener("change", () => convert(rates));
+document.getElementById("to").addEventListener("change", () => convert(rates));
+   
 }
 
 
-function convert() {
+
+function convert(rates) {
    
     const amount = Number(document.getElementById("amount").value);
     const from = document.getElementById("from").value;
     const to = document.getElementById("to").value;
 
     if (!amount) {
-        document.getElementById("result").textContent = "Enter an amount";
+        document.getElementById("result").textContent = "Converted amount will appear here";
         return;
     }
 
@@ -49,11 +64,8 @@ function convert() {
         `${amount} ${from} = ${result.toFixed(2)} ${to}`;
 }
 
-convert();
+setUp();
 
 
-document.getElementById("amount").addEventListener("input", convert);
-document.getElementById("from").addEventListener("change", convert);
-document.getElementById("to").addEventListener("change", convert);
 
-getCurrencies();
+
