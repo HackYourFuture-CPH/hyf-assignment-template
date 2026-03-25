@@ -29,9 +29,31 @@ async function getCurrencies() {
     fromSelect.value = "EUR";
     toSelect.value = "DKK";
 
-
-    
 }
 
+
+function convert() {
+   
+    const amount = Number(document.getElementById("amount").value);
+    const from = document.getElementById("from").value;
+    const to = document.getElementById("to").value;
+
+    if (!amount) {
+        document.getElementById("result").textContent = "Enter an amount";
+        return;
+    }
+
+    const result = amount * (rates[to] / rates[from]);
+
+    document.getElementById("result").textContent =
+        `${amount} ${from} = ${result.toFixed(2)} ${to}`;
+}
+
+convert();
+
+
+document.getElementById("amount").addEventListener("input", convert);
+document.getElementById("from").addEventListener("change", convert);
+document.getElementById("to").addEventListener("change", convert);
 
 getCurrencies();
