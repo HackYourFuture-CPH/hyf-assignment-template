@@ -45,7 +45,7 @@ document.getElementById("to").addEventListener("change", () => convert(rates));
 
               }
 
-          }
+           }
 
 
 
