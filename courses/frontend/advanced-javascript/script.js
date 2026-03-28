@@ -12,28 +12,24 @@ async function getCurrencies() {
    }
 
    async function setUp() {
-       const rates = await getCurrencies();
+        try { 
+              const rates = await getCurrencies();
+              const currencyList = Object.keys(rates);
 
-        const currencyList = Object.keys(rates);
+              const fromSelect = document.getElementById("from");
+              const toSelect = document.getElementById("to");
 
-    const fromSelect = document.getElementById("from");
-    const toSelect = document.getElementById("to");
-
-    
-    currencyList.forEach(code => {
+     currencyList.forEach(code => {
         const option1 = document.createElement("option");
         option1.value = code;
         option1.textContent = code;
 
         const option2 = option1.cloneNode(true);     // copy option1 for the second dropdown
 
-
-
         fromSelect.appendChild(option1);
         toSelect.appendChild(option2);
     });
 
-    
     fromSelect.value = "EUR";
     toSelect.value = "DKK";
     
@@ -43,7 +39,13 @@ document.getElementById("amount").addEventListener("input", () => convert(rates)
 document.getElementById("from").addEventListener("change", () => convert(rates));
 document.getElementById("to").addEventListener("change", () => convert(rates));
    
-}
+ } catch (err) {
+             document.getElementById("result").textContent =
+            "Could not load currency data. Please try again later.";
+
+              }
+
+          }
 
 
 
