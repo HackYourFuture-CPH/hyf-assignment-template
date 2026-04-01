@@ -1,4 +1,7 @@
 
+
+
+
 class validationError extends Error {
     toUserMessage() {
         return "Please enter a valid URL.";
@@ -78,7 +81,7 @@ class App {
     throw new ApiError("API did not return a screenshot URL");
     }
 
-    // Show preview
+    
     document.getElementById("preview").src = screenshotUrl;
 
     
@@ -100,12 +103,57 @@ class App {
     }
 
 
+}
+async saveScreenshot() {
+    console.log("saveScreenshot() running...");
+    const endpoint = "https://crudcrud.com/api/c5037e27298142a59fb2b8bc7d7200c5/screenshot";
+    console.log("POSTing to:", endpoint);
+    try {
+        if (!this.previewImageUrl) {
+            throw new validationError("Generate a screenshot before saving");
+        }
 
+        const url = document.getElementById("url-input").value.trim();
+          if (!url) {
+            throw new validationError("Please enter a website URL.");
+        }
+
+
+       
+        const screenshotData = {
+            url: url,
+            imageUrl: this.previewImageUrl
+        };
+
+        console.log("Sending data:", screenshotData);
+
+        const response = await fetch(endpoint,
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(screenshotData)
+            }
+        );
+
+        if (!response.ok) {
+            throw new ApiError("Failed to save screenshot");
+        }
+
+        alert("Screenshot saved!");
+
+    } catch (err) {
+        if (err instanceof validationError) {
+            alert(err.toUserMessage());
+        } else if (err instanceof ApiError) {
+            alert(err.toUserMessage());
+        } else {
+            alert("Unexpected error while saving screenshot.");
+        }
     }
-
-       async saveScreenshot() {
-           // TODO: implement save logic
-         }
+}
+      
       async loadScreenshots() {
            // TODO: implement load logic
 
