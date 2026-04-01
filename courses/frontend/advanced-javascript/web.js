@@ -21,6 +21,18 @@ class Screenshot {
         this.url = url;
         this.imageUrl = imageUrl;
     }
+    render() {
+        const card = document.createElement("div");
+        card.classList.add("screenshot-card");
+
+        card.innerHTML = `
+            <img src="${this.imageUrl}" alt="Screenshot">
+            <p>${this.url}</p>
+            <button class="delete-btn" data-id="${this.id}">Delete</button>`;
+
+        return card;
+    }
+
 
   
 }
@@ -170,18 +182,11 @@ async loadScreenshots() {
 
         container.innerHTML = "";
 
-        data.forEach(item => {
-            const card = document.createElement("div");
-            card.classList.add("screenshot-card");
-
-            card.innerHTML = `
-                <img src="${item.imageUrl}" alt="Screenshot">
-                <p>${item.url}</p>
-                <button class="delete-btn" data-id="${item._id}">Delete</button>
-            `;
-
-            container.appendChild(card);
-        });
+       data.forEach(item => {
+    const screenshot = new Screenshot(item._id, item.url, item.imageUrl);
+    const card = screenshot.render();
+    container.appendChild(card);
+});
 
         this.attachDeleteListeners();
 
