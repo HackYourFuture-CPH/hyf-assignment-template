@@ -1,0 +1,28 @@
+caption{
+  background-color: pink;
+}
+
+table, th, td{
+  border: 1px solid pink;
+  border-collapse: collapse;
+  th, td{
+    padding: 10px;
+  }
+  
+}
+input[type=text] {
+  width: 50%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+textarea {
+  width: 50%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
