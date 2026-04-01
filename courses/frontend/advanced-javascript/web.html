@@ -7,13 +7,17 @@
     <link rel="stylesheet" href="web.css" />
   </head>
   <body>
-    <input id="url-input" placeholder="Enter website URL" />
-    <button id="generate-btn">Generate Screenshot</button>
+    <div class="controls">
+      <input id="url-input" placeholder="Enter website URL" />
+      <button id="generate-btn">Generate Screenshot</button>
+    </div>
 
-    <img id="preview" />
+    <div class="preview-section">
+      <img id="preview" />
+      <button id="save-btn">Save Screenshot</button>
+    </div>
 
-    <button id="save-btn">Save Screenshot</button>
-    <div id="saved-screenshots"></div>
+    <div id="savedScreenshots"></div>
 
     <script src="web.js"></script>
   </body>
