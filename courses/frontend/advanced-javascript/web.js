@@ -22,13 +22,7 @@ class Screenshot {
         this.imageUrl = imageUrl;
     }
 
-    render(){
-        //TODO: implement DOM rendering
-    }
-
-    async delete() {
-        //TODO: implement delete logic
-    }
+  
 }
 
 
@@ -153,11 +147,88 @@ async saveScreenshot() {
         }
     }
 }
-      
-      async loadScreenshots() {
-           // TODO: implement load logic
+async loadScreenshots() {
+    console.log("loadScreenshots() running...");
 
-      }
+    const endpoint = "https://crudcrud.com/api/c5037e27298142a59fb2b8bc7d7200c5/screenshot";
+
+    try {
+        const response = await fetch(endpoint);
+
+        if (!response.ok) {
+            throw new ApiError("Failed to load saved screenshots");
+        }
+
+        const data = await response.json();
+        console.log("Loaded screenshots:", data);
+
+        const container = document.getElementById("savedScreenshots");
+        if (!container) {
+            console.error("Missing #savedScreenshots container in HTML");
+            return;
+        }
+
+        container.innerHTML = "";
+
+        data.forEach(item => {
+            const card = document.createElement("div");
+            card.classList.add("screenshot-card");
+
+            card.innerHTML = `
+                <img src="${item.imageUrl}" alt="Screenshot">
+                <p>${item.url}</p>
+                <button class="delete-btn" data-id="${item._id}">Delete</button>
+            `;
+
+            container.appendChild(card);
+        });
+
+        this.attachDeleteListeners();
+
+    } catch (err) {
+        if (err instanceof ApiError) {
+            alert(err.toUserMessage());
+        } else {
+            console.error(err);
+            alert("Unexpected error while loading saved screenshots.");
+        }
+    }
+}
+  attachDeleteListeners() {
+    const buttons = document.querySelectorAll(".delete-btn");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const id = e.target.dataset.id;
+            this.deleteScreenshot(id);
+        });
+    });
+}
+
+async deleteScreenshot(id) {
+    console.log("Deleting screenshot:", id);
+
+    const endpoint = `https://crudcrud.com/api/c5037e27298142a59fb2b8bc7d7200c5/screenshot/${id}`;
+
+    try {
+        const response = await fetch(endpoint, { method: "DELETE" });
+
+        if (!response.ok) {
+            throw new ApiError("Failed to delete screenshot");
+        }
+
+        this.loadScreenshots(); // refresh UI
+
+    } catch (err) {
+        if (err instanceof ApiError) {
+            alert(err.toUserMessage());
+        } else {
+            console.error(err);
+            alert("Unexpected error while deleting screenshot.");
+        }
+    }
+}
+
 
 }
 
