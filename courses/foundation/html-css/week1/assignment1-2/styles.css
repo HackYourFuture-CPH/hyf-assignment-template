@@ -1,0 +1,88 @@
+:root {
+  --border-color: #ccc;
+  --primary-color: #333;
+  --accent-color: #4a90e2;
+  --bg-color: #f9f9f9;
+  --footer-color: rgb(169, 165, 165);
+}
+
+h1 {
+  background-color: var(--footer-color);
+  padding: 20px;
+}
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  margin: 20px;
+}
+
+h2,
+p {
+  color: var(--primary-color);
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color);
+  margin-bottom: 2em;
+}
+
+th,
+td {
+  text-align: center;
+  border: 1px solid var(--border-color);
+  padding: 8px;
+}
+
+th {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+form {
+  width: 50%;
+  background-color: white;
+  padding: 1em;
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid var(--border-color);
+  border-radius: 3px;
+}
+
+.submit {
+  color: var(--bg-color);
+  background: var(--accent-color);
+  padding: 10px 40px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.submit:hover {
+  background: var(--accent-hover, #ff8c00);
+  box-shadow: 0 0 15px var(--accent-color);
+  transform: translateY(-2px);
+}
+
+.footer {
+  background-color: var(--footer-color);
+  color: var(--bg-color);
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+}
