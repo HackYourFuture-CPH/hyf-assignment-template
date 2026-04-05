@@ -1,4 +1,4 @@
-class validationError extends Error {
+class ValidationError extends Error {
   toUserMessage() {
     return "Please enter a valid URL.";
   }
@@ -32,13 +32,20 @@ class Screenshot {
 class App {
   constructor() {
     this.previewImageUrl = null;
+
+    const container = document.getElementById("savedScreenshots");
+    container.addEventListener("click", (e) => {
+      if (e.target.matches(".delete-btn")) {
+        this.deleteScreenshot(e.target.dataset.id);
+      }
+    });
   }
   async generateScreenshot() {
     try {
       let url = document.getElementById("url-input").value.trim();
 
       if (!url) {
-        throw new validationError("URL is required");
+        throw new ValidationError("URL is required");
       }
       if (!url.startsWith("http://") && !url.startsWith("https://")) {
         url = "https://" + url;
@@ -49,8 +56,8 @@ class App {
       const options = {
         method: "GET",
         headers: {
-          "x-rapidapi-key":
-            "67190f8610msha777cc237f812bep1cf694jsn955fa5181d17",
+          "x-rapidapi-key": SECRET_API_KEY,
+
           "x-rapidapi-host": "website-screenshot6.p.rapidapi.com",
           "Content-Type": "application/json",
         },
@@ -62,10 +69,10 @@ class App {
         throw new ApiError("Screenshot API failed");
       }
 
-      const text = await response.text();
+      const text = await response.json();
       console.log("Raw API text:", text);
 
-      const data = JSON.parse(text);
+      const data = await response.json();
       console.log("Parsed API response:", data);
 
       const screenshotUrl = data.screenshotUrl;
@@ -82,7 +89,7 @@ class App {
 
       this.previewImageUrl = screenshotUrl;
     } catch (err) {
-      if (err instanceof validationError) {
+      if (err instanceof ValidationError) {
         alert(err.toUserMessage());
       } else if (err instanceof ApiError) {
         alert(err.toUserMessage());
@@ -93,17 +100,16 @@ class App {
   }
   async saveScreenshot() {
     console.log("saveScreenshot() running...");
-    const endpoint =
-      "https://crudcrud.com/api/c5037e27298142a59fb2b8bc7d7200c5/screenshot";
+    const endpoint = CRUDCRUD_ID;
     console.log("POSTing to:", endpoint);
     try {
       if (!this.previewImageUrl) {
-        throw new validationError("Generate a screenshot before saving");
+        throw new ValidationError("Generate a screenshot before saving");
       }
 
       const url = document.getElementById("url-input").value.trim();
       if (!url) {
-        throw new validationError("Please enter a website URL.");
+        throw new ValidationError("Please enter a website URL.");
       }
 
       const screenshotData = {
@@ -127,7 +133,7 @@ class App {
 
       alert("Screenshot saved!");
     } catch (err) {
-      if (err instanceof validationError) {
+      if (err instanceof ValidationError) {
         alert(err.toUserMessage());
       } else if (err instanceof ApiError) {
         alert(err.toUserMessage());
@@ -140,8 +146,7 @@ class App {
   async loadScreenshots() {
     console.log("loadScreenshots() running...");
 
-    const endpoint =
-      "https://crudcrud.com/api/c5037e27298142a59fb2b8bc7d7200c5/screenshot";
+    const endpoint = CRUDCRUD_ID;
 
     try {
       const response = await fetch(endpoint);
@@ -166,8 +171,6 @@ class App {
         const card = screenshot.render();
         container.appendChild(card);
       });
-
-      this.attachDeleteListeners();
     } catch (err) {
       if (err instanceof ApiError) {
         alert(err.toUserMessage());
@@ -177,21 +180,11 @@ class App {
       }
     }
   }
-  attachDeleteListeners() {
-    const buttons = document.querySelectorAll(".delete-btn");
-
-    buttons.forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        const id = e.target.dataset.id;
-        this.deleteScreenshot(id);
-      });
-    });
-  }
 
   async deleteScreenshot(id) {
     console.log("Deleting screenshot:", id);
 
-    const endpoint = `https://crudcrud.com/api/c5037e27298142a59fb2b8bc7d7200c5/screenshot/${id}`;
+    const endpoint = `CRUDCRUD_ID/${id}`;
 
     try {
       const response = await fetch(endpoint, { method: "DELETE" });
@@ -200,7 +193,7 @@ class App {
         throw new ApiError("Failed to delete screenshot");
       }
 
-      this.loadScreenshots(); // refresh UI
+      await this.loadScreenshots(); // refresh UI
     } catch (err) {
       if (err instanceof ApiError) {
         alert(err.toUserMessage());
