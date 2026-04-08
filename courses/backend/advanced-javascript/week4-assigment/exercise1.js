@@ -24,6 +24,10 @@ export class Tea {
             obj.inStock
         );
     }
+
+    priceFor(grams) {
+        return this.pricePerGram * grams;
+    }
 }
 export class Inventory {
     constructor() {
