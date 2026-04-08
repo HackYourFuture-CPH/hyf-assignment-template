@@ -1,5 +1,5 @@
 import { teas } from "../teas.js";
-class Tea {
+export class Tea {
     constructor(name, type, origin, pricePerGram, organic) {
         // Validate:
         // - name must be a non-empty string

@@ -1,4 +1,6 @@
 import { teas } from "../teas.js";
+import { Tea } from "./exercise1.js";
+
 class OrderItem {
 
     constructor(tea, grams) {
@@ -23,7 +25,7 @@ class OrderItem {
 class Order {
     constructor() {
         this.items = [];
-        this.status = "pending"; // items array, status starts as "pending"
+        this.status = "pending";
     }
 
     addItem(orderItem) {
@@ -34,8 +36,8 @@ class Order {
         }
     }
 
+    // Sum all line totals using .reduce()
     getTotal() {
-        // Sum all line totals using .reduce()
         return this.items.reduce((total, item) => total + item.lineTotal(), 0);
     }
 
