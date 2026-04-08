@@ -27,10 +27,23 @@ class Inventory {
 
     restock(teaName, grams) {
         // Increase stock
+        for (const [id, item] of this.items.entries()) {
+            if (item.tea.name === teaName) {
+                item.stockCount += grams;
+                this.items.set(id, item);
+                return;
+            }
+        }
+        throw new Error(`Tea not found: ${teaName}`);
     }
 
     getStock(teaName) {
-        // Return current stock count for a tea
+        for (const item of this.items.values()) {
+            if (item.tea.name === teaName) {
+                return item.stockCount;
+            }
+        }
+        throw new Error(`Tea not found: ${teaName}`);
     }
 
     getLowStock(threshold) {
