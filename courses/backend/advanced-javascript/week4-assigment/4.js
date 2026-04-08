@@ -8,8 +8,8 @@ class Customer {
         this.orders = [];
     }
 
+    // Confirm the order and add to this.orders
     placeOrder(order) {
-        // Confirm the order and add to this.orders
         if (typeof order.confirm === 'function') {
             order.confirm();
         } else {
