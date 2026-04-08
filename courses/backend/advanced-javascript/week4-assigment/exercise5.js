@@ -1,0 +1,58 @@
+import { teas } from "./teaData.js";
+import { Tea } from "./exercise1.js";
+import { OrderItem, Order } from "./exercise2.js";
+import { Customer } from "./exercise4.js";
+class TeaShop {
+    constructor(teaData) {
+        // Create a TeaCatalog from the data (array of Tea instances)
+        this.catalog = teaData.map(Tea.fromObject);
+        // Create an Inventory from the data
+        this.inventory = new (await import("./exercise1.js")).Inventory();
+        this.catalog.forEach((tea, i) => {
+            this.inventory.add(tea, teaData[i].stockCount);
+        });
+        // Store customers as an empty array
+        this.customers = [];
+    }
+
+    registerCustomer(name, email) {
+        const customer = new Customer(name, email);
+        this.customers.push(customer);
+        return customer;
+    }
+
+    createOrder(customer, items) {
+        // items is array of { teaName, grams }
+        // 1. Find each tea in the catalog
+        // 2. Check stock in inventory
+        // 3. Create OrderItems and an Order
+        // 4. Sell from inventory
+        // 5. Place order on the customer
+        // 6. Return the order
+    }
+
+    getReport() {
+        // Return a shop report:
+        // - Total customers
+        // - Total orders
+        // - Total revenue
+        // - Low stock items
+    }
+}
+
+// Test:
+const shop = new TeaShop(teas);
+
+const alex = shop.registerCustomer("Alex", "alex@example.com");
+const maria = shop.registerCustomer("Maria", "maria@example.com");
+
+const order1 = shop.createOrder(alex, [
+    { teaName: "Sencha", grams: 100 },
+    { teaName: "Matcha", grams: 50 },
+]);
+console.log(order1.getSummary());
+
+const order2 = shop.createOrder(maria, [{ teaName: "Earl Grey", grams: 200 }]);
+console.log(order2.getSummary());
+
+console.log(shop.getReport());
