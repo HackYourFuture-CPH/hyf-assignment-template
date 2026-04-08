@@ -1,16 +1,22 @@
 import { teas } from "../teas.js";
 class OrderItem {
+
     constructor(tea, grams) {
-        // tea is a Tea instance, grams is a positive number
-        // Validate: grams must be positive
+        if (typeof grams !== "number" || grams <= 0) {
+            throw new Error("Grams must be a positive number");
+        }
+        this.tea = tea;
+        this.grams = grams;
     }
 
     lineTotal() {
         // Use tea.priceFor()
+        return this.tea.priceFor(this.grams);
     }
 
     describe() {
         // "200g Sencha - 24.00 DKK"
+        return `${this.grams}g ${this.tea.name} - ${this.lineTotal().toFixed(2)} DKK`;
     }
 }
 
