@@ -1,16 +1,28 @@
 import { teas } from "./teas.js";
 class Inventory {
     constructor() {
-
-        // Store a Map or object of tea ID → { tea, stockCount }
+        // Store a Map of tea ID → { tea, stockCount }
+        this.items = new Map();
     }
 
     add(tea, stockCount) {
         // Add a tea to inventory
+        this.items.set(tea.id, { tea, stockCount });
     }
 
     sell(teaName, grams) {
-        // Reduce stock. Throw if not enough stock.
+        // Find the tea by name
+        for (const [id, item] of this.items.entries()) {
+            if (item.tea.name === teaName) {
+                if (item.stockCount < grams) {
+                    throw new Error(`Not enough stock for ${teaName}`);
+                }
+                item.stockCount -= grams;
+                this.items.set(id, item);
+                return;
+            }
+        }
+        throw new Error(`Tea not found: ${teaName}`);
     }
 
     restock(teaName, grams) {
