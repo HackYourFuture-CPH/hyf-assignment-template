@@ -1,4 +1,4 @@
-import { teas } from "..week4-assigment/teas.js";
+import { teas } from "./teas.js";
 import { Tea, Inventory } from "./exercise1.js";
 import { OrderItem, Order } from "./exercise2.js";
 import { Customer } from "./exercise4.js";
