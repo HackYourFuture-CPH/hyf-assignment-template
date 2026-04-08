@@ -22,23 +22,31 @@ class OrderItem {
 
 class Order {
     constructor() {
-        // items array, status starts as "pending"
+        this.items = [];
+        this.status = "pending"; // items array, status starts as "pending"
     }
 
     addItem(orderItem) {
-        // Add item (only when pending)
+        if (this.status === "pending") {
+            this.items.push(orderItem);
+        } else {
+            throw new Error("Cannot add item to a completed order");
+        }
     }
 
     getTotal() {
         // Sum all line totals using .reduce()
+        return this.items.reduce((total, item) => total + item.lineTotal(), 0);
     }
 
     getSummary() {
-        // Return formatted multi-line string:
-        // "Order (pending) - 2 items"
-        // "  200g Sencha - 24.00 DKK"
-        // "  50g Matcha - 22.50 DKK"
-        // "Total: 46.50 DKK"
+        const lines = [];
+        lines.push(`Order (${this.status}) - ${this.items.length} item${this.items.length !== 1 ? 's' : ''}`);
+        this.items.forEach(item => {
+            lines.push(`  ${item.describe()}`);
+        });
+        lines.push(`Total: ${this.getTotal().toFixed(2)} DKK`);
+        return lines.join("\n");
     }
 }
 
