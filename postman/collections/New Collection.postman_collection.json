@@ -1,0 +1,128 @@
+{
+  "info": {
+    "_postman_id": "c5e4b654-d028-47e0-a84e-02d5b5580d6c",
+    "name": "Dog API Practice",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "5 Random Dog Images",
+      "id": "ac0b07dd-7ff0-47b4-8910-1546a9cd441e",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dog.ceo/api/breeds/image/random/5\n",
+          "protocol": "https",
+          "host": [
+            "dog",
+            "ceo"
+          ],
+          "path": [
+            "api",
+            "breeds",
+            "image",
+            "random",
+            "5\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "All Dog Breeds",
+      "id": "56119180-7390-4cc9-909d-987f87ba2e6e",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dog.ceo/api/breeds/list/all\n",
+          "protocol": "https",
+          "host": [
+            "dog",
+            "ceo"
+          ],
+          "path": [
+            "api",
+            "breeds",
+            "list",
+            "all\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "3 Beagle Images",
+      "id": "3243b9fc-c97c-43f7-8ba9-c67f25f36b35",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dog.ceo/api/breed/beagle/images/random/3\n",
+          "protocol": "https",
+          "host": [
+            "dog",
+            "ceo"
+          ],
+          "path": [
+            "api",
+            "breed",
+            "beagle",
+            "images",
+            "random",
+            "3\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Poodle Sub-breeds",
+      "id": "35f3b720-c54c-4fdb-b058-10e19f716ffc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dog.ceo/api/breed/poodle/list\n",
+          "protocol": "https",
+          "host": [
+            "dog",
+            "ceo"
+          ],
+          "path": [
+            "api",
+            "breed",
+            "poodle",
+            "list\n"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Toy Poodle Images",
+      "id": "69c33256-70b7-4777-8ddf-abeb572ad9e0",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://dog.ceo/api/breed/poodle/toy/images\n",
+          "protocol": "https",
+          "host": [
+            "dog",
+            "ceo"
+          ],
+          "path": [
+            "api",
+            "breed",
+            "poodle",
+            "toy",
+            "images\n"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
