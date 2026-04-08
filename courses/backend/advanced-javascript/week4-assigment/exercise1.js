@@ -24,16 +24,26 @@ class Tea {
     }
 
     priceFor(grams) {
-        // Return price for given weight
+        return this.pricePerGram * grams;
     }
 
     describe() {
-        // Return "Sencha (green) from Japan - 12.00 DKK/100g [organic]"
-        // Only include "[organic]" if the tea is organic
+        const pricePer100g = (this.pricePerGram * 100).toFixed(2);
+        let desc = `${this.name} (${this.type}) from ${this.origin} - ${pricePer100g} DKK/100g`;
+        if (this.organic) {
+            desc += " [organic]";
+        }
+        return desc;
     }
 
     static fromObject(obj) {
-        // Create a Tea from a plain object (like from the data file)
+        return new Tea(
+            obj.name,
+            obj.type,
+            obj.origin,
+            obj.pricePerGram,
+            obj.organic
+        );
     }
 }
 
