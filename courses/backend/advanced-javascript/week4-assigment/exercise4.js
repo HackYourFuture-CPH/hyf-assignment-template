@@ -1,7 +1,7 @@
 import { teas } from "./teas.js";
 import { Tea } from "./exercise1.js";
 import { OrderItem, Order } from "./exercise2.js";
-class Customer {
+export class Customer {
     constructor(name, email) {
         this.name = name;
         this.email = email;

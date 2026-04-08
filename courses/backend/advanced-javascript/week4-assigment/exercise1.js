@@ -1,5 +1,31 @@
 import { teas } from "./teas.js";
-class Inventory {
+
+// Add Tea class and export it
+export class Tea {
+    constructor(id, name, type, origin, pricePerGram, caffeineLevel, organic, inStock) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.origin = origin;
+        this.pricePerGram = pricePerGram;
+        this.caffeineLevel = caffeineLevel;
+        this.organic = organic;
+        this.inStock = inStock;
+    }
+    static fromObject(obj) {
+        return new Tea(
+            obj.id,
+            obj.name,
+            obj.type,
+            obj.origin,
+            obj.pricePerGram,
+            obj.caffeineLevel,
+            obj.organic,
+            obj.inStock
+        );
+    }
+}
+export class Inventory {
     constructor() {
         // Store a Map of tea ID → { tea, stockCount }
         this.items = new Map();
@@ -48,12 +74,15 @@ class Inventory {
 
     getLowStock(threshold) {
         // Return array of { tea, stockCount } where stock < threshold
-        // Use .filter()
+        return Array.from(this.items.values())
+            .filter(item => item.stockCount < threshold)
+            .map(item => ({ tea: item.tea, stockCount: item.stockCount }));
     }
 
     getTotalValue() {
         // Sum of (pricePerGram * stockCount) for all items
-        // Use .reduce()
+        return Array.from(this.items.values())
+            .reduce((sum, item) => sum + item.tea.pricePerGram * item.stockCount, 0);
     }
 }
 
