@@ -1,4 +1,4 @@
-import { teas } from "../teas.js";
+import { teas } from "./teas.js";
 export class Tea {
     constructor(name, type, origin, pricePerGram, organic) {
         // Validate:
