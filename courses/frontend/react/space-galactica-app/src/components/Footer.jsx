@@ -37,6 +37,9 @@ export const Footer = () => {
           <li>
             <a href="https://tiktok.com">Tiktok</a>
           </li>
+             <li>
+            <a href="https://linkedin.com">LinkedIn</a>
+          </li>
           <li>
             <a href="https://google.com">On the streets at night</a>
           </li>
