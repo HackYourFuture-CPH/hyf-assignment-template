@@ -38,9 +38,11 @@
   display: flex;
   flex-direction: column;
   max-width: 300px;
-  height: 380px;
+  height: 370px;
   border: 2px solid white;
   padding: 10px;
+  transition-duration: 500ms;
+  transition-property: background-color;
 }
 
 .crewListItem:hover {
@@ -57,4 +59,25 @@
 
 .crewListItem p {
   font-size: 14px;
+}
+
+.partnersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  margin-block: 30px;
+}
+
+.partnersListItem {
+  display: flex;
+}
+
+.partnersListItem:hover {
+  scale: 1.05;
+}
+
+.partnersListItem img {
+  width: 70%;
 }

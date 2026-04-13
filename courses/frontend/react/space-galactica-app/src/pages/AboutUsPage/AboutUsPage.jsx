@@ -133,12 +133,80 @@ const OurCrew = () => {
 };
 
 const OurPartners = () => {
-  // 🧑🏽‍🚀 Task - Week 1
-  // Create the "Our Partners section".
-  // Use the descriptions provided in /src/pages/AboutUsPage/README.md.
-  // Use the pictures from /public/business_partners.
-  // Some inspiration ideas can be found in /data/inspiration_about_us.
-  return <p> ADD OUR PARTNERS HERE </p>;
+  return (
+    <>
+      <p>
+        We collaborate with some of the most respected names in the space and
+        technology industries to make every journey extraordinary.
+      </p>
+      <ul className={styles.partnersList}>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/alphabet-logo.png"
+              alt="Alphabet logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/amazon_logo.png"
+              alt="Amazon logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/CBC_Logo_White.png"
+              alt="CBC logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/Microsoft-Logo-white.png"
+              alt="Microsoft logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/nyu-logo.png"
+              alt="NYU logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/QueensLogo_white.png"
+              alt="Queens University logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/samsung-logo.png"
+              alt="Samsung logo"
+            />
+          </a>
+        </li>
+        <li className={styles.partnersListItem}>
+          <a href="#">
+            <img
+              src="../../public/business_partners/sodexo-logo.png"
+              alt="Sodexo logo"
+            />
+          </a>
+        </li>
+      </ul>
+    </>
+  );
 };
 
 export const Crew = () => {
@@ -147,6 +215,16 @@ export const Crew = () => {
       <main className="mainContent">
         <h1>About us</h1>
         <section className="card">
+          <h2>Our Mission</h2>
+          <p>
+            At Galactica, our mission is to unlock the wonders of the universe
+            for everyone. We believe that space is the final frontier and that
+            the opportunity to explore it should be within everyone’s reach. Our
+            journeys are designed to inspire, educate, and provide a
+            once-in-a-lifetime experience that transcends the ordinary.
+          </p>
+        </section>
+        <section className="card">
           <h2>Our Values</h2>
           <OurValues />
         </section>
@@ -154,9 +232,10 @@ export const Crew = () => {
           <h2>The crew</h2>
           <OurCrew />
         </section>
-
-        {/* 🧑🏽‍🚀 Task - Week 1 */}
-        {/* Use the "OurPartners" component here. */}
+        <section className="card">
+          <h2>Our partners</h2>
+          <OurPartners />
+        </section>
       </main>
     </div>
   );
