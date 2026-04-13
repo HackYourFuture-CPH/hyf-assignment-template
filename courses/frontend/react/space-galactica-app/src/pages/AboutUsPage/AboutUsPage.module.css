@@ -3,3 +3,21 @@
   width: 100vw;
   height: 100vh;
 }
+
+.valuesList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-block: 20px;
+}
+
+.valuesListItem {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid white;
+  padding: 10px;
+}
+
+.valuesListItem:hover {
+  background-color: #ababab9b;
+}

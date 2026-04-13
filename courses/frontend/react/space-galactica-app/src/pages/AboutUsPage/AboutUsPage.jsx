@@ -10,7 +10,26 @@ const OurValues = () => {
   // Use the descriptions provided in /src/pages/AboutUsPage/README.md.
   // Some inspiration ideas can be found in /data/inspiration_about_us.
   return (
-    <p> ADD OUR VALUES HERE </p>
+    <>
+    <ul className={styles.valuesList}>
+      <li className={styles.valuesListItem}>
+        <h3 className='values-heading'>Exploration:</h3>
+        <p className='values-description'>We are driven by a deep-seated desire to explore the unknown. We believe that the pursuit of discovery is at the heart of human nature, and we are committed to pushing the boundaries of what is possible.</p>
+      </li>
+         <li className={styles.valuesListItem}>
+        <h3 className='values-heading'>Innovation:</h3>
+        <p className='values-description'>At Galactica, we prioritize cutting-edge technology and innovation. We are constantly evolving our spacecraft, safety protocols, and services to ensure that our travelers experience the most advanced and secure space journeys available.</p>
+      </li>
+         <li className={styles.valuesListItem}>
+        <h3 className='values-heading'>Sustainability:</h3>
+        <p className='values-description'>We are committed to making space exploration sustainable for future generations. Our space missions are designed to minimize environmental impact, both on Earth and in space, and to foster a spirit of responsibility towards our universe.</p>
+      </li>
+         <li className={styles.valuesListItem}>
+        <h3 className='values-heading'>Community:</h3>
+        <p className='values-description'>We believe in the power of collective exploration. Our journeys are not just about reaching new destinations; they are about building a community of space enthusiasts who share a passion for the stars.</p>
+      </li>
+    </ul>
+    </>
   );
 };
 
