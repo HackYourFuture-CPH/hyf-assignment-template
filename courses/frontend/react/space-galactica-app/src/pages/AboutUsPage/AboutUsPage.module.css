@@ -72,6 +72,8 @@
 
 .partnersListItem {
   display: flex;
+  transition-duration: 500ms;
+  transition-property: scale;
 }
 
 .partnersListItem:hover {
