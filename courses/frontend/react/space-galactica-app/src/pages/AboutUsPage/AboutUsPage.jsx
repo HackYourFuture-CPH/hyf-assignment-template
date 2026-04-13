@@ -70,8 +70,76 @@ const OurCrew = () => {
   // Use the pictures from /public/crew.
   // Some inspiration ideas can be found in /data/inspiration_about_us.
   return (
+     <section className={styles.crewSection}>
+
+      <p className = {styles.crewIntro}>Our crew is the heart and soul of Galactica. 
+        We are a diverse team of seasoned space explorers, engineers, 
+        and visionaries who are united by a common goal: 
+        to make space travel accessible and exciting for all.</p>
+
+      <div className={styles.crewGrid}>
+        
+        <div className={styles.crewMember}>
+          <img src="/crew/image-anousheh-ansari.webp" 
+          alt="Captain Sarah Vega"
+          className={styles.crewImage}/>
+          <h3 className={styles.crewRole}>Mission Commander</h3>
+          <p className = {styles.crewBio}>Captain Sarah Vega: 
+            A former NASA astronaut with over 15 years of experience,
+             Captain Vega leads our missions with unparalleled 
+             expertise and a passion for space exploration.</p>
+           </div>
+           
+           <div className={styles.crewMember}>
+            <img src="/crew/image-mark-shuttleworth.webp" 
+          alt="Dr. Leo Redding"
+          className={styles.crewImage}/>
+          <h3 className={styles.crewRole}>Chief Astrophysicist</h3>
+          <p className = {styles.crewBio}>Dr. Leo Redding: Our chief astrophysicist, 
+            Dr. Redding, is a renowned scientist who has contributed to major 
+            space discoveries. He ensures that every journey is as educational as it is exhilarating.</p>
+          </div>
+   
+           <div className={styles.crewMember}>
+            <img src="/crew/image-anousheh-ansari.webp" 
+          alt="Hana Lee"
+          className={styles.crewImage}/>
+          <h3 className={styles.crewRole}>Chief Engineer</h3>
+          <p className = {styles.crewBio}>Chief Engineer Hana Lee: 
+            With her extensive background in aerospace engineering, 
+            Hana Lee is responsible for the state-of-the-art technology that powers our spacecraft. 
+            Her innovation ensures that our travelers are always in safe hands.</p>
+            </div>
+          
+          <div className={styles.crewMember}>
+            <img src="/crew/image-douglas-hurley.webp" 
+           alt="Alex Santos"
+          className={styles.crewImage}/>
+          <h3 className={styles.crewRole}>Mission Specialist</h3>
+          <p className = {styles.crewBio}>Mission Specialist Alex Santos: 
+            As a mission specialist, Alex’s job is to ensure that every aspect of 
+            the journey runs smoothly. With a background in both science and adventure tourism, 
+            Alex is the perfect guide for our space travelers.</p>
+          </div>
+
+          <div className={styles.crewMember}>
+            <img src="/crew/image-victor-glover.webp" 
+          alt="Victor Glover"
+          className={styles.crewImage}/>
+          <h3 className={styles.crewRole}>Crew Support Specialist</h3>
+          <p className = {styles.crewBio}>Crew Member Victor Glover: 
+            Victor brings a unique blend of technical skills 
+            and customer service experience to the team. 
+            He’s always ready to assist with any needs and to make 
+            sure every traveler has an unforgettable experience.</p>
+          </div>
+
+
+ 
+      </div>
+    </section>
          
-    <p> ADD OUR CREW HERE </p>
+    
 
          );
 }
@@ -83,7 +151,9 @@ const OurPartners = () => {
   // Use the pictures from /public/business_partners.
   // Some inspiration ideas can be found in /data/inspiration_about_us.
   return (
+   
     <p> ADD OUR PARTNERS HERE </p>
+
   );
 }
 
