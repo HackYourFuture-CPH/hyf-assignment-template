@@ -83,3 +83,17 @@
 .partnersListItem img {
   width: 70%;
 }
+
+@media (max-width: 500px) {
+  .valuesList {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .partnersList {
+    margin-inline: 10px;
+  }
+
+  .partnersListItem img {
+    width: 100%;
+  }
+}
