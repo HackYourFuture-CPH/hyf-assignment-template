@@ -1,0 +1,261 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgba(35, 16, 22, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+.payment-container {
+  background-color: #FFFFFF;
+  width: 100%;
+}
+
+header {
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+header h1 {
+  font-size: 30px;
+  font-weight: 700;
+}
+
+header p {
+  font-size: 20px;
+  color: #FFFFFF;
+  font-weight: 300;
+}
+
+.order-summary {
+  background: linear-gradient(to right, #FD7B46, #FE4E9B);
+  color: #FFFFFF;
+  padding: 30px;
+}
+
+.order-summary h2 {
+  font-size: 24px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.total-price {
+  font-size: 18px;
+  font-weight: 400;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.total-amount {
+  font-family: Arial, sens-sarif;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #FFFFFF;
+  border-radius: 2px;
+}
+
+.payment-method {
+  padding: 15px;
+}
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+}
+
+h3 {
+  font-family: Arial, sens-sarif;
+  font-size: 24px;
+  text-align: center;
+}
+
+.box-cards,
+.box-paypal {
+  width: 45%;
+  height: 130px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 4px;
+  box-shadow: 8px 8px 20px 0px #0000004D;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box-cards:hover,
+.box-paypal:hover {
+  border: 4px solid #FE4E9B;
+}
+
+.box-cards img {
+  height: 25.99px;
+  width: 100px;
+  margin-bottom: 20px;
+
+}
+
+.method.selected {
+  border-color: #FE4E9B;
+}
+
+.box-paypal img {
+  height: 26px;
+  width: 22px;
+  margin-bottom: 20px;
+}
+
+
+p {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  text-align: center;
+  color: #939393;
+}
+
+.card-info {
+  padding: 15px;
+}
+
+label {
+  text-align: center;
+  color: #939393;
+  font-size: 16px;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}
+
+.card-info-feilds-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  height: 150px;
+}
+
+.card-number-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.exp-date-cvv-container {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.exp-date,
+.cvv {
+  display: flex;
+  flex-direction: column;
+  width: 48.5%
+}
+
+
+
+.card-info input {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #ccc;
+  background-color: #f2f2f2;
+}
+
+
+
+.buy-btn {
+  width: calc(100% - 30px);
+  margin: 10px 15px;
+  padding: 12px;
+  background: linear-gradient(to right, #FD7B46, #FE4E9B);
+  border: none;
+  color: white;
+  border-radius: 25px;
+  font-family: Montserrat, sami-serif;
+  font-size: 24px;
+  font-style: bold;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.help-link {
+  display: block;
+  text-align: center;
+  font-family: Arial, sami-serif;
+  font-size: 18px;
+  font-weight: 700;
+  background-clip: linear-gradient(to right, #FD7B46, #FE4E9B);
+  background: linear-gradient(to left, #FD7B46, #FE4E9B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 15px;
+}
+
+
+@media (min-width: 768px) {
+
+  .payment-container {
+    max-width: 70%;
+  }
+
+  header {
+    margin: 20px 0;
+  }
+
+  header h1 {
+    font-size: 3rem;
+    font-weight: 400;
+  }
+
+  .order-summary {
+    margin-bottom: 20px;
+  }
+
+  .order-summary h2 {
+    text-align: unset;
+  }
+
+  .method-options {
+    justify-content: center;
+  }
+
+  .card-info-feilds-container {
+    flex-direction: row;
+    height: unset;    
+  }
+
+  .card-number-container{
+    width: 50%;
+  }
+
+  .buy-btn {
+    width: 50%;
+    display: block;
+    margin: 20px auto 10px;
+  }
+}

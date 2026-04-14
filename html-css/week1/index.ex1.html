@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week 1/ex 1</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <header>
+    <h1>SOME HEADER</h1>
+    <p>Some optional stuff.</p>
+  </header>
+
+  <div class="payment-container">
+
+    <section class="order-summary">
+      <h2>Order Summary</h2>
+      <div class="total-price">
+        <span>Total</span>
+        <span>$333 / month</span>
+      </div>
+
+      <hr>
+
+      <div class="total-amount">
+        <span>Total</span>
+        <span>$100</span>
+      </div>
+    </section>
+
+    <section class="payment-method">
+      <h3>Payment Method</h3>
+      <br>
+      <div class="method-options"></div>
+      <div class="container">
+        <div class="box-cards">
+          <img src="https://assets.codepen.io/15407274/cards-project.png?format=auto" alt="Cards">
+          <p>Credit / Debit</p>
+        </div>
+        <div class="box-paypal">
+          <img src="https://assets.codepen.io/15407274/paypal.img.projectt.png?width=1771&height=1460&format=auto"
+            alt="PayPal">
+          <p>PayPal</p>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="card-info">
+      <h3>Card Info</h3>
+      <br>
+      <form>
+        <div class="card-info-feilds-container">
+
+          <div class="card-number-container">
+            <label for="Card number">Card Number</label>
+            <input type="text" placeholder="1234 1234 1234 1234">
+          </div>
+          
+          <div class="exp-date-cvv-container">
+            <div class="exp-date">
+              <label for="Expire date">Expire Date</label>
+              <input class="exp-date-input" type="text" placeholder="MM/YY">
+            </div>
+            
+            <div class="cvv">
+              <label for="Security code">Security Code</label>
+              <input type="text" placeholder="CVV">
+            </div>
+          </div>
+          
+        </div>
+
+        <button class="buy-btn">Buy Now</button>
+        <a href="#" class="help-link">Need Help?</a>
+      </form>
+    </section>
+  </div>
+
+</body>
+
+</html>
