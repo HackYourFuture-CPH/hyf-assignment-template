@@ -1,0 +1,17 @@
+
+Data storage:
+Recipes are stored in a database (e.g. SQL or NoSQL) managed by the backend. Database has Recipes table which stores many recipes. Each recipe has fields like id, title, ingredients, instructions, etc.
+
+Frontend–backend communication:
+The frontend communicates with the backend via REST API using HTTP requests, for example:
+* GET /recipes – get all recipes
+* GET /recipes/:id – get one recipe
+* POST /recipes – create a recipe
+* PUT /recipes/:id – update a recipe
+* DELETE /recipes/:id – delete a recipe
+
+When a user adds a new recipe:
+1. User fills and submits a form in the frontend.
+2. Frontend sends a POST /recipes request with recipe data in JSON.
+3. Backend validates and saves the recipe in the database, then returns the created recipe  (with id).
+4. Frontend updates the UI (e.g. adds the new recipe to the list or redirects to its detail view).

@@ -78,3 +78,4 @@ If you're an Assignment Reviewer, follow these steps each week:
   >
   > If you are not requesting any specific changes, it's ok to leave comments, but be sure to approve the PR as well so we don't leave anyone hanging.
 4. Once any discussion/changes have been completed, it's up to the trainee to merge the PR and set it to green.
+# Exercises-AI
