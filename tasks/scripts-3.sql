@@ -41,8 +41,8 @@ CREATE TABLE user_task (
 -- Q.1 Insert new user with your own name and email
 INSERT INTO users (name, email) VALUES ('Hiwot Adane', 'hiwot@hyf.dk');
 --Q2. Insert a new task assigned to yourself
-INSERT INTO task (title, description, created, updated, due_date, status name)
-VALUES ('Learn SQL', 'Practice database queries', '2026-04-13 03:06:46', '2026-04-26 06:14:31', '2026-04-30 20:58:03', 'In Progress');
+INSERT INTO task (title, description, created, updated, due_date, status_id)
+VALUES ('Learn SQL', 'Practice database queries', '2026-04-13 03:06:46', '2026-04-26 06:14:31', '2026-04-30 20:58:03', 2);
 --Q3. Update the title of the task you just created to "Master SQL Basics"
 UPDATE task
 SET title = 'Master SQL Basics',
@@ -54,9 +54,7 @@ SET due_date = DATE('now','+14 day'),
 updated =DATETIME('now')
 WHERE id = 36;
 -- Q5. Change the status of your task to "Done"
-UPDATE status
-SET name = 'Done'
-WHERE id = 36;
+UPDATE task SET status_id = '3' WHERE id = '36'
 -- Q6. Delete one of the tasks in the database (choose any task)
 DELETE FROM task 
 WHERE title = 'Learn SQL'; 
@@ -162,15 +160,10 @@ GROUP BY c.id, c.name
 ORDER BY task_count DESC
 LIMIT 1;
 -- Q4. Get all high priority tasks that are either "In Progress" or "To Do"
-SELECT id,
-       title,
-       description,
-       priority,
-       status_id,
-       due_date
-FROM task
-WHERE priority = 'High'
-  AND status_id IN ('In Progress', 'To Do')
+SELECT t.title, t.description,s.name 
+FROM task t JOIN status s ON t.status_id=s.id
+WHERE t.priority = 'High'
+  AND (t.status_id= 1 OR  t.status_id=2)
 ORDER BY due_date ASC;
 --Q5. Find users who have tasks in more than one category
 SELECT u.id AS user_id,
