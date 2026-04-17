@@ -26,8 +26,6 @@ export const Footer = () => {
       </div> */}
       {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
 
-      {/* 🧑🏽‍🚀 Task - Week 1 */}
-      {/* Add a new list item for LINKEDIN */}
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
