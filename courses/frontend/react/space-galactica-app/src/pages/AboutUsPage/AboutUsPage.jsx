@@ -100,10 +100,11 @@ const OurCrew = () => {
 
         <div className={styles.crewMember}>
           <img
-            src="/crew/image-anousheh-ansari.webp"
-            alt="Hana Lee"
+            src="/crew/placeholder.jpg"
+            alt="Placeholder"
             className={styles.crewImage}
           />
+
           <h3 className={styles.crewName}>Hana Lee</h3>
           <p className={styles.crewRole}>Chief Engineer</p>
           <p className={styles.crewBio}>
