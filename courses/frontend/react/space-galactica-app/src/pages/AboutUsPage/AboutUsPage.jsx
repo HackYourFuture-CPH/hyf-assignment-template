@@ -1,9 +1,5 @@
 import styles from "./AboutUsPage.module.css";
 
-// 🧑🏽‍🚀 Task - Week 1
-// After you are finished with creating the page, move the OurValues, OurCrew, OurPartners components into their own files in this folder.
-// Import and use the components from the newly created files.
-
 const OurMission = () => {
   return (
     <section className={styles.missionSection}>
@@ -225,8 +221,7 @@ export const Crew = () => {
           <h2 className={styles.crewTitle}>The Crew</h2>
           <OurCrew />
         </section>
-        {/* 🧑🏽‍🚀 Task - Week 1 */}
-        {/* Use the "OurPartners" component here. */}
+
         <section className="card">
           <h2 className={styles.partnersTitle}>Our Partners</h2>
           <OurPartners />
