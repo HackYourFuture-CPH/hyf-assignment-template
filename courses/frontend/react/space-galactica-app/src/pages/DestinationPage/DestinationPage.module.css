@@ -29,6 +29,10 @@
   margin-inline-start: auto;
 }
 
+.selectedCard {
+  background: #ababab9b;
+}
+
 .planetDescription {
   padding-block-start: var(--spacing-04);
   margin-block-end: auto;

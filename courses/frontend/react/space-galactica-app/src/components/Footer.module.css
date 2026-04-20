@@ -44,4 +44,9 @@
 
 .footerList li {
   padding-block: var(--spacing-04);
+  transition: scale 300ms;
+}
+
+.footerList li:hover {
+  scale: 1.02;
 }
