@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
 import styles from "./Footer.module.css";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -17,14 +18,20 @@ export const Footer = () => {
       {/* 🧑🏽‍🚀 Task - Week 2 */}
       {/* Create a new list for the Pages. */}
       {/* We need to use the <Link /> component here. */}
-      {/* <div className={styles.pages}>
+      <div className={styles.pages}>
         <h3>Pages</h3>
         <ul>
-          <li> <Link/> </li>
-          ...
+          <li>
+            <Link to="/about">About us</Link>
+          </li>
+          <li>
+            <Link to="/destination">Travel destinations</Link>
+          </li>
+          <li>
+            <Link to="/nasa">NASA Collaboration</Link>
+          </li>
         </ul>
-      </div> */}
-      {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
+      </div>
 
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
