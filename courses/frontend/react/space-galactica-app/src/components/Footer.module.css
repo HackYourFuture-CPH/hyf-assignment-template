@@ -16,11 +16,23 @@
   padding: var(--spacing-08) 0;
 }
 
-.footer p, .footer a, .footer li {
+.footer p {
   color: #000;
   font-size: medium;
   font-weight: 200;
   text-align: start;
+}
+
+.footer a {
+  color: #000;
+  font-size: medium;
+  font-weight: 200;
+  text-align: start;
+  text-decoration: none;
+}
+
+.footer li {
+  list-style: none;
 }
 
 .footerDescription {
@@ -41,5 +53,22 @@
 }
 
 .footerList li {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
   padding-block: var(--spacing-04);
+}
+.footerList a {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-08);
+}
+
+.socialIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: var(--spacing-08);
+  display: inline-block;
+  vertical-align: middle;
+  object-fit: contain;
 }

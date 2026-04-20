@@ -56,9 +56,9 @@ export const Footer = () => {
             icon="public/socialmedia/linkedin.png"
           />
 
-          <li>
+          {/*<li>
             <a href="https://google.com">On the streets at night</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </footer>
