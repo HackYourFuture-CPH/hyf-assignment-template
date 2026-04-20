@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fastest clicker</title>
+    <link rel="stylesheet" href="task4.css">
+</head>
+
+<body>
+ <div class="game-container">
+    
+    <h1 class="h1">
+     <span class="title-gradient">The Fastest Presser</span><br>
+      <span class="title-white">in this Realm</span>
+    </h1>
+      <p class="subtitle">Two players. One keyboard. Press fast to win!</p>
+    
+    <div class="controls">
+      <input type="number" id="time-input" placeholder="Enter time in seconds">
+      <button id="start-btn">Start Game!</button>
+    </div>
+
+    <div class="timer-pill">
+      Time Left: <span id="countdown-output">0</span>
+    </div>
+
+    <div class="scoreboard">
+
+      <div class="player-box player-s">
+        <h2>Player S</h2>
+        <p>S count: <span id="score-s">0</span></p>
+      </div>
+      <div class="player-box player-l">
+        <h2>Player L</h2>
+        <p>L count: <span id="score-l">0</span></p>
+      </div>
+    </div>
+      <p class="instruction">Press S or L as FAST as you can!</p>
+      <p id="result"></p>
+   
+      <div id="win-message" class="win-message hidden">
+        <div id="win-content">
+          <h2 id="win-title">🎉 Game Over! 🎉</h2>
+          <p id="win-subtitle">Congratulations to the winner!</p>
+          <button id="play-again-btn">Play Again
+          </button>
+        </div>
+      </div>
+  </div>
+    <!-- Scripts -->
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+   
+         <script src="task4.js" defer></script>
+</body>
+</html>

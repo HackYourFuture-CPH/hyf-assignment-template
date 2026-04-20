@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="currencyCalculator.css" />
+     <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+
+    <title>Currency Converter</title>
+  </head>
+  <body>
+    <div class="converter-container">
+      <h1 class="h1">
+        <span class="title-gradient">Currency Converter</span>
+      </h1>
+
+      <hr />
+
+   
+      <div class="input-container">
+        <input
+          type="number"
+          id="input-amount"
+          placeholder="Enter the amount"
+        />
+      </div>
+
+      <div class="currency-row">
+  <div class="currency-field">
+    <label for="dropdown-from-currency">From</label>
+    <select id="dropdown-from-currency">
+      <option value="EUR" selected>EUR</option>
+    </select>
+  </div>
+
+  <div class="currency-field">
+    <label for="dropdown-to-currency">To</label>
+    <select id="dropdown-to-currency">
+      <option value="DKK" selected>DKK</option>
+    </select>
+  </div>
+</div>
+
+
+      <button id="convert-btn">Convert</button>
+
+      <div class="output-container">
+        <p id="output-amount">0</p>
+      </div>
+    </div>
+
+    <script src="currencyCalculator.js" type="module"></script>
+  </body>
+</html>

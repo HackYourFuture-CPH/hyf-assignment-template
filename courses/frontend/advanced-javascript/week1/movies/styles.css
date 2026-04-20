@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(220, 220, 220, 0.407);
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+section {
+  background-color: white;
+  padding: 1.2rem;
+  margin: 1.2rem;
+  border-radius: 0.5rem;
+  border: 2px solid rgb(222, 221, 219);
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.033);
+}
+.section-content {
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+}
+h1 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+}
+
+section p {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+

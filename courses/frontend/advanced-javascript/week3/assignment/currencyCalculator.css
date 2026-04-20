@@ -1,0 +1,122 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background:rgb(213, 207, 207);
+  font-family: Georgia, "Times New Roman", serif;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.converter-container {
+  width: 100%;
+  max-width: 700px;
+  background: #f3f3f3;
+  border-radius: 1rem;
+   box-shadow: 0 4px 8px rgba(79, 208, 218, 0.2);
+  padding: 3rem;
+  text-align: center;
+}
+
+h1 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: bold;
+  color: #111;
+   margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+.title-gradient {
+  color: #111;
+}
+
+hr {
+  border: none;
+  border-top: 2px solid #bdbdbd;
+  margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+.input-container input {
+  width: 100%;
+  height: 3rem;
+  border: 1px solid #c6c6c6;
+  border-radius: 0.5rem;
+  padding: 0.375rem 0.5rem;
+  font-size: 1.25rem;
+  background: #efefef;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
+}
+
+.currency-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.875rem;
+}
+
+
+.currency-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+   font-family: Georgia, "Times New Roman", serif;
+     font-size: 1.25rem;
+}
+
+.currency-row select {
+  width: 100%;
+  height: 3rem;
+  border: 1px solid #bdbdbd;
+  border-radius: 0.5rem;
+  background: white;
+  font-size: 1.25rem;
+  padding: 0.375rem 0.5rem;
+}
+
+
+.rate-text {
+  font-size: 1.25rem;
+  color: #b59a8a;
+  margin-bottom: 0.75rem;
+}
+
+#convert-btn {
+  width: 100%;
+  height: 3rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: #4fd0da;
+  color: #111;
+  font-size: 1.7rem;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: bold;
+  cursor: pointer;
+   margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+.output-container {
+  width: 100%;
+height: fit-content;
+  background: #bfeff2;
+  border-radius: 0.5rem;
+  padding: 1rem 0.5rem;
+    margin-bottom: 0.75rem;
+  margin-top: 1rem;
+}
+
+#result-text {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #111;
+}
