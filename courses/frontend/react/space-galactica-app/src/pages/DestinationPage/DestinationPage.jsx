@@ -1,41 +1,41 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
-
-// 🧑🏽‍🚀 Task - Week 2
-// Move this to its own file in this folder.
-const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
-  return (
-    <div className={styles.wishlistItem}>
-      <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
-      <b>{name.toUpperCase()}</b>
-      <button onClick={onRemove}>remove</button>
-    </div>
-  );
-};
+import { PlanetsWishlistItem } from "./PlanetsWishlistItem";
+import { PlanetCard } from "./PlanetCard";
 
 export const Destinations = () => {
   const [planetsWishlist, setPlanetsWishlist] = useState([]);
 
-  const isPlanetInWishlist = (planetName) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // This should be a simple function to check if a given planet is selected.
-    // You will need to work with the array of planets wishlist.
-  };
-
-  const togglePlanetSelection = (name, thumbnail) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // When a planet is selected or deselected (toggled), the state of the wishlist planets should be updated accordingly by 
-    // calling the addPlanetToWishlist or removePlanetFromWishlist function. You will need a condition here.
-  };
-
-  const addPlanetToWishlist = (name, thumbnail) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // Add the planet to the planets wishlist state.
-  };
-  const removePlanetFromWishlist = (name) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // Remove the planet from the planets wishlist state.
-  };
+  const planetsList = [
+    {
+      name: "Europa",
+      description:
+        "Europa, one of Jupiter’s moons, is an icy world with a hidden ocean beneath its surface. This mysterious moon is a prime candidate for the search for extraterrestrial life, making it a thrilling destination for space explorers.",
+      thumbnail: "/destination/image-europa.png",
+      isSelected: false,
+    },
+    {
+      name: "Mars",
+      description:
+        "Mars, the Red Planet, is a barren yet fascinating world with vast deserts, towering volcanoes, and the deepest canyon in the solar system. As humanity’s next frontier, Mars invites us to dream of colonization and the possibilities of life beyond Earth.",
+      thumbnail: "/destination/image-mars.png",
+      isSelected: false,
+    },
+    {
+      name: "Moon",
+      description:
+        "Our closest celestial neighbor, the Moon, is a silent witness to Earth's history. With its stunning craters and desolate landscapes, the Moon offers a unique glimpse into space exploration's past and future, making it a perfect destination for lunar adventurers.",
+      thumbnail: "/destination/image-moon.png",
+      isSelected: false,
+    },
+    {
+      name: "Titan",
+      description:
+        "Titan, Saturn's largest moon, is a world of dense atmosphere and liquid methane lakes. This enigmatic moon is shrouded in a thick orange haze, concealing a landscape that is both alien and strangely familiar, beckoning explorers to uncover its secrets.",
+      thumbnail: "/destination/image-titan.png",
+      isSelected: false,
+    },
+  ];
 
   return (
     <div className="fullBGpicture">
@@ -67,7 +67,10 @@ export const Destinations = () => {
           {/* Add all 4 planets: Europa, Moon, Mars, Titan.  */}
           {/* Use the README.md file for descriptions. */}
           {/* Create a <PlanetCard /> component, which accepts the following props: name, description, thumbnail, isSelected, togglePlanetSelection */}
-          <div className={styles.planetCard}>
+          {planetsList.map((planet) => (
+            <PlanetCard {...planet} />
+          ))}
+          {/* <div className={styles.planetCard}>
             <img
               className={styles.planetThumbnail}
               src="/destination/image-europa.png"
@@ -79,7 +82,8 @@ export const Destinations = () => {
             </div>
             <button
               className="roundButton"
-              onClick={() => togglePlanetSelection("Europa")}>
+              onClick={() => togglePlanetSelection("Europa")}
+            >
               {isPlanetInWishlist("Europa")
                 ? "REMOVE FROM WISHLIST"
                 : "ADD TO WISHLIST"}
@@ -97,12 +101,13 @@ export const Destinations = () => {
             </div>
             <button
               className="roundButton"
-              onClick={() => togglePlanetSelection("Mars")}>
+              onClick={() => togglePlanetSelection("Mars")}
+            >
               {isPlanetInWishlist("Mars")
                 ? "REMOVE FROM WISHLIST"
                 : "ADD TO WISHLIST"}
             </button>
-          </div>
+          </div> */}
         </section>
       </main>
     </div>
@@ -110,7 +115,6 @@ export const Destinations = () => {
 };
 
 export default Destinations;
-
 
 // 🧑🏽‍🚀 Task - Week 4 - part 2
 // Hate to break it to you, but you will have to make some changes to the code you already wrote.
