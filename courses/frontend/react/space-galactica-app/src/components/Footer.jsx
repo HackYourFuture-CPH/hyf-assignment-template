@@ -1,9 +1,25 @@
 import { useLocation } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { SocialMediaItem } from "./SocialMediaItem";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const { pathname } = useLocation();
+
+  const footerItems = [
+    {
+      title: "ABOUT US",
+      link: "/about_us",
+    },
+    {
+      title: "DESTINATION",
+      link: "/destination",
+    },
+    {
+      title: "NASA COLLABORATION",
+      link: "/nasa_collaboration",
+    },
+  ];
 
   return (
     <footer className={pathname !== "/" ? styles.footer : styles.hidden}>
@@ -15,16 +31,26 @@ export const Footer = () => {
         </p>
         <p>&copy; 2024 Galactica. All rights reserved.</p>
       </div>
-      {/* 🧑🏽‍🚀 Task - Week 2 */}
-      {/* Create a new list for the Pages. */}
-      {/* We need to use the <Link /> component here. */}
-      {/* <div className={styles.pages}>
+      <div className={styles.pages}>
         <h3>Pages</h3>
-        <ul>
-          <li> <Link/> </li>
-          ...
+        <ul className={styles.footerList}>
+          <li>
+            <Link to={footerItems[0].link}>
+              <b>01</b> {footerItems[0].title}
+            </Link>
+          </li>
+          <li>
+            <Link to={footerItems[1].link}>
+              <b>02</b> {footerItems[1].title}
+            </Link>
+          </li>
+          <li>
+            <Link to={footerItems[2].link}>
+              <b>03</b> {footerItems[2].title}
+            </Link>
+          </li>
         </ul>
-      </div> */}
+      </div>
       {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
 
       <div className={styles.footerLinks}>

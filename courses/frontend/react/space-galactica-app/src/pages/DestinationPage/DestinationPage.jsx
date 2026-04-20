@@ -63,51 +63,9 @@ export const Destinations = () => {
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Add all 4 planets: Europa, Moon, Mars, Titan.  */}
-          {/* Use the README.md file for descriptions. */}
-          {/* Create a <PlanetCard /> component, which accepts the following props: name, description, thumbnail, isSelected, togglePlanetSelection */}
           {planetsList.map((planet) => (
             <PlanetCard {...planet} />
           ))}
-          {/* <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-europa.png"
-              alt=""
-            />
-            <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetInWishlist("Europa") ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button
-              className="roundButton"
-              onClick={() => togglePlanetSelection("Europa")}
-            >
-              {isPlanetInWishlist("Europa")
-                ? "REMOVE FROM WISHLIST"
-                : "ADD TO WISHLIST"}
-            </button>
-          </div>
-          <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-mars.png"
-              alt=""
-            />
-            <div className={styles.planetDescription}>
-              <h2>MARS {isPlanetInWishlist("Mars") ? "- SELECTED" : ""}</h2>
-              <p>Lorem ipsum...</p>
-            </div>
-            <button
-              className="roundButton"
-              onClick={() => togglePlanetSelection("Mars")}
-            >
-              {isPlanetInWishlist("Mars")
-                ? "REMOVE FROM WISHLIST"
-                : "ADD TO WISHLIST"}
-            </button>
-          </div> */}
         </section>
       </main>
     </div>
