@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./DestinationPage.module.css";
-import { PlanetsWishlistItem } from "./PlanetsWishlistItem"; // moved to its own file
+import { PlanetsWishlistItem } from "./PlanetsWishlistItem";
 import { PlanetCard } from "./PlanetCard";
 
 export const Destinations = () => {
