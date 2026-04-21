@@ -21,10 +21,10 @@ export const Footer = () => {
         <h3>Pages</h3>
         <ul>
           <li>
-            <Link to="/about">About us</Link>
+            <Link to="/about">About Us</Link>
           </li>
           <li>
-            <Link to="/destination">Travel destinations</Link>
+            <Link to="/destination">Destination</Link>
           </li>
           <li>
             <Link to="/nasa">NASA Collaboration</Link>
