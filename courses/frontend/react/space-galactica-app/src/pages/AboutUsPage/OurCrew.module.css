@@ -1,0 +1,82 @@
+/* OurCrew.module.css */
+
+.section {
+  padding: var(--spacing-32);
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 38.75rem;
+  margin-bottom: var(--spacing-48);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-jumbo);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--primary-text-color);
+}
+
+.description {
+  margin-top: var(--spacing-16);
+  max-width: 33.75rem;
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--primary-text-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-16);
+  margin-top: var(--spacing-40);
+ 
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border:1px solid var(----card-border-rgb);
+  color: var(--card-rgb);
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--border-radius);
+}
+
+.name {
+  margin: var(--spacing-04);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--primary-text-color);
+}
+
+.role {
+  margin: var(--spacing-16);
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  color: var(--primary-text-color);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}

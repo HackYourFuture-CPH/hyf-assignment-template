@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>Website Screenshot Generator</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="screenshotGenerator.css" />
+  </head>
+  <body>
+    <main class="app-container">
+      <header class="hero">
+        <h1 class="app-title">Website Screenshot Generator</h1>
+      </header>
+
+      <section class="generator-section">
+        <form class="input-container" id="screenshot-form">
+         <label for="input-url" class="visually-hidden">Website URL</label>
+          <input
+            type="url"
+            id="input-url"
+            placeholder="Enter a website URL"
+            required
+          />
+          <button type="submit" id="capture-screenshot-btn">
+            Capture Screenshot
+          </button>
+        </form>
+
+        <p id="error-message" class="error-message" aria-live="polite"></p>
+
+        <section class="output-screenshot">
+          <h2>Preview</h2>
+          <div class="preview-content" id="output-screenshot"></div>
+          <button type="button" id="save-screenshot-btn" disabled>
+            Save Screenshot
+          </button>
+        </section>
+      </section>
+
+      <section class="saved-screenshot-section">
+        <h2>Saved Screenshots</h2>
+        <div
+          class="saved-screenshot-container"
+          id="saved-screenshot-container"
+        ></div>
+      </section>
+    </main>
+
+    <script src="screenshotGenerator.js" type="module"></script>
+  </body>
+</html>

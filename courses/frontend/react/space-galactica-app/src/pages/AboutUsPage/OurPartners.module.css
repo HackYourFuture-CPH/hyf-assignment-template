@@ -1,0 +1,68 @@
+/* OurPartners.module.css */
+
+.section {
+  padding: var(--spacing-48) var(--spacing-24) var(--spacing-64);
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  max-width: 460px;
+  margin-bottom: var(--spacing-48);
+}
+
+.title {
+  margin-top: var(--spacing-16);
+  font-size: var(--font-size-jumbo);
+  line-height: 1.05;
+  font-weight: 700;
+  color: var(--primary-text-color);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-32);
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 110px;
+}
+
+.logo {
+  max-width: 180px;
+  max-height: 60px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* tablet */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* desktop */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: var(--spacing-48);
+    column-gap: var(--spacing-64);
+  }
+
+  .title {
+    font-size: 3.5rem;
+  }
+}

@@ -23,7 +23,7 @@ export const Footer = () => {
       </div> */}
       {/* Docs for the Link: https://reactrouter.com/api/components/Link#link. */}
 
-      {/* 🧑🏽‍🚀 Task - Week 1 */}
+      {/* 🧑🏽‍🚀 Task - Week 1 - Done */}
       {/* Add a new list item for LINKEDIN */}
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
@@ -38,8 +38,12 @@ export const Footer = () => {
             <a href="https://tiktok.com">Tiktok</a>
           </li>
           <li>
+            <a href="https://www.linkedin.com/">LinkedIn</a>
+          </li>
+          <li>
             <a href="https://google.com">On the streets at night</a>
           </li>
+          
           {/* 🧑🏽‍🚀 Task - Week 2 */}
           {/* Create a <SocialMediaItem /> component and replace all of the list items! */}
           {/* SocialMediaItem should accept the following props: url, title, icon. */}

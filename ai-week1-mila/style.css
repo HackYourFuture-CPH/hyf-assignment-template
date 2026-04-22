@@ -1,0 +1,37 @@
+
+body {
+  background-color:white;
+}
+
+   h1 {
+  text-align: center;
+  font-size: clamp(1.75rem, 2.5vw + 1rem, 3rem);
+  font-family: 'merriweather', sans-serif;
+}
+p {
+  font-weight: 400;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  font-family: 'inter', sans-serif;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 5px 20px;
+  font-size: 1rem;
+}
+
+@media (max-width: 1200px) {
+  body {
+    background-color: lightgreen; /* For medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    background-color: pink; /* For smaller screens */
+  }
+}
+
+
