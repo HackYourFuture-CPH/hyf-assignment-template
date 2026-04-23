@@ -1,6 +1,6 @@
 import { useLocation, Link } from "react-router-dom";
 import styles from "./Footer.module.css";
-
+import { NAV_LINKS } from "../constants/navLinks";
 import { SocialMediaItem } from "../components/SocialMediaItem.jsx";
 
 export const Footer = () => {
@@ -20,15 +20,11 @@ export const Footer = () => {
       <div className={styles.pages}>
         <h3>Pages</h3>
         <ul>
-          <li>
-            <Link to="/about">About Us</Link>
-          </li>
-          <li>
-            <Link to="/destination">Destination</Link>
-          </li>
-          <li>
-            <Link to="/nasa">NASA Collaboration</Link>
-          </li>
+          {NAV_LINKS.map((item) => (
+            <li key={item.link}>
+              <Link to={item.link}>{item.title}</Link>
+            </li>
+          ))}
         </ul>
       </div>
 

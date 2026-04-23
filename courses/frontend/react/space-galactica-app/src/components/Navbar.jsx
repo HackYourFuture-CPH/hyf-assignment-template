@@ -5,6 +5,7 @@ import { Planet } from "../icons/Planet";
 import { Badge } from "./Badge";
 import styles from "./Navbar.module.css";
 import { NavItem } from "./NavItem";
+import { NAV_LINKS } from "../constants/navLinks";
 
 const navbarItems = [
   {
