@@ -3,6 +3,7 @@ import styles from "./Footer.module.css";
 import { SocialMediaItem } from "./SocialMediaItem";
 import { Link } from "react-router-dom";
 import { navbarItems } from "../../data/navigation";
+import { socialMedia } from "../../data/socialmedia";
 
 export const Footer = () => {
   const { pathname } = useLocation();
@@ -42,30 +43,14 @@ export const Footer = () => {
       <div className={styles.footerLinks}>
         <h3>Follow us</h3>
         <ul className={styles.footerList}>
-          <SocialMediaItem
-            title="Facebook"
-            url="https://facebook.com"
-            icon="../public/socialmedia/facebook.png"
-          />
-          <SocialMediaItem
-            title="Instagram"
-            url="https://instagram.com"
-            icon="../public/socialmedia/instagram.png"
-          />
-          <SocialMediaItem
-            title="TikTok"
-            url="https://tiktok.com"
-            icon="../public/socialmedia/tiktok.png"
-          />
-          <SocialMediaItem
-            title="LinkedIn"
-            url="https://linkedin.com"
-            icon="../public/socialmedia/linkedin.png"
-          />
-          <SocialMediaItem
-            title="On the streets at night"
-            url="https://google.com"
-          />
+          {socialMedia.map((social) => (
+            <SocialMediaItem
+              key={social.title}
+              title={social.title}
+              url={social.url}
+              icon={social.icon}
+            />
+          ))}
         </ul>
       </div>
     </footer>
