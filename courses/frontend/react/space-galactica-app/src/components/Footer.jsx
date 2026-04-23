@@ -2,24 +2,10 @@ import { useLocation } from "react-router-dom";
 import styles from "./Footer.module.css";
 import { SocialMediaItem } from "./SocialMediaItem";
 import { Link } from "react-router-dom";
+import { navbarItems } from "../../data/navigation";
 
 export const Footer = () => {
   const { pathname } = useLocation();
-
-  const footerItems = [
-    {
-      title: "ABOUT US",
-      link: "/about_us",
-    },
-    {
-      title: "DESTINATION",
-      link: "/destination",
-    },
-    {
-      title: "NASA COLLABORATION",
-      link: "/nasa_collaboration",
-    },
-  ];
 
   return (
     <footer className={pathname !== "/" ? styles.footer : styles.hidden}>
@@ -35,18 +21,18 @@ export const Footer = () => {
         <h3>Pages</h3>
         <ul className={styles.footerList}>
           <li>
-            <Link to={footerItems[0].link}>
-              <b>01</b> {footerItems[0].title}
+            <Link to={navbarItems[0].link}>
+              <b>{navbarItems[0].id}</b> {navbarItems[0].title}
             </Link>
           </li>
           <li>
-            <Link to={footerItems[1].link}>
-              <b>02</b> {footerItems[1].title}
+            <Link to={navbarItems[1].link}>
+              <b>{navbarItems[1].id}</b> {navbarItems[1].title}
             </Link>
           </li>
           <li>
-            <Link to={footerItems[2].link}>
-              <b>03</b> {footerItems[2].title}
+            <Link to={navbarItems[2].link}>
+              <b>{navbarItems[2].id}</b> {navbarItems[2].title}
             </Link>
           </li>
         </ul>

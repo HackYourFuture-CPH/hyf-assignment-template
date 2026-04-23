@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.css";
 
-export const NavItem = ({ title, link, isActive }) => {
+export const NavItem = ({ id, title, link, isActive }) => {
   return (
     <li
       className={classNames(styles.navbarLinks, {
@@ -8,7 +8,7 @@ export const NavItem = ({ title, link, isActive }) => {
       })}
     >
       <Link to={link}>
-        <b>01</b> {title}
+        <b>{id}</b> {title}
       </Link>
     </li>
   );
