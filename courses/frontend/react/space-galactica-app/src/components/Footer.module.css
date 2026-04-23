@@ -17,12 +17,11 @@
 }
 
 .footer a,
-p {
+.footer p {
   color: #000;
   font-size: medium;
   font-weight: 200;
   text-align: start;
-  text-decoration: none;
 }
 
 .footer li {
