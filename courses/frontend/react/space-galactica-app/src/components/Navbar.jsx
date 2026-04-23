@@ -9,15 +9,15 @@ import { NAV_LINKS } from "../constants/navLinks";
 
 const navbarItems = [
   {
-    title: "ABOUT US",
+    title: "About Us",
     link: "/about_us",
   },
   {
-    title: "DESTINATION",
+    title: "Destination",
     link: "/destination",
   },
   {
-    title: "NASA COLLABORATION",
+    title: "NASA Collaboration",
     link: "/nasa_collaboration",
   },
 ];
