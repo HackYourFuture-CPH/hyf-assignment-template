@@ -1,0 +1,20 @@
+import { Outlet } from "react-router-dom";
+import { Navbar } from "./Navbar.jsx";
+import { Footer } from "./Footer.jsx";
+
+export const metadata = {
+  title: "Galactica",
+  description: "Your space travel agency",
+};
+
+export const RootLayout = () => {
+  return (
+    <div className="inter">
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </div>
+  );
+};
+
+export default RootLayout;

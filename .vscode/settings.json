@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "db sql",
+      "database": "db.sql"
+    }
+  ],
+  "cSpell.words": ["Desta", "Galactica"]
+}
