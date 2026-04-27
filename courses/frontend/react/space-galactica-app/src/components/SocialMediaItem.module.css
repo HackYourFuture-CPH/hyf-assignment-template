@@ -1,0 +1,19 @@
+.socialLink {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: scale 200ms;
+}
+
+.socialLink:hover {
+  scale: 1.02;
+}
+
+.socialIcon {
+  width: 20px;
+  aspect-ratio: 1;
+}
+
+.socialLink p {
+  margin: 0;
+}
