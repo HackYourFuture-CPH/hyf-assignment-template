@@ -1,10 +1,11 @@
+import styles from "./RoverPhoto.module.css";
 const RoverPhoto = ({ src, date, roverName }) => {
   return (
-    <div>
+    <div className={styles.roverContainer}>
       <p>
         {roverName} — {date}
       </p>
-      <img src={src} alt={roverName} />
+      <img className={styles.roverImage} src={src} alt={roverName} />
     </div>
   );
 };

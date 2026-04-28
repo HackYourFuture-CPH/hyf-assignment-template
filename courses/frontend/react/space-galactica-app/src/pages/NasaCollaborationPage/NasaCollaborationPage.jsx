@@ -74,7 +74,7 @@ export const NasaCollaboration = () => {
           <h2>Rover Photos</h2>
 
           {roverPhoto?.photos?.length ? (
-            <>
+            <div className={styles.roverGrid}>
               {roverPhoto.photos.map((photo) => (
                 <RoverPhoto
                   key={photo.id}
@@ -83,7 +83,7 @@ export const NasaCollaboration = () => {
                   roverName={photo.rover.name}
                 />
               ))}
-            </>
+            </div>
           ) : (
             <p>Loading rover photos...</p>
           )}
