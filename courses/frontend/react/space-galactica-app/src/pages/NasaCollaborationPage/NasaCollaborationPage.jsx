@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./NasaCollaborationPage.module.css";
+import RoverPhoto from "../../components/RoverPhoto";
 
 // Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
 // You need a proper API_KEY for the requests to work
@@ -47,9 +48,6 @@ export const NasaCollaboration = () => {
 
     fetchRoverPhotos();
     fetchDailyImg();
-
-    // 🧑🏽‍🚀 Task - Week 3
-    // Fetch the extra data for NASA_URLs.astronomyPicOfTheDay and save it to the dailyImg state variable.
   }, []);
 
   return (
@@ -71,30 +69,20 @@ export const NasaCollaboration = () => {
           ) : (
             <p>Loading Astronomy Picture of the Day...</p>
           )}
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* After fetching data from the NASA_URLs.astronomyPicOfTheDay url, display the returned data here. */}
-          {/* You should display the title, explanation, and the image using the url from the response */}
         </section>
         <section className="card">
           <h2>Rover Photos</h2>
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Iterate over the roverPhoto?.photos array and display all the pictures. */}
+
           {roverPhoto?.photos?.length ? (
             <>
-              {/* 🧑🏽‍🚀 Task - Week 3 */}
-              {/* Create a react component for the <RoverPhoto />, which should accept the following props: */}
-              {/* 1. src: source of the img; */}
-              {/* 2. date: earth_date data coming from the API; */}
-              {/* 3. roverName: will be in the rover object. */}
-
-              {/* If you don't know how the data looks like you can log it out to the console and investigate in the browser's devtools. */}
-
-              <p>Date {roverPhoto.photos[0]?.earth_date}</p>
-              <img
-                className={styles.nasaPicOfTheDayImg}
-                src={roverPhoto.photos[0]?.img_src}
-                alt={dailyImg.title}
-              />
+              {roverPhoto.photos.map((photo) => (
+                <RoverPhoto
+                  key={photo.id}
+                  src={photo.img_src}
+                  date={photo.earth_date}
+                  roverName={photo.rover.name}
+                />
+              ))}
             </>
           ) : (
             <p>Loading rover photos...</p>
