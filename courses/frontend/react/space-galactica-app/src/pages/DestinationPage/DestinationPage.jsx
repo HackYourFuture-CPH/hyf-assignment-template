@@ -37,12 +37,8 @@ export const Destinations = () => {
             <p>You have {planetsWishlist.length} planets in your wishlist</p>
           )}
 
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Use the AddWishlistItem component here. */}
-
           <AddWishlistItem onAddWishlistItem={addPlanetToWishlist} />
 
-          {/* 🧑🏽‍🚀 Task - Week 3*/}
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
             {planetsWishlist.map((planet) => (
