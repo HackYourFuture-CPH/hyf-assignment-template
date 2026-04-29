@@ -13,7 +13,7 @@ const config = isProduction
     : {
         client: 'sqlite3',
         connection: {
-            filename: process.env.DB_FILENAME || './database.sqlite3',
+            filename: process.env.DB_FILENAME || './hyf_node_week1',
         },
         useNullAsDefault: true,
     };
