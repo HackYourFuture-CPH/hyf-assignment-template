@@ -6,7 +6,34 @@ const router = express.Router();
 // GET /api/snippets
 router.get("/", async (request, response) => {
     try {
-        const snippets = await db("snippets").select("*").orderBy("id", "asc");
+        const rows = await db("snippets")
+            .join("users", "snippets.user_id", "users.id")
+            .where("snippets.is_private", 0)
+            .select(
+                "snippets.id",
+                "snippets.created_at",
+                "snippets.title",
+                "snippets.contents",
+                "snippets.is_private",
+                "users.id as user_id",
+                "users.first_name",
+                "users.last_name"
+            )
+            .orderBy("snippets.id", "asc");
+
+        const snippets = rows.map((row) => ({
+            id: row.id,
+            created_at: row.created_at,
+            title: row.title,
+            contents: row.contents,
+            is_private: row.is_private === 1,
+            user: {
+                id: row.user_id,
+                first_name: row.first_name,
+                last_name: row.last_name,
+            },
+        }));
+
         response.json(snippets);
     } catch (error) {
         response.status(500).json({ error: "Failed to fetch snippets" });

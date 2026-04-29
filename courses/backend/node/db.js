@@ -1,7 +1,10 @@
 import knex from 'knex';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
 
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const isProduction = process.env.NODE_ENV === 'production';
-const dbFile = "PATH_TO_YOUR_SQLITE_DB";
+const dbFile = join(__dirname, 'hyf_node_week1');
 const config = isProduction
     ? {
         client: 'pg',
