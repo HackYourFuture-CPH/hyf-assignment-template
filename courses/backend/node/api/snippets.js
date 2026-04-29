@@ -49,13 +49,37 @@ router.get("/:id", async (request, response) => {
     }
 
     try {
-        const snippet = await db("snippets").where({ id: snippetId }).first();
+        const row = await db("snippets")
+            .join("users", "snippets.user_id", "users.id")
+            .where("snippets.id", snippetId)
+            .select(
+                "snippets.id",
+                "snippets.created_at",
+                "snippets.title",
+                "snippets.contents",
+                "snippets.is_private",
+                "users.id as user_id",
+                "users.first_name",
+                "users.last_name"
+            )
+            .first();
 
-        if (!snippet) {
+        if (!row) {
             return response.status(404).json({ error: "Snippet not found" });
         }
 
-        response.json(snippet);
+        response.json({
+            id: row.id,
+            created_at: row.created_at,
+            title: row.title,
+            contents: row.contents,
+            is_private: row.is_private === 1,
+            user: {
+                id: row.user_id,
+                first_name: row.first_name,
+                last_name: row.last_name,
+            },
+        });
     } catch (error) {
         response.status(500).json({ error: "Failed to fetch snippet" });
     }
