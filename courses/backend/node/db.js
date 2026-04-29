@@ -1,7 +1,7 @@
 import knex from 'knex';
 
 const isProduction = process.env.NODE_ENV === 'production';
-
+const dbFile = "PATH_TO_YOUR_SQLITE_DB";
 const config = isProduction
     ? {
         client: 'pg',
@@ -13,7 +13,7 @@ const config = isProduction
     : {
         client: 'sqlite3',
         connection: {
-            filename: process.env.DB_FILENAME || './hyf_node_week1',
+            filename: process.env.DB_FILENAME || dbFile,
         },
         useNullAsDefault: true,
     };

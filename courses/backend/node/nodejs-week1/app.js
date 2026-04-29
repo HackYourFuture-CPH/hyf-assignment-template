@@ -1,5 +1,5 @@
 import express from "express";
-import snippetsRouter from "./api/snippets.js";
+import snippetsRouter from "../api/snippets.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
