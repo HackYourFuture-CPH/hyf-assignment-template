@@ -1,6 +1,7 @@
 import express from "express";
-import db from "./db.js";
+import db, { ensureSchema } from "./db.js";
 import snippetsRouter from "./api/snippets.js";
+import tagsRouter from "./api/tags.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -21,7 +22,19 @@ app.get("/api/db-check", async (req, res) => {
 });
 
 app.use("/api/snippets", snippetsRouter);
+app.use("/api/tags", tagsRouter);
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`);
-});
+const startServer = async () => {
+    try {
+        await ensureSchema();
+
+        app.listen(port, () => {
+            console.log(`Listening on port ${port}`);
+        });
+    } catch (error) {
+        console.error("Failed to initialize database schema", error);
+        process.exit(1);
+    }
+};
+
+startServer();
