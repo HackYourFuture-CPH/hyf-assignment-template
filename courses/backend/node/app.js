@@ -2,6 +2,7 @@ import express from "express";
 import db, { ensureSchema } from "./db.js";
 import snippetsRouter from "./api/snippets.js";
 import tagsRouter from "./api/tags.js";
+import searchRouter from "./api/search.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -23,6 +24,7 @@ app.get("/api/db-check", async (req, res) => {
 
 app.use("/api/snippets", snippetsRouter);
 app.use("/api/tags", tagsRouter);
+app.use("/", searchRouter);
 
 const startServer = async () => {
     try {
