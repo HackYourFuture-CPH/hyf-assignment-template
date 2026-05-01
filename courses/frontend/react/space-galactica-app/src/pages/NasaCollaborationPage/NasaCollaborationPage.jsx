@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import styles from "./NasaCollaborationPage.module.css";
 import RoverPhoto from "../../components/RoverPhoto";
 
-// Read "/app/nasa_collaboration/README.md" for more info about the API_KEY
-// You need a proper API_KEY for the requests to work
 const API_KEY = import.meta.env.VITE_NASA_API_KEY;
 
 const NASA_URLs = {
@@ -14,6 +12,7 @@ const NASA_URLs = {
 export const NasaCollaboration = () => {
   const [dailyImg, setDailyImg] = useState({});
   const [roverPhoto, setRoverPhoto] = useState({});
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchRoverPhotos = async () => {
@@ -26,8 +25,10 @@ export const NasaCollaboration = () => {
 
         const data = await response.json();
         setRoverPhoto(data);
+        setError(null);
       } catch (error) {
         console.error("Rover fetch error:", error);
+        setError("Failed to load rover photo");
       }
     };
 
@@ -41,8 +42,10 @@ export const NasaCollaboration = () => {
 
         const data = await response.json();
         setDailyImg(data);
+        setError(null);
       } catch (error) {
         console.error("APOD fetch error:", error);
+        setError("Failed to load Astronomy Picture of the Day");
       }
     };
 
@@ -56,7 +59,11 @@ export const NasaCollaboration = () => {
         <h1>Collaboration with NASA</h1>
         <section className="card">
           <h2>Astronomy Picture of the day</h2>
-          {dailyImg?.url ? (
+          {error ? (
+            <p className="error-message">{error}</p>
+          ) : !dailyImg?.url ? (
+            <p>Loading Astronomy Picture of the Day...</p>
+          ) : (
             <>
               <h3>{dailyImg.title}</h3>
               <img
@@ -66,8 +73,6 @@ export const NasaCollaboration = () => {
               />
               <p>{dailyImg.explanation}</p>
             </>
-          ) : (
-            <p>Loading Astronomy Picture of the Day...</p>
           )}
         </section>
         <section className="card">
