@@ -11,6 +11,7 @@ export const AddWishlistItem = ({ onAddWishlistItem }) => {
       thumbnail,
     });
     setName("");
+    setThumbnail("");
   };
 
   return (
