@@ -36,7 +36,7 @@ export const Navbar = () => {
       <nav className={styles.navbar}>
         <div className={styles.navbarBG} />
         <ul className={styles.navbarList}>
-          {navbarItems.map((item, index) => (
+          {NAV_LINKS.map((item, index) => (
             <NavItem
               key={item.link}
               index={index + 1}
@@ -46,8 +46,6 @@ export const Navbar = () => {
             />
           ))}
 
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Replace repeating content by using .map() and the previously created NavItem component. */}
           <li className={styles.wishlistBadge} aria-label="Wishlist"></li>
         </ul>
         {/* 🧑🏽‍🚀 Task - Week 4 - part 3 */}
