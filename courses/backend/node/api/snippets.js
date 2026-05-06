@@ -3,6 +3,35 @@ import db from "../db.js";
 
 const router = express.Router();
 
+const sendError = (response, status, message) => response.status(status).json({ error: message });
+
+const classifyServerError = (error) => {
+    const message = typeof error?.message === "string" ? error.message : "";
+    const code = typeof error?.code === "string" ? error.code : "";
+    const normalized = `${code} ${message}`.toLowerCase();
+
+    if (normalized.includes("no such table")) {
+        return { status: 500, clientMessage: "Database schema error", kind: "missing-table" };
+    }
+
+    if (normalized.includes("sqlite_cantopen") || normalized.includes("database is locked") || normalized.includes("connection")) {
+        return { status: 500, clientMessage: "Database unavailable", kind: "db-unavailable" };
+    }
+
+    return { status: 500, clientMessage: "Internal server error", kind: "unexpected" };
+};
+
+const logServerError = (context, error, meta = {}) => {
+    const code = typeof error?.code === "string" ? error.code : "unknown";
+    const message = typeof error?.message === "string" ? error.message : "Unknown error";
+    console.error("[snippets] request failed", {
+        context,
+        code,
+        message,
+        ...meta,
+    });
+};
+
 const mapSnippetBase = (row) => ({
     id: row.id,
     created_at: row.created_at,
@@ -107,9 +136,11 @@ router.get("/", async (request, response) => {
         const snippets = rows.map(mapSnippetBase);
         const snippetsWithTags = await attachTagsToSnippets(snippets);
 
-        response.json(snippetsWithTags);
+        return response.status(200).json(snippetsWithTags);
     } catch (error) {
-        response.status(500).json({ error: "Failed to fetch snippets" });
+        const classified = classifyServerError(error);
+        logServerError("list-snippets", error, { method: request.method, path: request.originalUrl });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -137,7 +168,9 @@ router.get("/public", async (request, response) => {
 
         return response.status(200).json(snippetsWithTags);
     } catch (error) {
-        return response.status(500).json({ error: "Failed to fetch public snippets" });
+        const classified = classifyServerError(error);
+        logServerError("list-public-snippets", error, { method: request.method, path: request.originalUrl });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -146,14 +179,14 @@ router.get("/by-tag/:tag", async (request, response) => {
     const tagName = String(request.params.tag ?? "").trim().toLowerCase();
 
     if (tagName.length === 0) {
-        return response.status(400).json({ error: "tag parameter is required" });
+        return sendError(response, 400, "tag parameter is required");
     }
 
     try {
         const tag = await db("tags").where("name", tagName).select("id").first();
 
         if (!tag) {
-            return response.status(404).json({ error: "Tag not found" });
+            return sendError(response, 404, "Tag not found");
         }
 
         const rows = await db("snippets")
@@ -178,7 +211,13 @@ router.get("/by-tag/:tag", async (request, response) => {
 
         return response.status(200).json(snippetsWithTags);
     } catch (error) {
-        return response.status(500).json({ error: "Failed to fetch snippets by tag" });
+        const classified = classifyServerError(error);
+        logServerError("list-snippets-by-tag", error, {
+            method: request.method,
+            path: request.originalUrl,
+            tag: tagName,
+        });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -201,9 +240,7 @@ router.get("/unsafe", async (request, response) => {
             const hasOnlyColumnAndDirection = parts.length <= 2;
 
             if (!isAllowedColumn || !isAllowedDirection || !hasOnlyColumnAndDirection) {
-                return response.status(400).json({
-                    error: "Invalid sort. Use 'created_at asc|desc' or 'title asc|desc'",
-                });
+                return sendError(response, 400, "Invalid sort. Use 'created_at asc|desc' or 'title asc|desc'");
             }
 
             query = query.orderBy(column, direction);
@@ -214,10 +251,15 @@ router.get("/unsafe", async (request, response) => {
 
     try {
         const data = await query;
-        response.json({ data });
+        return response.status(200).json({ data });
     } catch (error) {
-        console.error(error);
-        response.status(500).json({ error: "Internal server error" });
+        const classified = classifyServerError(error);
+        logServerError("unsafe-sort-demo", error, {
+            method: request.method,
+            path: request.originalUrl,
+            sort: request.query.sort,
+        });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -228,19 +270,19 @@ router.post("/", async (request, response) => {
     const tagIds = normalizeTagIds(tags);
 
     if (!Number.isInteger(userId) || userId < 1) {
-        return response.status(400).json({ error: "user_id must be a positive integer" });
+        return sendError(response, 400, "user_id must be a positive integer");
     }
 
     if (typeof title !== "string" || title.trim().length === 0) {
-        return response.status(400).json({ error: "title is required" });
+        return sendError(response, 400, "title is required");
     }
 
     if (typeof contents !== "string" || contents.trim().length === 0) {
-        return response.status(400).json({ error: "contents is required" });
+        return sendError(response, 400, "contents is required");
     }
 
     if (tagIds === null) {
-        return response.status(400).json({ error: "tags must be an array of positive integers" });
+        return sendError(response, 400, "tags must be an array of positive integers");
     }
 
     try {
@@ -290,16 +332,18 @@ router.post("/", async (request, response) => {
         });
 
         if (createdSnippet === null) {
-            return response.status(400).json({ error: "user_id does not exist" });
+            return sendError(response, 400, "user_id does not exist");
         }
 
         if (createdSnippet === false) {
-            return response.status(400).json({ error: "one or more tags do not exist" });
+            return sendError(response, 400, "one or more tags do not exist");
         }
 
         return response.status(201).json(createdSnippet);
     } catch (error) {
-        return response.status(500).json({ error: "Failed to create snippet" });
+        const classified = classifyServerError(error);
+        logServerError("create-snippet", error, { method: request.method, path: request.originalUrl });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -308,7 +352,7 @@ router.get("/:id", async (request, response) => {
     const snippetId = Number(request.params.id);
 
     if (!Number.isInteger(snippetId) || snippetId < 1) {
-        return response.status(400).json({ error: "Snippet id must be a positive integer" });
+        return sendError(response, 400, "Snippet id must be a positive integer");
     }
 
     try {
@@ -329,15 +373,21 @@ router.get("/:id", async (request, response) => {
             .first();
 
         if (!row) {
-            return response.status(404).json({ error: "Snippet not found" });
+            return sendError(response, 404, "Snippet not found");
         }
 
         const snippet = mapSnippetBase(row);
         const withTags = await attachTagsToSnippets([snippet]);
 
-        response.json(withTags[0]);
+        return response.status(200).json(withTags[0]);
     } catch (error) {
-        response.status(500).json({ error: "Failed to fetch snippet" });
+        const classified = classifyServerError(error);
+        logServerError("get-snippet-by-id", error, {
+            method: request.method,
+            path: request.originalUrl,
+            snippetId,
+        });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -349,11 +399,11 @@ router.put("/:id", async (request, response) => {
     const tagIds = normalizeTagIds(tags);
 
     if (!Number.isInteger(snippetId) || snippetId < 1) {
-        return response.status(400).json({ error: "Snippet id must be a positive integer" });
+        return sendError(response, 400, "Snippet id must be a positive integer");
     }
 
     if (hasTagUpdate && tagIds === null) {
-        return response.status(400).json({ error: "tags must be an array of positive integers" });
+        return sendError(response, 400, "tags must be an array of positive integers");
     }
 
     const payload = {};
@@ -361,34 +411,34 @@ router.put("/:id", async (request, response) => {
     if (user_id !== undefined) {
         const userId = Number(user_id);
         if (!Number.isInteger(userId) || userId < 1) {
-            return response.status(400).json({ error: "user_id must be a positive integer" });
+            return sendError(response, 400, "user_id must be a positive integer");
         }
         payload.user_id = userId;
     }
 
     if (title !== undefined) {
         if (typeof title !== "string" || title.trim().length === 0) {
-            return response.status(400).json({ error: "title must be a non-empty string" });
+            return sendError(response, 400, "title must be a non-empty string");
         }
         payload.title = title.trim();
     }
 
     if (contents !== undefined) {
         if (typeof contents !== "string" || contents.trim().length === 0) {
-            return response.status(400).json({ error: "contents must be a non-empty string" });
+            return sendError(response, 400, "contents must be a non-empty string");
         }
         payload.contents = contents.trim();
     }
 
     if (is_private !== undefined) {
         if (typeof is_private !== "boolean") {
-            return response.status(400).json({ error: "is_private must be a boolean" });
+            return sendError(response, 400, "is_private must be a boolean");
         }
         payload.is_private = is_private;
     }
 
     if (Object.keys(payload).length === 0 && !hasTagUpdate) {
-        return response.status(400).json({ error: "No valid fields provided for update" });
+        return sendError(response, 400, "No valid fields provided for update");
     }
 
     try {
@@ -445,20 +495,26 @@ router.put("/:id", async (request, response) => {
         });
 
         if (updatedSnippet === null) {
-            return response.status(404).json({ error: "Snippet not found" });
+            return sendError(response, 404, "Snippet not found");
         }
 
         if (updatedSnippet === false) {
-            return response.status(400).json({ error: "user_id does not exist" });
+            return sendError(response, 400, "user_id does not exist");
         }
 
         if (updatedSnippet === "tags-invalid") {
-            return response.status(400).json({ error: "one or more tags do not exist" });
+            return sendError(response, 400, "one or more tags do not exist");
         }
 
         return response.json(updatedSnippet);
     } catch (error) {
-        return response.status(500).json({ error: "Failed to update snippet" });
+        const classified = classifyServerError(error);
+        logServerError("update-snippet", error, {
+            method: request.method,
+            path: request.originalUrl,
+            snippetId,
+        });
+        return sendError(response, classified.status, classified.clientMessage);
     }
 });
 
@@ -467,7 +523,7 @@ router.delete("/:id", async (request, response) => {
     const snippetId = Number(request.params.id);
 
     if (!Number.isInteger(snippetId) || snippetId < 1) {
-        return response.status(400).json({ error: "Snippet id must be a positive integer" });
+        return sendError(response, 400, "Snippet id must be a positive integer");
     }
 
     try {
@@ -477,13 +533,33 @@ router.delete("/:id", async (request, response) => {
         });
 
         if (deletedRows === 0) {
-            return response.status(404).json({ error: "Snippet not found" });
+            return sendError(response, 404, "Snippet not found");
         }
 
         return response.status(204).send();
     } catch (error) {
-        return response.status(500).json({ error: "Failed to delete snippet" });
+        const classified = classifyServerError(error);
+        logServerError("delete-snippet", error, {
+            method: request.method,
+            path: request.originalUrl,
+            snippetId,
+        });
+        return sendError(response, classified.status, classified.clientMessage);
     }
+});
+
+router.use((error, request, response, next) => {
+    const classified = classifyServerError(error);
+    logServerError("router-catch-all", error, {
+        method: request.method,
+        path: request.originalUrl,
+    });
+
+    if (response.headersSent) {
+        return next(error);
+    }
+
+    return sendError(response, classified.status, classified.clientMessage);
 });
 
 export default router;
