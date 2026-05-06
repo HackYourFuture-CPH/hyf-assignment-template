@@ -113,6 +113,75 @@ router.get("/", async (request, response) => {
     }
 });
 
+// GET /api/snippets/public
+router.get("/public", async (request, response) => {
+    try {
+        const rows = await db("snippets")
+            .join("users", "snippets.user_id", "users.id")
+            .where("snippets.is_private", false)
+            .select(
+                "snippets.id",
+                "snippets.created_at",
+                "snippets.updated_at",
+                "snippets.title",
+                "snippets.contents",
+                "snippets.is_private",
+                "users.id as user_id",
+                "users.first_name",
+                "users.last_name"
+            )
+            .orderBy("snippets.created_at", "desc");
+
+        const snippets = rows.map(mapSnippetBase);
+        const snippetsWithTags = await attachTagsToSnippets(snippets);
+
+        return response.status(200).json(snippetsWithTags);
+    } catch (error) {
+        return response.status(500).json({ error: "Failed to fetch public snippets" });
+    }
+});
+
+// GET /api/snippets/by-tag/:tag
+router.get("/by-tag/:tag", async (request, response) => {
+    const tagName = String(request.params.tag ?? "").trim().toLowerCase();
+
+    if (tagName.length === 0) {
+        return response.status(400).json({ error: "tag parameter is required" });
+    }
+
+    try {
+        const tag = await db("tags").where("name", tagName).select("id").first();
+
+        if (!tag) {
+            return response.status(404).json({ error: "Tag not found" });
+        }
+
+        const rows = await db("snippets")
+            .join("users", "snippets.user_id", "users.id")
+            .join("snippet_tags", "snippets.id", "snippet_tags.snippet_id")
+            .where("snippet_tags.tag_id", tag.id)
+            .select(
+                "snippets.id",
+                "snippets.created_at",
+                "snippets.updated_at",
+                "snippets.title",
+                "snippets.contents",
+                "snippets.is_private",
+                "users.id as user_id",
+                "users.first_name",
+                "users.last_name"
+            )
+            .orderBy("snippets.id", "asc");
+
+        const snippets = rows.map(mapSnippetBase);
+        const snippetsWithTags = await attachTagsToSnippets(snippets);
+
+        return response.status(200).json(snippetsWithTags);
+    } catch (error) {
+        return response.status(500).json({ error: "Failed to fetch snippets by tag" });
+    }
+});
+
 // GET /api/snippets/unsafe
 router.get("/unsafe", async (request, response) => {
     const sortableColumns = new Set(["created_at", "title"]);
