@@ -20,7 +20,24 @@
             "snippets"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Response is an array', function () {",
+              "  pm.expect(Array.isArray(body)).to.eql(true);",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "POST create snippet",
@@ -46,7 +63,24 @@
             "snippets"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 201', function () {",
+              "  pm.response.to.have.status(201);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Created snippet has id', function () {",
+              "  pm.expect(body).to.have.property('id');",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "GET snippet by id",
@@ -64,7 +98,25 @@
             "1"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Snippet object returned', function () {",
+              "  pm.expect(body).to.have.property('id');",
+              "  pm.expect(body).to.have.property('title');",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "PUT update snippet by id",
@@ -91,7 +143,25 @@
             "1"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Updated snippet returned', function () {",
+              "  pm.expect(body).to.have.property('id');",
+              "  pm.expect(body).to.have.property('title');",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "DELETE snippet by id",
@@ -109,7 +179,20 @@
             "1"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 204', function () {",
+              "  pm.response.to.have.status(204);",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "GET public snippets",
@@ -127,7 +210,29 @@
             "public"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Response is an array', function () {",
+              "  pm.expect(Array.isArray(body)).to.eql(true);",
+              "});",
+              "pm.test('All snippets are public', function () {",
+              "  body.forEach(function (item) {",
+              "    pm.expect(item.is_private).to.eql(false);",
+              "  });",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "GET snippets by tag",
@@ -146,7 +251,24 @@
             "javascript"
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Response is an array', function () {",
+              "  pm.expect(Array.isArray(body)).to.eql(true);",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "GET snippets unsafe sort (valid)",
@@ -170,7 +292,25 @@
             }
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 200', function () {",
+              "  pm.response.to.have.status(200);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Response contains data array', function () {",
+              "  pm.expect(body).to.have.property('data');",
+              "  pm.expect(Array.isArray(body.data)).to.eql(true);",
+              "});"
+            ]
+          }
+        }
+      ]
     },
     {
       "name": "GET snippets unsafe sort (invalid)",
@@ -194,7 +334,24 @@
             }
           ]
         }
-      }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status is 400', function () {",
+              "  pm.response.to.have.status(400);",
+              "});",
+              "const body = pm.response.json();",
+              "pm.test('Error response shape', function () {",
+              "  pm.expect(body).to.have.property('error');",
+              "});"
+            ]
+          }
+        }
+      ]
     }
   ]
 }
