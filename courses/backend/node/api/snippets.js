@@ -115,12 +115,29 @@ router.get("/", async (request, response) => {
 
 // GET /api/snippets/unsafe
 router.get("/unsafe", async (request, response) => {
+    const sortableColumns = new Set(["created_at", "title"]);
     let query = db.select("*").from("snippets");
 
     if ("sort" in request.query) {
-        const orderBy = request.query.sort.toString();
-        if (orderBy.length > 0) {
-            query = query.orderByRaw(orderBy); // Vulnerable by design for assignment demo.
+        const rawSort = request.query.sort.toString().trim();
+
+        if (rawSort.length > 0) {
+            const parts = rawSort.split(/\s+/).filter(Boolean);
+            const [columnRaw, directionRaw = "asc"] = parts;
+
+            const column = columnRaw.toLowerCase();
+            const direction = directionRaw.toLowerCase();
+            const isAllowedColumn = sortableColumns.has(column);
+            const isAllowedDirection = direction === "asc" || direction === "desc";
+            const hasOnlyColumnAndDirection = parts.length <= 2;
+
+            if (!isAllowedColumn || !isAllowedDirection || !hasOnlyColumnAndDirection) {
+                return response.status(400).json({
+                    error: "Invalid sort. Use 'created_at asc|desc' or 'title asc|desc'",
+                });
+            }
+
+            query = query.orderBy(column, direction);
         }
     }
 
