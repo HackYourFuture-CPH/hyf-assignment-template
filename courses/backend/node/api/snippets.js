@@ -113,6 +113,28 @@ router.get("/", async (request, response) => {
     }
 });
 
+// GET /api/snippets/unsafe
+router.get("/unsafe", async (request, response) => {
+    let query = db.select("*").from("snippets");
+
+    if ("sort" in request.query) {
+        const orderBy = request.query.sort.toString();
+        if (orderBy.length > 0) {
+            query = query.orderByRaw(orderBy); // Vulnerable by design for assignment demo.
+        }
+    }
+
+    console.log("SQL", query.toSQL().sql);
+
+    try {
+        const data = await query;
+        response.json({ data });
+    } catch (error) {
+        console.error(error);
+        response.status(500).json({ error: "Internal server error" });
+    }
+});
+
 // POST /api/snippets
 router.post("/", async (request, response) => {
     const { user_id, title, contents, is_private, tags } = request.body;
