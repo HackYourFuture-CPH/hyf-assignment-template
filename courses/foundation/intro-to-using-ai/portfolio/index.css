@@ -1,0 +1,191 @@
+.fun-button {
+  background: (#e9c46a, #e9c46a);
+  color: #264653;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin: 2rem auto 1rem auto;
+  display: block;
+  transition: background 0.3s, color 0.3s, transform 0.2s;
+}
+.fun-button:hover {
+  background: #2a9d8f;
+  color: #fff;
+  transform: scale(1.05);
+}
+body {
+  background: hsl(0, 20%, 52%);
+  color: #fff;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  transition: color 0.3s, background 0.3s;
+}
+body:hover {
+  background-color: hsl(0, 20%, 32%);
+  color: aquamarine;
+}
+.about-me {
+  background: #264653;
+  border-left: 8px solid #e9c46a;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 2rem auto;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transition: color 0.3s, box-shadow 0.3s;
+  font-size: 100%;
+}
+
+.about-me:hover {
+  background: #2a9d8f;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+.profile-pic {
+  width: 120px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  border: 4px solid #2a9d8f;
+}
+.title,
+.subtitle {
+  text-align: center;
+  transition: color 0.3s, transform 0.3s;
+}
+.subtitle:hover {
+  color: var(--accent, #e9c46a);
+  transform: scale(1.05);
+}
+.education-section {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+.education-intro {
+  text-align: center;
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: color 0.3s, background 0.3s;
+  color: aquamarine;
+}
+.education-intro:hover {
+  color: var(--accent, #e9c46a);
+  background: rgba(38, 70, 83, 0.2);
+  border-radius: 8px;
+}
+.education-card {
+  background: #264653;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  flex: 1 1 250px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.education-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+}
+.skill-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+.experience-section {
+  background: #264653;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 50px;
+  position: relative;
+}
+
+.experience-title {
+  text-align: center;
+  color: var(--accent, #e9c46a);
+  margin-bottom: 2rem;
+}
+
+.experience-cards {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-end;
+  flex: 1;
+}
+
+.experience-card {
+  background: #264653;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5rem;
+  flex: 1 1 250px;
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.experience-card:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+footer {
+  text-align: center;
+  background-color: rgba(5, 0, 0, 0.8);
+  margin-top: 40px;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+@media (max-width: 900px) {
+  .education-section,
+  .experience-cards,
+  .skill-section {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  .education-card,
+  .experience-card,
+  .skill-card {
+    max-width: 90vw;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-me {
+    padding: 1rem;
+    max-width: 98vw;
+  }
+  .education-intro {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  .experience-section {
+    padding: 1rem;
+  }
+  .experience-title {
+    font-size: 1.2rem;
+  }
+}

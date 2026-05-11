@@ -1,11 +1,11 @@
 import express from "express";
-import knex from "knex";
+import knexLibrary  from "knex";
 
 const app = express();
 const port = 3000;
 
 // This connects to the database stored in the file mentioned below
-const knexInstance = knex({
+const knexInstance = knexLibrary ({
   client: "sqlite3",
   connection: {
     filename: "./database.sqlite3",

@@ -1,0 +1,91 @@
+
+
+body {
+    background: rgb(110, 171, 179);
+    font-family: Arial, sans-serif;
+    padding: 40px;
+    margin: 0;
+}
+
+
+.container {
+    max-width: 380px;
+    margin: auto;
+    background: rgb(126, 177, 210);
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(143, 11, 11, 0.1);
+}
+
+
+.icon-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px; 
+}
+
+.money-icon {
+    width: 110px; 
+    display: block;
+}
+
+
+h1 {
+    text-align: center;
+    margin: 10px 0 20px 0;
+    font-size: 22px;
+}
+
+
+label {
+    font-weight: bold;
+    margin-top: 12px;
+    display: block;
+}
+input, select {
+    width: 100%;
+    height: 38px;        
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+
+input::placeholder {
+    color: #b3b3b3;
+    opacity: 1;
+}
+
+
+#result {
+    margin-top: 18px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+
+@media (max-width: 480px) {
+
+    h1 {
+        text-align: center;
+        margin: 0 auto 16px auto; 
+        width: 100%;              
+        font-size: 20px;          
+    }
+
+        input {
+        padding: 6px 8px;    
+        font-size: 14px;       
+    }
+
+    input::placeholder {
+        font-size: 8px;       
+        letter-spacing: 0.2px; 
+    }
+
+
+}

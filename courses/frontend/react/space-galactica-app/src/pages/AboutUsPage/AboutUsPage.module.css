@@ -3,3 +3,192 @@
   width: 100vw;
   height: 100vh;
 }
+
+.missionSection {
+  text-align: left;
+  margin-bottom: 3rem;
+}
+
+.missionText {
+  max-width: 700px;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.valuesSection {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0.5rem 0;
+  color: white;
+}
+
+.valueItem {
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 1.5rem;
+  border-radius: 12px;
+}
+
+.valueHeading {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.valueText {
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.valueExploration {
+  background: rgba(0, 102, 204, 0.25);
+}
+
+.valueInnovation {
+  background: rgba(255, 165, 0, 0.25);
+}
+
+.valueSustainability {
+  background: rgba(0, 153, 102, 0.25);
+}
+
+.valueCommunity {
+  background: rgba(153, 51, 204, 0.25);
+}
+
+.valueItem {
+  text-align: left;
+}
+
+.crewSection {
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  padding: 0.5rem 0;
+}
+
+.crewTitle {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.crewIntro {
+  max-width: 700px;
+  margin: 0 0 2rem 0;
+  text-align: left;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  margin-top: 0;
+}
+
+.crewGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.crewMember {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(4px);
+  background: rgba(255, 255, 255, 0.08);
+  padding: 1.5rem;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.crewMember:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.crewImage {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.crewName {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  white-space: nowrap;
+}
+
+.crewRole {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.crewBio {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: none;
+  margin: 0;
+  opacity: 0.9;
+  flex-grow: 1;
+  margin-top: 0;
+}
+
+.partnersSection {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.partnersTitle {
+  margin-bottom: 0.1rem;
+  text-align: left;
+  margin-top: 0;
+}
+
+.partnerIntro {
+  max-width: 700px;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  opacity: 0.9;
+  text-align: left;
+}
+
+.partnerGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.partnerLogo {
+  height: 50px;
+  opacity: 0.8;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  margin-top: 1rem;
+}
+
+.partnerLogo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  cursor: pointer;
+}

@@ -1,0 +1,23 @@
+
+Three New Things I Learned from the Review and Implementation Process
+
+1. The Value of Separating Structure and Logic
+
+While reviewing my original portfolio, I realized how mixing HTML and JavaScript in the same file made the project harder to maintain. 
+Implementing the change to move JavaScript into an external file helped me understand why developers separate structure (HTML), style (CSS) and behavior (JS). 
+This process taught me that clean organization is not just a preference—it makes debugging easier, reduces clutter and prepares the project for future growth.
+
+2. How Comments Improve Clarity and Long‑Term Understanding
+
+During the review, I noticed that my earlier code had no comments, which made it harder to understand what each part was doing.
+Adding comments during the implementation phase helped me think more carefully about the purpose of each function and line of code. 
+I learned that comments are not just for others—they help me understand my own logic when I return to the code later. 
+This made me more aware of the importance of writing code that is both functional and readable.
+
+3. A Deeper Understanding of Accessibility Through Contrast Checking
+
+The biggest learning moment came from implementing the contrast‑checking feature.
+Before the review, I didn’t think much about how random colors could affect readability. 
+While implementing the fix, I learned about luminance, contrast ratios and why accessibility guidelines matter. 
+This process helped me understand that good design includes making sure text is readable for all users, not just choosing colors that look nice. 
+It showed me how small improvements can make a big difference in user experience.

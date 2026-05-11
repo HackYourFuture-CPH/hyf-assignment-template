@@ -1,0 +1,56 @@
+
+┌──────────────────────────────────────────────────────────────┐
+ │ User clicks #colorButton                                      │
+ └───────────────┬──────────────────────────────────────────────┘
+                 │ triggers onclick handler
+                 ▼
+        ┌──────────────────────────────┐
+        │ Generate random background   │
+        │ color (randomBg):            │
+        │   "#" + random 0–16777215    │
+        │        → hex → padded        │
+        └───────────────┬──────────────┘
+                        │
+                        ▼
+        ┌──────────────────────────────────────────┐
+        │ document.body.style.background = randomBg │
+        └───────────────────┬──────────────────────┘
+                            │
+                            ▼
+        ┌──────────────────────────────┐
+        │ Generate random text color   │
+        │ (randomText):                │
+        │   "#" + random 0–16777215    │
+        │        → hex → padded        │
+        └───────────────┬──────────────┘
+                        │
+                        ▼
+        ┌──────────────────────────────────────────┐
+        │ this.style.color = randomText             │
+        └───────────────────┬──────────────────────┘
+                            │
+                            ▼
+                ┌──────────────────────────────┐
+                │ ensureContrast(button, bg)    │
+                └───────────────┬──────────────┘
+                                │
+                                ▼
+        ┌────────────────────────────────────────────────────────┐
+        │ Inside ensureContrast:                                 │
+        │                                                        │
+        │ 1. textColor = computed style of button                │
+        │ 2. bgRgb   = hexToRgb(bgColor)                         │
+        │        hex → integer → [R,G,B]                         │
+        │ 3. textRgb = rgbStringToArray(textColor)               │
+        │        "rgb(r,g,b)" → [r,g,b]                          │
+        │ 4. bgLuminance   = getLuminance(bgRgb)                 │
+        │ 5. textLuminance = getLuminance(textRgb)               │
+        │ 6. contrastRatio = getContrastRatio(bgLum, textLum)    │
+        └───────────────┬────────────────────────────────────────┘
+                        │
+                        ▼
+        ┌──────────────────────────────────────────────┐
+        │ If contrastRatio < 4.5:1                      │
+        │     If bgLuminance > 0.5 → text = black       │
+        │     Else → text = white                       │
+        └──────────────────────────────────────────────┘

@@ -4,9 +4,20 @@
   height: 100vh;
 }
 
-
 .nasaPicOfTheDayImg {
   width: auto;
   height: 400px;
+}
 
+.roverGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  justify-items: center;
+}
+
+.error-message {
+  color: #d00000;
+  font-weight: 600;
+  margin-top: 1rem;
 }
