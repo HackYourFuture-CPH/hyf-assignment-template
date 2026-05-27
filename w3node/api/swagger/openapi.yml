@@ -1,0 +1,279 @@
+openapi: 3.0.0
+info:
+  title: Snippets API
+  version: 1.0.0
+  description: API for managing code snippets, tags, users, and authentication.
+
+servers:
+  - url: http://localhost:3000/api
+
+security:
+  - bearerAuth: []
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    UserCreate:
+      type: object
+      required: [username, email, password]
+      properties:
+        username:
+          type: string
+        email:
+          type: string
+        password:
+          type: string
+
+    Tag:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+
+    TagCreate:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+
+    Snippet:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        tag_id:
+          type: integer
+          nullable: true
+        title:
+          type: string
+        content:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+
+    SnippetCreate:
+      type: object
+      required: [title, content]
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        tag_id:
+          type: integer
+          nullable: true
+
+    Token:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+
+paths:
+  /snippets:
+    get:
+      summary: Get all snippets
+      tags: [Snippets]
+      responses:
+        200:
+          description: List of snippets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Snippet"
+
+    post:
+      summary: Create a new snippet
+      tags: [Snippets]
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SnippetCreate"
+      responses:
+        201:
+          description: Snippet created
+
+  /snippets/search:
+    get:
+      summary: Search snippets by query string
+      tags: [Snippets]
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+      responses:
+        200:
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Snippet"
+
+    post:
+      summary: Search snippets using POST body
+      tags: [Snippets]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                q:
+                  type: string
+      responses:
+        200:
+          description: Search results
+
+  /snippets/{id}:
+    get:
+      summary: Get a snippet by ID
+      tags: [Snippets]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Snippet found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Snippet"
+        404:
+          description: Snippet not found
+
+    put:
+      summary: Update a snippet
+      tags: [Snippets]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SnippetCreate"
+      responses:
+        200:
+          description: Snippet updated
+        404:
+          description: Snippet not found
+
+    delete:
+      summary: Delete a snippet
+      tags: [Snippets]
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Snippet deleted
+        404:
+          description: Snippet not found
+
+  /auth/login:
+    post:
+      summary: Login and receive access + refresh tokens
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        200:
+          description: Tokens returned
+        401:
+          description: Wrong email or password
+
+  /auth/register:
+    post:
+      summary: Register a new user
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserCreate"
+      responses:
+        201:
+          description: User created
+        409:
+          description: Email already exists
+
+  /auth/refresh:
+    post:
+      summary: Refresh access token using refresh token
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [refreshToken]
+              properties:
+                refreshToken:
+                  type: string
+      responses:

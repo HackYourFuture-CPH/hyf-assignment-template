@@ -1,0 +1,22 @@
+import express from "express";
+import db from "./db.js";
+import snippetsRouter from "./api/src/routers/snippets.js";
+import tagsRouter from "./api/src/routers/tags.js";
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+// Support parsing JSON requests
+app.use(express.json());
+
+// Mount routers
+app.use("/api/snippets", snippetsRouter);
+app.use("/api/tags", tagsRouter);
+
+app.get("/", (req, res) => {
+  res.send("This is a search engine");
+});
+
+app.listen(port, () => {
+  console.log(`Listening on port ${port}`);
+});

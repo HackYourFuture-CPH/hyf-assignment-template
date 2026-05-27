@@ -1,0 +1,10 @@
+console.log("I love Pizza!");
+const myFavouritePizza="Vegetable Pizza";
+const pizzaPrice=100;
+let message1 = 'New pizza order: ' + myFavouritePizza + '. The price of the pizza is: ' + pizzaPrice + 'dkk.'; 
+console.log(message1);
+let pizzaQuantity=2;
+let isFamilySize=true;
+let totalPrice=pizzaPrice*pizzaQuantity;
+let message2 = `New pizza order: ${pizzaQuantity} ,${isFamilySize}, ${myFavouritePizza}. Total cost for the order is: ${totalPrice}dkk`;
+ console.log(message2);

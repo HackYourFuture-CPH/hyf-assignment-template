@@ -1,0 +1,188 @@
+openapi: 3.0.0
+info:
+  title: Snippets API
+  version: 1.0.0
+  description: API for managing code snippets.
+
+servers:
+  - url: http://localhost:3000/api
+
+paths:
+  /snippets:
+    get:
+      summary: Get all snippets
+      tags: [Snippets]
+      responses:
+        200:
+          description: List of snippets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Snippet"
+
+    post:
+      summary: Create a new snippet
+      tags: [Snippets]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SnippetCreate"
+      responses:
+        201:
+          description: Snippet created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Snippet"
+        400:
+          description: Validation error
+
+  /snippets/search:
+    get:
+      summary: Search snippets by query string
+      tags: [Snippets]
+      parameters:
+        - in: query
+          name: q
+          schema:
+            type: string
+          description: Search term for title or content
+      responses:
+        200:
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Snippet"
+
+    post:
+      summary: Search snippets using POST body
+      tags: [Snippets]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                q:
+                  type: string
+                  description: Search term
+      responses:
+        200:
+          description: Search results
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Snippet"
+
+  /snippets/{id}:
+    get:
+      summary: Get a snippet by ID
+      tags: [Snippets]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Snippet found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Snippet"
+        404:
+          description: Snippet not found
+
+    put:
+      summary: Update a snippet
+      tags: [Snippets]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SnippetUpdate"
+      responses:
+        200:
+          description: Snippet updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Snippet"
+        404:
+          description: Snippet not found
+
+    delete:
+      summary: Delete a snippet
+      tags: [Snippets]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: Snippet deleted
+        404:
+          description: Snippet not found
+
+components:
+  schemas:
+    Snippet:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        content:
+          type: string
+        user_id:
+          type: integer
+        tag_id:
+          type: integer
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+
+    SnippetCreate:
+      type: object
+      required: [title, content, user_id]
+      properties:
+        title:
+          type: string
+          minLength: 2
+        content:
+          type: string
+          minLength: 6
+        user_id:
+          type: integer
+          minimum: 1
+
+    SnippetUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        tag_id:
+          type: integer
+          nullable: true
