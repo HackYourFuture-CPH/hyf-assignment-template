@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Order form</title>
+  </head>
+  <body>
+    <main class="main">
+      <header class="header">
+        <h1>Some header</h1>
+        <p>Some optional stuff.</p>
+      </header>
+      <!-- order summary -->
+
+      <section class="order-summary">
+        <h2>Order summary</h2>
+
+        <div class="order-total">
+          <div><span>Total</span> <span>$333 / month</span></div>
+
+          <div><b>Total</b> <b>$100</b></div>
+        </div>
+      </section>
+
+      <form class="form">
+        <div class="payment-method">
+          <h2>Payment Method</h2>
+
+          <div class="form-radio">
+            <input type="radio" checked name="paymentMethod" id="creditDebit" />
+            <label for="creditDebit">
+              <img src="img/cards.png" alt="bank cards" />
+              <span>Credit/Debit</span>
+            </label>
+
+            <input type="radio" name="paymentMethod" id="payPal" />
+            <label for="payPal">
+              <img src="img/paypal.png" alt="Pay Pal" />
+              <span>PayPal</span>
+            </label>
+          </div>
+        </div>
+        <!-- payment method -->
+
+        <div class="card-info">
+          <h2>Card Info</h2>
+
+          <div class="card-info-wrap">
+            <div class="card-info-number">
+              <label for="card-number">Card number</label>
+              <div class="card-input">
+                <input
+                  type="text"
+                  id="card-number"
+                  placeholder="1234 1234 1234 1234"
+                  name="card-number"
+                  required
+                />
+
+                <img src="img/Vector.svg" alt="question mark" class="help" />
+              </div>
+            </div>
+
+            <div class="card-info-date">
+              <label for="exp-date">Expiry date</label>
+              <input
+                type="text"
+                id="exp-date"
+                placeholder="MM / YY"
+                name="exp-date"
+                required
+              />
+            </div>
+
+            <div class="card-info-code">
+              <label for="sec-code">Security code</label>
+              <div class="card-input">
+                <input
+                  type="text"
+                  id="sec-code"
+                  placeholder="CVV"
+                  name="sec-code"
+                  required
+                />
+
+                <img src="img/Vector.svg" alt="question mark" class="help" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- card info -->
+
+        <button type="submit" class="btn">Buy Now</button>
+        <a href="#!">Need Help?</a>
+      </form>
+    </main>
+  </body>
+</html>
