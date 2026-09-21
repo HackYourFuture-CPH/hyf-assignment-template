@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <title>Payment Form session1 upgraded Florencia Fernandez</title>
+  </head>
+  <body>
+    <header class="title">
+      <h1>WE ALMOST DONE!</h1>
+      <p>You just need to complete the last step</p>
+    </header>
+
+    <div class="page">
+      <header class="order-summary">
+        <h2>Order Summary</h2>
+        <p class="total-month"><span>Total</span><span>$333/month</span></p>
+        <p class="total"><span>Total</span><span>$100</span></p>
+      </header>
+
+      <main>
+        <form>
+          <fieldset class="payment-fieldset">
+            <legend>Payment Method</legend>
+
+            <input
+              type="radio"
+              id="credit-debit"
+              name="method"
+              value="credit-debit"
+              checked
+            />
+            <!-- alt text for the credit/debit card logo is more descriptive -->
+            <label class="payment-option" for="credit-debit">
+              <img
+                src="https://github.com/florencialegaldk-hash/order-form-assets/blob/main/cards.webp?raw=true"
+                alt="Mastercard, Visa and American Express"
+              />
+              Credit/Debit
+            </label>
+
+            <input type="radio" id="paypal" name="method" value="paypal" />
+            <!-- alt text for the PayPal logo has no additional info, I removed it -->
+            <label class="payment-option" for="paypal">
+              <img
+                src="https://github.com/florencialegaldk-hash/order-form-assets/blob/main/paypal.webp?raw=true"
+                alt=""
+              />
+              PayPal
+            </label>
+          </fieldset>
+
+          <fieldset class="card-fieldset">
+            <legend>Card Info</legend>
+            <!-- added autocomplete attributes to the inputs for better UX -->
+
+            <div class="card-field has-help">
+              <label for="card-number">Card number</label>
+              <input
+                type="text"
+                id="card-number"
+                name="card-number"
+                placeholder="1234 1234 1234 1234"
+                inputmode="numeric"
+                autocomplete="cc-number"
+                required
+              />
+              <button
+                type="button"
+                class="help-icon"
+                aria-label="More info about card number"
+              >
+                ?
+              </button>
+            </div>
+
+            <div class="card-field">
+              <label for="exp-date">Expiry date</label>
+              <input
+                type="text"
+                id="exp-date"
+                name="exp-date"
+                placeholder="MM / YY"
+                inputmode="numeric"
+                autocomplete="cc-exp"
+                required
+              />
+            </div>
+
+            <div class="card-field has-help">
+              <label for="sec-code">Security code</label>
+              <input
+                type="text"
+                id="sec-code"
+                name="sec-code"
+                placeholder="CVV"
+                inputmode="numeric"
+                autocomplete="cc-csc"
+                required
+              />
+              <button
+                type="button"
+                class="help-icon"
+                aria-label="More info about security code"
+              >
+                ?
+              </button>
+            </div>
+          </fieldset>
+
+          <input type="submit" class="buy-now" value="Buy now" />
+
+          <a class="need-help" href="#">Need Help?</a>
+        </form>
+      </main>
+    </div>
+  </body>
+</html>
