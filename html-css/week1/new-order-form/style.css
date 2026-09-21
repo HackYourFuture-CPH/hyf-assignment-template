@@ -1,0 +1,266 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial;
+  color: #333;
+  background-color: #2310164d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 16px;
+}
+
+/* ---------- Top title ---------- */
+
+.title {
+  text-align: center;
+  padding: 0 16px 24px;
+  color: #ffffff;
+  width: 800px;
+  height: 150px;
+}
+
+.title h1 {
+  font-size: 70px;
+  margin-bottom: 8px;
+  width: 800px;
+  height: 93px;
+  font-family: Arial;
+  font-weight: 400;
+  text-align: center;
+  /* removed: vertical-align: middle;
+     it only works on inline/table-cell elements, h1 is block by default
+     so it had no visual effect, leftover from the Figma export */
+}
+
+.title p {
+  color: #ffffff;
+  font-size: 24px;
+  font-family: Arial;
+}
+
+/* ---------- Card / page container ---------- */
+
+.page {
+  background-color: #ffffff;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.order-summary {
+  background: linear-gradient(-135deg, #fe4e9b, #fd7b46);
+  color: white;
+  padding: 24px 20px;
+}
+
+.order-summary h2 {
+  margin-bottom: 16px;
+}
+
+.total-month,
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.total-month {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.total {
+  font-weight: bold;
+}
+
+main {
+  padding: 24px 16px;
+}
+
+/* ---------- Fieldset ---------- */
+
+fieldset {
+  border: none;
+  margin-bottom: 32px;
+}
+
+legend {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* ---------- Payment method (radio buttons styled as cards) ---------- */
+
+.payment-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* The actual radio is visually hidden, the label right after it
+   becomes the clickable, visible "card" */
+.payment-fieldset input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.payment-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 2px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 20px;
+  cursor: pointer;
+  color: #666;
+  font-weight: bold;
+  transition: border-color 0.15s ease;
+}
+
+.payment-option img {
+  height: 24px;
+}
+
+.payment-fieldset input[type="radio"]:checked + .payment-option {
+  border-color: #fe4e9b;
+}
+
+/* Accessibility: since the radio itself is invisible, keyboard users
+   tabbing through the form need a visible focus indicator on the card.
+   Reuses the same brand pink already used for the "checked" state. */
+.payment-fieldset input[type="radio"]:focus-visible + .payment-option {
+  outline: 2px solid #fe4e9b;
+  outline-offset: 2px;
+}
+
+/* ---------- Card info fields ---------- */
+
+.card-fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-field label {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.card-field input {
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #f7f7f7;
+  width: 100%;
+}
+
+/* Only fields that actually have a help-icon button need the extra
+   right padding to make room for it; expiry date doesn't have one */
+.card-field.has-help input {
+  padding-right: 40px;
+}
+
+.card-field input:focus-visible {
+  outline: 2px solid #fe4e9b;
+  outline-offset: 1px;
+}
+
+.help-icon {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background-color: #555;
+  color: white;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.help-icon:focus-visible {
+  outline: 2px solid #fe4e9b;
+  outline-offset: 2px;
+}
+
+/* ---------- Submit button ---------- */
+
+.buy-now {
+  display: block;
+  width: 326px;
+  border-radius: 69px;
+  padding: 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  background: linear-gradient(92.74deg, #fd7b46, #fe4e9b);
+  border: none;
+  /* removed: align-item: center;
+     typo for align-items, and even fixed it wouldn't do anything here
+     .buy-now is display: block, not a flex/grid container */
+  margin: 0 auto 16px;
+  /* combined into one shorthand: the previous separate
+     "margin-bottom: 16px" and "margin: 0 auto" conflicted
+     the second declaration was overriding the first, so the
+     bottom margin was never actually applied */
+  cursor: pointer;
+}
+
+.buy-now:focus-visible {
+  outline: 2px solid #333;
+  outline-offset: 2px;
+}
+
+/* added a webkit prefix for Safari, which doesn't support the unprefixed version yet */
+.need-help {
+  display: block;
+  text-align: center;
+  color: transparent;
+  font-weight: bold;
+  background: linear-gradient(91.07deg, #fe4e9b 32.21%, #fd7b46 67.08%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  padding: 23px 0 39px;
+}
+
+/* ---------- Tablet and up ---------- */
+
+@media (min-width: 600px) {
+  .payment-fieldset {
+    flex-direction: row;
+  }
+
+  /* removed the radio from this selector: input[type="radio"] is
+     position: absolute, so it's out of normal flow; flex: 1 had
+     no effect on it, only .payment-option actually needs it */
+  .payment-option {
+    flex: 1;
+  }
+
+  .card-fieldset {
+    flex-direction: row;
+  }
+
+  .card-field {
+    flex: 1;
+  }
+}
