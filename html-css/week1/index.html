@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Order Form</title>
+</head>
+
+<body>
+  <main>
+    <div class="container">
+      <div class="titles">
+        <h1>Some header</h1>
+        <h2>Some optional stuff</h2>
+      </div>
+      <div class="order-form">
+        <div class="total">
+          <h3>Order Summary</h3>
+          <div class="total-up">
+            <p>Total</p>
+            <p>$333 / month</p>
+          </div>
+          <hr>
+          <div class="total-down">
+            <p>Total</p>
+            <p>$100</p>
+          </div>
+        </div>
+        <form action="#">
+          <h3>Payment Method</h3>
+          <div class="method_wrap">
+            <div class="method-card">
+              <img
+                src="https://raw.githubusercontent.com/HackYourFuture-CPH/program/refs/heads/main/courses/foundation/html-and-css/order-form-task/cards.webp"
+                alt="Payment method VISA/Mastercard">
+              <span>Credit / Debit</span>
+            </div>
+            <div class="method-card">
+              <img
+                src="https://raw.githubusercontent.com/HackYourFuture-CPH/program/refs/heads/main/courses/foundation/html-and-css/order-form-task/paypal.webp"
+                alt="Payment method PayPal" class="img_paypal">
+              <span>PayPal</span>
+            </div>
+          </div>
+          <h3>Card Info</h3>
+          <div class="main_info">
+            <div class="card_num-wrap">
+              <label for="card_num">Card Number</label>
+              <div class="input-wrap">
+                <input id="card_num" type="text" placeholder="1234 1234 1234 1234" class="more_info">
+              </div>
+            </div>
+            <div class="secondary_info">
+              <div class="exp_date-wrap">
+                <label for="exp_date">Expiry Date</label>
+                <input id="exp_date" type="text" placeholder="MM / YY">
+              </div>
+              <div class="sec_code-wrap">
+                <label for="sec_code">Security Code</label>
+                <div class="input-wrap">
+                  <input id="sec_code" type="text" placeholder="CVV" class="more_info">
+                </div>
+              </div>
+            </div>
+          </div>
+          <button type="submit">Buy Now</button>
+          <a href="#">Need Help?</a>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>
